@@ -1,5 +1,5 @@
-import React from 'react';
 import type {Node} from 'react';
+import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -41,16 +41,27 @@ const App: () => Node = () => {
   );
 };
 
+// Components
+const ScreenTitle = props => {
+  return (
+    <View style={styles.titleContainer}>
+      <Text style={styles.title}>{props.title}</Text>
+    </View>
+  );
+};
+
+// Screens
 const GetDonations = () => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>
-            Get Blood {'\n'}
-            Donations
-          </Text>
-        </View>
+        <ScreenTitle title={'Get Blood \n Donations'} />
+        {/*<View style={styles.titleContainer}>*/}
+        {/*  <Text style={styles.title}>*/}
+        {/*    Get Blood {'\n'}*/}
+        {/*    Donations*/}
+        {/*  </Text>*/}
+        {/*</View>*/}
 
         {/*<ScrollView>*/}
         <View style={styles.container}>

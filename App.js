@@ -52,6 +52,47 @@ const ScreenTitle = props => {
   );
 };
 
+const CampaignCard = props => {
+  return (
+    <View style={styles.campaignsCard}>
+      <View style={styles.campaignsCardInner}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <MIcon name="blood-bag" size={30} color="#FFFFFF" />
+          <Text style={styles.campaignBloodgrp}>O+</Text>
+        </View>
+        <View
+          style={{
+            flex: 3,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <MIcon name="hospital-building" size={30} color="#FFFFFF" />
+          <View style={{width: 15}} />
+          <Text style={styles.campaignHospital}>Shifa Hospital</Text>
+        </View>
+      </View>
+      <View style={styles.campaignsCardInner}>
+        <Icon name="location-sharp" size={30} color="#FFFFFF" />
+        <Text style={styles.hospitaladdress}>
+          4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad
+        </Text>
+      </View>
+      <View style={styles.campaignsCardInnerRight}>
+        <TouchableOpacity style={styles.btncampaign}>
+          <Text style={styles.btnTextCampaign}>View Donors</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 // Screens
 const GetDonations = () => {
   return (
@@ -126,24 +167,8 @@ const MyCampaigns = () => {
   return (
     <View>
       <ScreenTitle title={'My Campaigns'} />
-
-      <View style={styles.campaignsCard}>
-        <View style={styles.campaignsCardInner}>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <MIcon name="blood-bag" size={30} color="#FFFFFF" />
-            <Text style={styles.campaignBloodgrp}>O+</Text>
-          </View>
-          <View style={{flex: 3}} />
-        </View>
-        <View style={styles.campaignsCardInner} />
-        <View style={styles.campaignsCardInner} />
-      </View>
+      <CampaignCard />
+      <CampaignCard />
     </View>
   );
 };
@@ -158,17 +183,54 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 16,
     flexDirection: 'column',
+    marginBottom: 20,
   },
   campaignsCardInner: {
     flex: 1,
     flexDirection: 'row',
     padding: 10,
+    alignItems: 'center',
+  },
+  campaignsCardInnerRight: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   campaignBloodgrp: {
     fontFamily: 'Outfit-Bold',
     textAlign: 'center',
     fontSize: 24,
     color: 'white',
+  },
+  campaignHospital: {
+    fontFamily: 'Outfit-Bold',
+    textAlign: 'center',
+    fontSize: 20,
+    color: 'white',
+  },
+  hospitaladdress: {
+    fontFamily: 'Outfit-Bold',
+    textAlign: 'center',
+    fontSize: 14,
+    color: 'white',
+  },
+  btncampaign: {
+    height: 40,
+    width: 134,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 16,
+    marginVertical: 12,
+  },
+  btnTextCampaign: {
+    fontFamily: 'Outfit-SemiBold',
+    textAlign: 'center',
+    fontSize: 18,
+    color: redcolor,
   },
   inputContainer: {
     justifyContent: 'center',

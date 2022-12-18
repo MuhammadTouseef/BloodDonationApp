@@ -5,44 +5,18 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   Image,
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
 const Stack = createNativeStackNavigator();
 const redcolor = '#C53437';
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    // <View style={{flex: 1}}>
-    //   <StatusBar
-    //     barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-    //     backgroundColor={backgroundStyle.backgroundColor}
-    //   />
-    //   <GetDonations />
-    // </View>
     <NavigationContainer>
       <View
         style={{
@@ -83,11 +57,7 @@ const GetDonations = () => {
           <Text style={styles.tfield}>Patient Name</Text>
           <TextInput style={styles.input} />
         </View>
-        {/*<View style={styles.container}>*/}
-        {/*  <Text style={styles.tfield}>Blood Group</Text>*/}
-        {/*  <Icon name="rocket" size={30} color="#900" />*/}
 
-        {/*</View>*/}
         <View style={styles.inputContainer}>
           <Text style={styles.tfield}>Blood Group</Text>
           <TextInput style={styles.input} />

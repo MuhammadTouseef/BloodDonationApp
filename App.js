@@ -1,6 +1,7 @@
 import type {Node} from 'react';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
@@ -35,7 +36,8 @@ const App: () => Node = () => {
             color: 'black',
           },
         }}>
-        <Stack.Screen name="Get Donations" component={GetDonations} />
+        <Stack.Screen name="My Campaigns" component={MyCampaigns} />
+        {/*<Stack.Screen name="Get Donations" component={GetDonations} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -120,7 +122,54 @@ const GetDonations = () => {
   );
 };
 
+const MyCampaigns = () => {
+  return (
+    <View>
+      <ScreenTitle title={'My Campaigns'} />
+
+      <View style={styles.campaignsCard}>
+        <View style={styles.campaignsCardInner}>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <MIcon name="blood-bag" size={30} color="#FFFFFF" />
+            <Text style={styles.campaignBloodgrp}>O+</Text>
+          </View>
+          <View style={{flex: 3}} />
+        </View>
+        <View style={styles.campaignsCardInner} />
+        <View style={styles.campaignsCardInner} />
+      </View>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
+  campaignsCard: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    minHeight: 142,
+    backgroundColor: redcolor,
+    maxWidth: 370,
+    width: '100%',
+    borderRadius: 16,
+    flexDirection: 'column',
+  },
+  campaignsCardInner: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 10,
+  },
+  campaignBloodgrp: {
+    fontFamily: 'Outfit-Bold',
+    textAlign: 'center',
+    fontSize: 24,
+    color: 'white',
+  },
   inputContainer: {
     justifyContent: 'center',
     maxWidth: 370,

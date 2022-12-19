@@ -64,7 +64,7 @@ const CampaignCard = props => {
             justifyContent: 'space-between',
           }}>
           <MIcon name="blood-bag" size={30} color="#FFFFFF" />
-          <Text style={styles.campaignBloodgrp}>O+</Text>
+          <Text style={styles.campaignBloodgrp}>{props.blood}</Text>
         </View>
         <View
           style={{
@@ -75,18 +75,16 @@ const CampaignCard = props => {
           }}>
           <MIcon name="hospital-building" size={30} color="#FFFFFF" />
           <View style={{width: 15}} />
-          <Text style={styles.campaignHospital}>Shifa Hospital</Text>
+          <Text style={styles.campaignHospital}>{props.hospital}</Text>
         </View>
       </View>
       <View style={styles.campaignsCardInner}>
         <Icon name="location-sharp" size={30} color="#FFFFFF" />
-        <Text style={styles.hospitaladdress}>
-          4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad
-        </Text>
+        <Text style={styles.hospitaladdress}>{props.address}</Text>
       </View>
       <View style={styles.campaignsCardInnerRight}>
         <TouchableOpacity style={styles.btncampaign}>
-          <Text style={styles.btnTextCampaign}>View Donors</Text>
+          <Text style={styles.btnTextCampaign}>{props.button}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -165,10 +163,34 @@ const GetDonations = () => {
 
 const MyCampaigns = () => {
   return (
-    <View>
-      <ScreenTitle title={'My Campaigns'} />
-      <CampaignCard />
-      <CampaignCard />
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <ScrollView>
+        <ScreenTitle title={'My Campaigns'} />
+
+        <CampaignCard
+          blood={'O+'}
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          button={'View Donors'}
+          id={'1'}
+        />
+
+        <CampaignCard
+          blood={'O+'}
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          button={'View Donors'}
+          id={'1'}
+        />
+
+        <CampaignCard
+          blood={'O+'}
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          button={'View Donors'}
+          id={'1'}
+        />
+      </ScrollView>
     </View>
   );
 };
@@ -194,7 +216,8 @@ const styles = StyleSheet.create({
   campaignsCardInnerRight: {
     flex: 1,
     flexDirection: 'row',
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
@@ -217,14 +240,14 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   btncampaign: {
-    height: 40,
+    height: 43,
     width: 134,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 16,
-    marginVertical: 12,
+    marginVertical: 3,
   },
   btnTextCampaign: {
     fontFamily: 'Outfit-SemiBold',

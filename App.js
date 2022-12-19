@@ -36,8 +36,9 @@ const App: () => Node = () => {
             color: 'black',
           },
         }}>
-        <Stack.Screen name="My Campaigns" component={MyCampaigns} />
+        <Stack.Screen name="Donors" component={Donors} />
         {/*<Stack.Screen name="Get Donations" component={GetDonations} />*/}
+        {/*<Stack.Screen name="My Campaigns" component={MyCampaigns} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -190,6 +191,28 @@ const MyCampaigns = () => {
           button={'View Donors'}
           id={'1'}
         />
+      </ScrollView>
+    </View>
+  );
+};
+
+const Donors = () => {
+  return (
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <ScrollView>
+        <ScreenTitle title={'Donors'} />
+
+        <CampaignCard
+          blood={'O+'}
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          button={'Details'}
+          id={'1'}
+        />
+
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Image source={require('./images/dots.png')} style={{width: '50%'}} />
+        </View>
       </ScrollView>
     </View>
   );

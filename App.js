@@ -92,6 +92,47 @@ const CampaignCard = props => {
   );
 };
 
+const DonorCard = props => {
+  return (
+    <View style={styles.campaignsCard}>
+      <View style={styles.campaignsCardInner}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <Image
+            source={props.img}
+            style={{borderRadius: 60, height: 80, width: 80}}
+          />
+        </View>
+        <View
+          style={{
+            flex: 3,
+
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text style={styles.donordetails}>{props.name}</Text>
+
+          <Text style={styles.donordetails}>Blood Group: {props.blood}</Text>
+        </View>
+      </View>
+
+      <View style={styles.donorCardInnerRight}>
+        <TouchableOpacity style={styles.btncampaign}>
+          <Text style={styles.btnTextCampaign}>Call Now</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btncampaign}>
+          <Text style={styles.btnTextCampaign}>Accept</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
 // Screens
 const GetDonations = () => {
   return (
@@ -210,15 +251,45 @@ const Donors = () => {
           id={'1'}
         />
 
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{justifyContent: 'center', alignItems: 'center', marginBottom:10}}>
           <Image source={require('./images/dots.png')} style={{width: '50%'}} />
         </View>
+
+        <DonorCard
+          img={require('./images/placeholder.png')}
+          name={'Muhammad Touseef'}
+          blood={'O+'}
+          call={'123'}
+          accept={'11'}
+        />
+
+        <DonorCard
+          img={require('./images/placeholder.png')}
+          name={'Syed Arshik Javed'}
+          blood={'B+'}
+          call={'123'}
+          accept={'11'}
+        />
       </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  donorCardInnerRight: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  donordetails: {
+    fontFamily: 'Outfit-Bold',
+    textAlign: 'left',
+    fontSize: 20,
+    color: 'white',
+  },
   campaignsCard: {
     marginLeft: 'auto',
     marginRight: 'auto',

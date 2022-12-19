@@ -36,10 +36,11 @@ const App: () => Node = () => {
             color: 'black',
           },
         }}>
-        <Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />
+        <Stack.Screen name="Blood Banks" component={BloodBanks} />
         {/*<Stack.Screen name="Get Donations" component={GetDonations} />*/}
         {/*<Stack.Screen name="My Campaigns" component={MyCampaigns} />*/}
         {/*<Stack.Screen name="Donors" component={Donors} />*/}
+        {/*<Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -128,6 +129,38 @@ const DonorCard = props => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.btncampaign}>
           <Text style={styles.btnTextCampaign}>Accept</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+const BloodBankCard = props => {
+  return (
+    <View style={styles.campaignsCard}>
+      <View style={styles.campaignsCardInner}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+          }}>
+          <MIcon name="hospital-building" size={30} color="#FFFFFF" />
+          <View style={{width: 15}} />
+          <Text style={styles.campaignHospital}>{props.hospital}</Text>
+        </View>
+      </View>
+      <View style={styles.campaignsCardInner}>
+        <Icon name="location-sharp" size={30} color="#FFFFFF" />
+        <Text style={styles.hospitaladdress}>{props.address}</Text>
+      </View>
+      <View style={styles.donorCardInnerRight}>
+        <TouchableOpacity style={styles.btncampaign}>
+          <Text style={styles.btnTextCampaign}>Get Direction</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btncampaign}>
+          <Text style={styles.btnTextCampaign}>Call Now</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -252,7 +285,12 @@ const Donors = () => {
           id={'1'}
         />
 
-        <View style={{justifyContent: 'center', alignItems: 'center', marginBottom:10}}>
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: 10,
+          }}>
           <Image source={require('./images/dots.png')} style={{width: '50%'}} />
         </View>
 
@@ -276,15 +314,14 @@ const Donors = () => {
   );
 };
 
-const ActiveCampaigns = ()=>{
+const ActiveCampaigns = () => {
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Active Campaigns'} />
-        <View style={{marginBottom:25}}>
+        <View style={{marginBottom: 25}}>
           <View style={styles.inputContainer}>
-
-            <TextInput style={styles.input} placeholder={"Enter Location"} />
+            <TextInput style={styles.input} placeholder={'Enter Location'} />
             <Icon
               style={styles.acicon}
               name="location-outline"
@@ -319,7 +356,48 @@ const ActiveCampaigns = ()=>{
       </ScrollView>
     </View>
   );
-}
+};
+
+const BloodBanks = () => {
+  return (
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <ScrollView>
+        <ScreenTitle title={'Blood Banks'} />
+        <View style={{marginBottom: 25}}>
+          <View style={styles.inputContainer}>
+            <TextInput style={styles.input} placeholder={'Enter Location'} />
+            <Icon
+              style={styles.acicon}
+              name="location-outline"
+              size={30}
+              color="#000000"
+            />
+          </View>
+        </View>
+        <BloodBankCard
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          call={'12345678'}
+          location={'37.00,76.00'}
+        />
+
+        <BloodBankCard
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          call={'12345678'}
+          location={'37.00,76.00'}
+        />
+
+        <BloodBankCard
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          call={'12345678'}
+          location={'37.00,76.00'}
+        />
+      </ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   donorCardInnerRight: {

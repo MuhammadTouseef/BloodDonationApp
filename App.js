@@ -29,7 +29,7 @@ const App: () => Node = () => {
         <Image source={require('./images/barcircle.png')} style={{}} />
       </View>
       <Stack.Navigator
-        initialRouteName="Campaign Details"
+        initialRouteName="TempHome"
         screenOptions={{
           headerTitleAlign: 'center',
           headerShadowVisible: false,
@@ -40,12 +40,13 @@ const App: () => Node = () => {
           },
           headerRight: () => <Icon name="search" size={30} color="#292D32" />,
         }}>
+        <Stack.Screen name="TempHome" component={TempHome} />
+        <Stack.Screen name="Get Donations" component={GetDonations} />
+        <Stack.Screen name="My Campaigns" component={MyCampaigns} />
+        <Stack.Screen name="Donors" component={Donors} />
+        <Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />
+        <Stack.Screen name="Blood Banks" component={BloodBanks} />
         <Stack.Screen name="Campaign Details" component={CampaignDetails} />
-        {/*<Stack.Screen name="Get Donations" component={GetDonations} />*/}
-        {/*<Stack.Screen name="My Campaigns" component={MyCampaigns} />*/}
-        {/*<Stack.Screen name="Donors" component={Donors} />*/}
-        {/*<Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />*/}
-        {/*<Stack.Screen name="Blood Banks" component={BloodBanks} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -454,12 +455,55 @@ const CampaignDetails = () => {
   );
 };
 
+const TempHome = ({navigation}) => {
+  return (
+    <>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'Get Blood Donation'}
+          onPress={() => navigation.navigate('Get Donations')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'My Campaigns'}
+          onPress={() => navigation.navigate('My Campaigns')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'Donors'}
+          onPress={() => navigation.navigate('Donors')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'Active Campaigns'}
+          onPress={() => navigation.navigate('Active Campaigns')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'Blood Banks'}
+          onPress={() => navigation.navigate('Blood Banks')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'Campaign Details'}
+          onPress={() => navigation.navigate('Campaign Details')}
+        />
+      </View>
+    </>
+  );
+};
+
 const styles = StyleSheet.create({
   campaigncard: {
     backgroundColor: redcolor,
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: 360,
+    maxWidth: 330,
     width: '100%',
     minHeight: 250,
     borderRadius: 10,
@@ -490,7 +534,7 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     minHeight: 142,
     backgroundColor: redcolor,
-    maxWidth: 370,
+    maxWidth: 330,
     width: '100%',
     borderRadius: 16,
     flexDirection: 'column',
@@ -525,7 +569,7 @@ const styles = StyleSheet.create({
   hospitaladdress: {
     fontFamily: 'Outfit-Bold',
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: 13,
     color: 'white',
   },
   btncampaign: {
@@ -546,7 +590,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     justifyContent: 'center',
-    maxWidth: 370,
+    maxWidth: 330,
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 10,
@@ -566,7 +610,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   container: {
-    maxWidth: 370,
+    maxWidth: 330,
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 10,
@@ -589,20 +633,21 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'Outfit-Regular',
     color: 'black',
+
   },
   input: {
     height: 60,
     marginTop: 12,
     borderWidth: 2,
     padding: 10,
-    width: 370,
+    width: 330,
   },
   textArea: {
     height: 92,
     marginTop: 12,
     borderWidth: 2,
     padding: 10,
-    width: 370,
+    width: 330,
   },
   btn: {
     height: 72,

@@ -5,6 +5,7 @@ import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
+  Button,
   Image,
   ScrollView,
   StyleSheet,
@@ -28,19 +29,23 @@ const App: () => Node = () => {
         <Image source={require('./images/barcircle.png')} style={{}} />
       </View>
       <Stack.Navigator
+        initialRouteName="Campaign Details"
         screenOptions={{
           headerTitleAlign: 'center',
+          headerShadowVisible: false,
           headerTitleStyle: {
             fontSize: 22,
             fontFamily: 'Outfit-Regular',
             color: 'black',
           },
+          headerRight: () => <Icon name="search" size={30} color="#292D32" />,
         }}>
-        <Stack.Screen name="Blood Banks" component={BloodBanks} />
+        <Stack.Screen name="Campaign Details" component={CampaignDetails} />
         {/*<Stack.Screen name="Get Donations" component={GetDonations} />*/}
         {/*<Stack.Screen name="My Campaigns" component={MyCampaigns} />*/}
         {/*<Stack.Screen name="Donors" component={Donors} />*/}
         {/*<Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />*/}
+        {/*<Stack.Screen name="Blood Banks" component={BloodBanks} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -164,6 +169,29 @@ const BloodBankCard = props => {
         </TouchableOpacity>
       </View>
     </View>
+  );
+};
+
+const CampaignRow = props => {
+  return (
+    <>
+      <View style={{flexDirection: props.fd, justifyContent: 'space-between'}}>
+        <Text style={styles.cpmrowdetail}>{props.left}</Text>
+        <Text style={styles.cpmrowdetail}>{props.right}</Text>
+      </View>
+
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginVertical: 10,
+        }}>
+        <Image
+          source={require('./images/dotswhite.png')}
+          style={{width: '50%'}}
+        />
+      </View>
+    </>
   );
 };
 
@@ -399,7 +427,44 @@ const BloodBanks = () => {
   );
 };
 
+const CampaignDetails = () => {
+  return (
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <ScrollView>
+        <ScreenTitle title={'Campaign Details'} />
+        <View style={styles.campaigncard}>
+          <CampaignRow left={'Patient Name:'} right={'John Doe'} fd={'row'} />
+          <CampaignRow left={'Blood Group:'} right={'O+'} fd={'row'} />
+          <CampaignRow left={'Contact:'} right={'+9200000000'} fd={'row'} />
+          <CampaignRow
+            left={'Location:'}
+            right={'Shifa Hospital, Islamabad'}
+            fd={'row'}
+          />
+          <CampaignRow
+            left={'Details:'}
+            right={
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis dignissim est'
+            }
+            fd={'column'}
+          />
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
+  campaigncard: {
+    backgroundColor: redcolor,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: 360,
+    width: '100%',
+    minHeight: 250,
+    borderRadius: 10,
+    padding: 15,
+  },
   donorCardInnerRight: {
     flex: 1,
     flexDirection: 'row',
@@ -410,6 +475,12 @@ const styles = StyleSheet.create({
   },
   donordetails: {
     fontFamily: 'Outfit-Bold',
+    textAlign: 'left',
+    fontSize: 20,
+    color: 'white',
+  },
+  cpmrowdetail: {
+    fontFamily: 'Outfit-Regular',
     textAlign: 'left',
     fontSize: 20,
     color: 'white',

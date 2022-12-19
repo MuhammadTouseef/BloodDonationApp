@@ -36,9 +36,10 @@ const App: () => Node = () => {
             color: 'black',
           },
         }}>
-        <Stack.Screen name="Donors" component={Donors} />
+        <Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />
         {/*<Stack.Screen name="Get Donations" component={GetDonations} />*/}
         {/*<Stack.Screen name="My Campaigns" component={MyCampaigns} />*/}
+        {/*<Stack.Screen name="Donors" component={Donors} />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -275,6 +276,51 @@ const Donors = () => {
   );
 };
 
+const ActiveCampaigns = ()=>{
+  return (
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+      <ScrollView>
+        <ScreenTitle title={'Active Campaigns'} />
+        <View style={{marginBottom:25}}>
+          <View style={styles.inputContainer}>
+
+            <TextInput style={styles.input} placeholder={"Enter Location"} />
+            <Icon
+              style={styles.acicon}
+              name="location-outline"
+              size={30}
+              color="#000000"
+            />
+          </View>
+        </View>
+        <CampaignCard
+          blood={'O+'}
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          button={'More Details'}
+          id={'1'}
+        />
+
+        <CampaignCard
+          blood={'O+'}
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          button={'More Details'}
+          id={'1'}
+        />
+
+        <CampaignCard
+          blood={'O+'}
+          hospital={'Shifa Hospital'}
+          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          button={'More Details'}
+          id={'1'}
+        />
+      </ScrollView>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   donorCardInnerRight: {
     flex: 1,
@@ -364,6 +410,12 @@ const styles = StyleSheet.create({
     top: '55%',
     fontWeight: 'bold',
   },
+  acicon: {
+    position: 'absolute',
+    right: 10,
+    top: '42%',
+    fontWeight: 'bold',
+  },
   container: {
     maxWidth: 370,
     marginLeft: 'auto',
@@ -373,7 +425,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   titleContainer: {
-    height: 184,
+    minHeight: 144,
 
     alignItems: 'center',
     justifyContent: 'center',

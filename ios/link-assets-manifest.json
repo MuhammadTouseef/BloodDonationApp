@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/Kaushan-Regular.ttf",
+      "sha1": "8b203c70f9c8f5d437eb5a87a6c7df39fb2996b7"
+    },
+    {
       "path": "assets/fonts/Outfit-Black.ttf",
       "sha1": "acf16819309cc0e21abd72b4cdd932df559e9f9e"
     },

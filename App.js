@@ -61,9 +61,9 @@ const App = () => {
 const MainScreen = () => {
   return (
     <View style={styles.main}>
-      <Text style={styles.paragraph}></Text>
+      <Text style={styles.paragraph} />
 
-      <View style={styles.topLeft}></View>
+      <View style={styles.topLeft} />
 
       <TouchableOpacity>
         <View
@@ -155,9 +155,9 @@ const MainScreen = () => {
 const LoginScreen = () => {
   return (
     <View style={styles.main}>
-      <Text style={styles.paragraph}></Text>
+      <Text style={styles.paragraph} />
 
-      <View style={styles.topLeft}></View>
+      <View style={styles.topLeft} />
 
       <View style={{alignItems: 'center', marginTop: 10}}>
         <TextInput
@@ -169,7 +169,8 @@ const LoginScreen = () => {
             fontSize: 22,
             fontFamily: 'Outfit-Regular',
           }}
-          placeholder="Username"></TextInput>
+          placeholder="Username"
+        />
 
         <TextInput
           placeholderTextColor={'#D0B5B5'}
@@ -181,7 +182,8 @@ const LoginScreen = () => {
             fontSize: 22,
             fontFamily: 'Outfit-Regular',
           }}
-          placeholder="Password"></TextInput>
+          placeholder="Password"
+        />
 
         <TouchableOpacity>
           <View style={{marginLeft: 320, marginTop: -35}}>
@@ -247,12 +249,13 @@ const LoginScreen = () => {
 const SignUpScreen = () => {
   return (
     <View style={styles.main}>
-      <Text style={styles.paragraph}></Text>
+      <Text style={styles.paragraph} />
 
-      <View style={styles.topLeft}></View>
+      <View style={styles.topLeft} />
 
       <View style={{alignSelf: 'center', top: -150}}>
-        <Text style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
           Create Your Account
         </Text>
       </View>
@@ -266,10 +269,11 @@ const SignUpScreen = () => {
             fontSize: 20,
             fontFamily: 'Outfit-Regular',
           }}
-          placeholder="Full Name"></TextInput>
-          <View style={{marginLeft: 310, marginTop: -35, padding:2}}>
-            <Icon name="person" size={25} color="#FFFFFF" />
-          </View>
+          placeholder="Full Name"
+        />
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+          <Icon name="person" size={25} color="#FFFFFF" />
+        </View>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -280,10 +284,11 @@ const SignUpScreen = () => {
             fontSize: 20,
             fontFamily: 'Outfit-Regular',
           }}
-          placeholder="Email"></TextInput>
-          <View style={{marginLeft: 310, marginTop: -35, padding:2}}>
-            <MIcon name="email" size={25} color="#FFFFFF" />
-          </View>
+          placeholder="Email"
+        />
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+          <MIcon name="email" size={25} color="#FFFFFF" />
+        </View>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -294,10 +299,11 @@ const SignUpScreen = () => {
             fontSize: 20,
             fontFamily: 'Outfit-Regular',
           }}
-          placeholder="Phone Number"></TextInput>
-          <View style={{marginLeft: 310, marginTop: -35, padding:2}}>
-            <MIcon name="card-account-phone" size={25} color="#FFFFFF" />
-          </View>
+          placeholder="Phone Number"
+        />
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+          <MIcon name="card-account-phone" size={25} color="#FFFFFF" />
+        </View>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -308,12 +314,13 @@ const SignUpScreen = () => {
             fontSize: 20,
             fontFamily: 'Outfit-Regular',
           }}
-          placeholder="Password"></TextInput>
-          <TouchableOpacity>
-          <View style={{marginLeft: 310, marginTop: -35, padding:2}}>
+          placeholder="Password"
+        />
+        <TouchableOpacity>
+          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
-          </TouchableOpacity>
+        </TouchableOpacity>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -324,92 +331,88 @@ const SignUpScreen = () => {
             fontSize: 20,
             fontFamily: 'Outfit-Regular',
           }}
-          placeholder="Confirm Password"></TextInput>
-          <TouchableOpacity>
-          <View style={{marginLeft: 310, marginTop: -35, padding:2}}>
+          placeholder="Confirm Password"
+        />
+        <TouchableOpacity>
+          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
-          </TouchableOpacity>
-        
-          <TouchableOpacity>
-            <View
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 250,
+              marginTop: 30,
+              alignContent: 'center',
+              marginLeft: 20,
+              alignItems: 'center',
+            }}>
+            <Text
               style={{
-                backgroundColor: '#F2F2F2',
-                borderWidth: 1,
-                borderRadius: 10,
-                borderColor: 'white',
-                padding: 10,
-                width: 250,
-                marginTop: 30,
-                alignContent: 'center',
-                marginLeft: 20,
-                alignItems: 'center',
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
               }}>
+              Sign Up
+            </Text>
+          </View>
+        </TouchableOpacity>
 
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: '#B0303B',
-                  fontSize: 22,
-                  fontFamily: 'Outfit-Regular',
-                }}>
-                Sign Up
-              </Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <View
+        <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#C53437',
+              borderWidth: 1,
+              borderRadius: 70,
+              borderColor: 'black',
+              padding: 10,
+              width: 220,
+              marginTop: 20,
+              alignContent: 'center',
+              marginLeft: 20,
+              alignItems: 'center',
+              width: 250,
+            }}>
+            <Text
               style={{
-                backgroundColor: '#C53437',
-                borderWidth: 1,
-                borderRadius: 70,
-                borderColor: 'black',
-                padding: 10,
-                width: 220,
-                marginTop: 20,
-                alignContent: 'center',
+                textAlign: 'center',
+                color: '#000000',
+                fontSize: 16,
+                fontFamily: 'Outfit-Regular',
                 marginLeft: 20,
-                alignItems: 'center',
-                width: 250
               }}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: '#000000',
-                  fontSize: 16,
-                  fontFamily: 'Outfit-Regular',
-                  marginLeft: 20
-                }}>
-                Sign up with Google
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <View style={{marginLeft: -155, marginTop: -33, padding:2}}>
-            <MIcon name="google" size={20} color="#000000"  />
+              Sign up with Google
+            </Text>
           </View>
-          
-          <View style={{marginTop: 30, marginLeft: 25}}>
-            <TouchableOpacity>
-              <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
-                Have An Account?{' '}
+        </TouchableOpacity>
+        <View style={{marginLeft: -155, marginTop: -33, padding: 2}}>
+          <MIcon name="google" size={20} color="#000000" />
+        </View>
 
-                <Text
-                  style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
-                   Sign In
-                </Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
-          
+        <View style={{marginTop: 30, marginLeft: 25}}>
           <TouchableOpacity>
+            <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
+              Have An Account?{' '}
+              <Text style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
+                Sign In
+              </Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity>
           <View style={{marginRight: 340, bottom: 690}}>
-            <MIcon name="arrow-left" size={40} color="#FFFFFF"  />
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
           </View>
-          </TouchableOpacity>
-
+        </TouchableOpacity>
       </View>
-      
     </View>
   );
 };

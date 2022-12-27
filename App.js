@@ -7,6 +7,7 @@ import {
   Button,
   Image,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -249,6 +250,7 @@ const LoginScreen = () => {
 const SignUpScreen = () => {
   return (
     <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
       <Text style={styles.paragraph} />
 
       <View style={styles.topLeft} />

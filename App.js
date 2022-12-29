@@ -1,8 +1,8 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   Button,
   Image,
@@ -46,158 +46,37 @@ const App = () => {
         <Stack.Screen
           name="SignUp Screen"
           component={SignUpScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="Forget Password"
+          component={ForgetPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OTPPassword Screen"
+          component={OTPPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ResetPassword Screen"
+          component={ResetPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ResetPasswordComplete Screen"
+          component={ResetPasswordComplete}
+          options={{headerShown: false}}
+        />
+
         <Stack.Screen name="Get Donations" component={GetDonations} />
         <Stack.Screen name="My Campaigns" component={MyCampaigns} />
         <Stack.Screen name="Donors" component={Donors} />
         <Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />
         <Stack.Screen name="Blood Banks" component={BloodBanks} />
         <Stack.Screen name="Campaign Details" component={CampaignDetails} />
-
-        <Stack.Screen name="Feedback" component={Feedback} />
-        <Stack.Screen name="About Us" component={AboutUs} />
-        <Stack.Screen name="Donation History" component={DonationHistory} />
-
-
       </Stack.Navigator>
     </NavigationContainer>
-  );
-};
-
-//Tayyab Screens 
-
-const DonationHistory = () => {
-  return (
-
-    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
-      <ScrollView>
-
-
-        <View style={styles.titleContainer}>
-          <Image style={{ height: 200, width: 120, marginTop: 40 }} source={require('./images/blood.png')} />
-          <ScreenTitle title={'We Are So Proud \n Of You!'} />
-
-          <Image style={{ height: 125, width: 125, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }} source={require('./images/placeholder.png')} />
-          <Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 7 }}>John Doe</Text>
-        </View>
-
-        <HistoryCard
-          date='4/2/2021'
-          location='4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8 Islamabad'
-          campaign='No'
-        />
-
-        <HistoryCard
-          date='12/7/2021'
-          location='4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8 Islamabad'
-          campaign='Yes'
-        />
-
-        <HistoryCard
-          date='3/2/2022'
-          location='4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8 Islamabad'
-          campaign='No'
-        />
-
-        <HistoryCard
-          date='14/8/2022'
-          location='4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8 Islamabad'
-          campaign='No'
-        />
-
-        <View style={styles.rectangle} >
-        </View>
-
-      </ScrollView>
-    </View>
-  );
-};
-
-
-const AboutUs = () => {
-  return (
-    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
-      <ScrollView>
-
-        <View style={styles.titleContainer}>
-          <Image style={{ height: 200, width: 120, marginTop: 40 }} source={require('./images/blood.png')} />
-          <ScreenTitle title={'About Us'} />
-        </View>
-
-        <View style={styles.container}>
-          <Text style={styles.tAboutUs}>This organization was{'\n'}created to aid Blood{'\n'}Transfusions across{'\n'}Pakistan. We aim to{'\n'}facilitate this process{'\n'}through this Application.{'\n'}With this Application{'\n'}people can pledge to{'\n'}donate to Active Blood{'\n'}Campaigns. This method{'\n'}will provide ease and{'\n'}confirmation on the{'\n'}people willing to Donate.{'\n'}{'\n'}<Text style={{ fontStyle: 'italic' }}>Not All Heroes Wear Capes, Some Simply Donate Blood.</Text></Text>
-        </View>
-
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Founders</Text>
-        </View>
-
-        <View style={styles.container}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Image style={{ height: 125, width: 125, borderRadius: 100, marginRight: 25 }} source={require('./images/Arshik.jpg')} />
-            <Image style={{ height: 125, width: 125, borderRadius: 100, marginLeft: 25 }} source={require('./images/Touseef.jpg')} />
-          </View>
-
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
-            <Text style={{ marginRight: 15, fontWeight: 'bold', fontSize: 18, }}>Syed Arshik Javed</Text>
-            <Text style={{ marginLeft: 15, fontWeight: 'bold', fontSize: 18, }}>Muhammad Touseef</Text>
-          </View>
-
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 30 }}>
-            <Image style={{ height: 125, width: 125, borderRadius: 100, marginRight: 25 }} source={require('./images/Tayyab.jpg')} />
-            <Image style={{ height: 125, width: 125, borderRadius: 100, marginLeft: 25 }} source={require('./images/Mujtaba.jpg')} />
-          </View>
-
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
-            <Text style={{ marginRight: 15, fontWeight: 'bold', fontSize: 18, }}>M. Tayyab Naveed</Text>
-            <Text style={{ marginLeft: 15, fontWeight: 'bold', fontSize: 18, }}>Mujtaba Aziz Khan</Text>
-          </View>
-        </View>
-
-        <View style={styles.rectangle} >
-        </View>
-
-      </ScrollView>
-    </View>
-
-
-  );
-};
-
-const Feedback = () => {
-  return (
-
-    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
-
-      <ScrollView>
-
-        <View style={styles.titleContainer}>
-          <ScreenTitle title={'We Would Love to \n Hear Your \n Feedback!'} />
-        </View>
-
-        <View style={styles.container}>
-          <Text style={styles.tfield}>Email</Text>
-          <TextInput style={styles.input} />
-        </View>
-
-        <View style={styles.container}>
-          <Text style={styles.tfield}>Feedback</Text>
-          <TextInput style={styles.inputFeedback} />
-        </View>
-
-        <View style={styles.container}>
-          <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnText}>Send</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.rectangle} >
-        </View>
-
-      </ScrollView >
-    </View >
-
   );
 };
 
@@ -259,7 +138,7 @@ const MainScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <View style={{ flexDirection: 'column' }}>
+      <View style={{flexDirection: 'column'}}>
         <TouchableOpacity>
           <Text
             style={{
@@ -287,7 +166,7 @@ const MainScreen = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity>
-        <View style={{ top: -22, marginLeft: 345 }}>
+        <View style={{top: -22, marginLeft: 345}}>
           <MIcon name="arrow-right" size={25} color="#FFFFFF" />
         </View>
       </TouchableOpacity>
@@ -302,7 +181,7 @@ const LoginScreen = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{ alignItems: 'center', marginTop: 10 }}>
+      <View style={{alignItems: 'center', marginTop: 10}}>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -329,11 +208,11 @@ const LoginScreen = () => {
         />
 
         <TouchableOpacity>
-          <View style={{ marginLeft: 320, marginTop: -35 }}>
+          <View style={{marginLeft: 320, marginTop: -35}}>
             <MIcon name="eye" size={33} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{alignItems: 'center'}}>
           <TouchableOpacity>
             <View
               style={{
@@ -360,7 +239,7 @@ const LoginScreen = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={{ marginTop: 20, marginLeft: 25 }}>
+          <View style={{marginTop: 20, marginLeft: 25}}>
             <TouchableOpacity>
               <Text
                 style={{
@@ -373,12 +252,12 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
 
-          <View style={{ marginTop: 40, marginLeft: 25 }}>
+          <View style={{marginTop: 40, marginLeft: 25}}>
             <TouchableOpacity>
-              <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
+              <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
                 Don't Have An Account?{' '}
                 <Text
-                  style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
+                  style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
                   Sign Up
                 </Text>
               </Text>
@@ -389,6 +268,7 @@ const LoginScreen = () => {
     </View>
   );
 };
+
 const SignUpScreen = () => {
   return (
     <View style={styles.main}>
@@ -397,13 +277,13 @@ const SignUpScreen = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{ alignSelf: 'center', top: -150 }}>
+      <View style={{alignSelf: 'center', top: -150}}>
         <Text
-          style={{ color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25 }}>
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
           Create Your Account
         </Text>
       </View>
-      <View style={{ alignItems: 'center', marginTop: -120 }}>
+      <View style={{alignItems: 'center', marginTop: -120}}>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -415,7 +295,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Full Name"
         />
-        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
           <Icon name="person" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -430,7 +310,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Email"
         />
-        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
           <MIcon name="email" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -445,7 +325,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Phone Number"
         />
-        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
           <MIcon name="card-account-phone" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -461,7 +341,7 @@ const SignUpScreen = () => {
           placeholder="Password"
         />
         <TouchableOpacity>
-          <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -478,7 +358,7 @@ const SignUpScreen = () => {
           placeholder="Confirm Password"
         />
         <TouchableOpacity>
-          <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -536,15 +416,15 @@ const SignUpScreen = () => {
             </Text>
           </View>
         </TouchableOpacity>
-        <View style={{ marginLeft: -155, marginTop: -33, padding: 2 }}>
+        <View style={{marginLeft: -155, marginTop: -33, padding: 2}}>
           <MIcon name="google" size={20} color="#000000" />
         </View>
 
-        <View style={{ marginTop: 30, marginLeft: 25 }}>
+        <View style={{marginTop: 30, marginLeft: 25}}>
           <TouchableOpacity>
-            <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
+            <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
               Have An Account?{' '}
-              <Text style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
+              <Text style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
                 Sign In
               </Text>
             </Text>
@@ -552,7 +432,7 @@ const SignUpScreen = () => {
         </View>
 
         <TouchableOpacity>
-          <View style={{ marginRight: 340, bottom: 690 }}>
+          <View style={{marginRight: 340, bottom: 690}}>
             <MIcon name="arrow-left" size={40} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -560,6 +440,319 @@ const SignUpScreen = () => {
     </View>
   );
 };
+
+
+const ForgetPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          {' '} Forgot Your Password? {' '}
+        </Text>
+      </View>
+
+      <View style={{alignSelf: 'center', marginLeft: 50, marginRight: 50}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold', marginTop: -10}}>
+          Enter your email address to           
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center'}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          reset your password           
+        </Text>
+      </View>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '70%',
+            marginTop: 40,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 10,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="Email"
+        >
+      
+      </TextInput>
+
+        <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 150,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Next
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+
+
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 525}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+
+const OTPPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          {' '} Code Has Been Sent To Your Email {' '}
+        </Text>
+      </View>
+
+      <View style={{alignSelf: 'center', top: -60 , flexDirection: 'row', marginLeft: 30}}>
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+
+      </View>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 150,
+              marginTop: 10,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Verify
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 450}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+const ResetPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          {' '} Reset Your Password {' '}
+        </Text>
+      </View>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '80%',
+            marginTop: 20,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 20,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="New Password"
+        >
+      </TextInput>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '80%',
+            marginTop: 40,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 20,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="Confirm Password"
+        >
+      
+      </TextInput>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 200,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Reset
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+      
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 540}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+const ResetPasswordComplete = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          {' '} Woo Hoo! {' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '} Your Password has been reset{' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '}successfully. Login now with your{' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '}new password{' '}
+        </Text>
+      </View>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 200,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Login
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+      
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 540}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
 
 // Components
 const ScreenTitle = props => {
@@ -592,7 +785,7 @@ const CampaignCard = props => {
             justifyContent: 'center',
           }}>
           <MIcon name="hospital-building" size={30} color="#FFFFFF" />
-          <View style={{ width: 15 }} />
+          <View style={{width: 15}} />
           <Text style={styles.campaignHospital}>{props.hospital}</Text>
         </View>
       </View>
@@ -622,7 +815,7 @@ const DonorCard = props => {
           }}>
           <Image
             source={props.img}
-            style={{ borderRadius: 60, height: 80, width: 80 }}
+            style={{borderRadius: 60, height: 80, width: 80}}
           />
         </View>
         <View
@@ -650,29 +843,6 @@ const DonorCard = props => {
   );
 };
 
-const HistoryCard = props => {
-  return (
-    <View style={styles.HistoryCardStyle}>
-
-      <View style={styles.HistoryCardRed}>
-        <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>Date</Text>
-        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white', marginTop: 7 }}>{props.date}</Text>
-      </View>
-
-      <View style={styles.HistoryCardWhite}>
-        <Icon name="location-sharp" size={30} color="#C53437" />
-        <Text style={{ fontSize: 10, fontWeight: 'bold', color: 'black' }}>{props.location}</Text>
-      </View>
-
-      <View style={styles.HistoryCardRed}>
-        <Text style={{ textAlign: 'center', fontSize: 19, fontWeight: 'bold' }}>Campaign?</Text>
-        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white', marginTop: 7 }}>{props.campaign}</Text>
-      </View>
-
-    </View>
-  );
-};
-
 const BloodBankCard = props => {
   return (
     <View style={styles.campaignsCard}>
@@ -685,7 +855,7 @@ const BloodBankCard = props => {
             justifyContent: 'flex-start',
           }}>
           <MIcon name="hospital-building" size={30} color="#FFFFFF" />
-          <View style={{ width: 15 }} />
+          <View style={{width: 15}} />
           <Text style={styles.campaignHospital}>{props.hospital}</Text>
         </View>
       </View>
@@ -708,7 +878,7 @@ const BloodBankCard = props => {
 const CampaignRow = props => {
   return (
     <>
-      <View style={{ flexDirection: props.fd, justifyContent: 'space-between' }}>
+      <View style={{flexDirection: props.fd, justifyContent: 'space-between'}}>
         <Text style={styles.cpmrowdetail}>{props.left}</Text>
         <Text style={styles.cpmrowdetail}>{props.right}</Text>
       </View>
@@ -721,7 +891,7 @@ const CampaignRow = props => {
         }}>
         <Image
           source={require('./images/dotswhite.png')}
-          style={{ width: '50%' }}
+          style={{width: '50%'}}
         />
       </View>
     </>
@@ -731,7 +901,7 @@ const CampaignRow = props => {
 // Screens
 const GetDonations = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Get Blood \n Donations'} />
         {/*<View style={styles.titleContainer}>*/}
@@ -800,7 +970,7 @@ const GetDonations = () => {
 
 const MyCampaigns = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'My Campaigns'} />
 
@@ -834,7 +1004,7 @@ const MyCampaigns = () => {
 
 const Donors = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Donors'} />
 
@@ -852,7 +1022,7 @@ const Donors = () => {
             alignItems: 'center',
             marginBottom: 10,
           }}>
-          <Image source={require('./images/dots.png')} style={{ width: '50%' }} />
+          <Image source={require('./images/dots.png')} style={{width: '50%'}} />
         </View>
 
         <DonorCard
@@ -877,10 +1047,10 @@ const Donors = () => {
 
 const ActiveCampaigns = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Active Campaigns'} />
-        <View style={{ marginBottom: 25 }}>
+        <View style={{marginBottom: 25}}>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder={'Enter Location'} />
             <Icon
@@ -921,10 +1091,10 @@ const ActiveCampaigns = () => {
 
 const BloodBanks = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Blood Banks'} />
-        <View style={{ marginBottom: 25 }}>
+        <View style={{marginBottom: 25}}>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder={'Enter Location'} />
             <Icon
@@ -962,7 +1132,7 @@ const BloodBanks = () => {
 
 const CampaignDetails = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Campaign Details'} />
         <View style={styles.campaigncard}>
@@ -987,88 +1157,89 @@ const CampaignDetails = () => {
   );
 };
 
-const TempHome = ({ navigation }) => {
+const TempHome = ({navigation}) => {
   return (
     <>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'Get Blood Donation'}
           onPress={() => navigation.navigate('Get Donations')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'My Campaigns'}
           onPress={() => navigation.navigate('My Campaigns')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'Donors'}
           onPress={() => navigation.navigate('Donors')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'Active Campaigns'}
           onPress={() => navigation.navigate('Active Campaigns')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'Blood Banks'}
           onPress={() => navigation.navigate('Blood Banks')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'Campaign Details'}
           onPress={() => navigation.navigate('Campaign Details')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'Main Screen'}
           onPress={() => navigation.navigate('Main Screen')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'Login Screen'}
           onPress={() => navigation.navigate('Login Screen')}
         />
       </View>
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
           title={'SignUp Screen'}
           onPress={() => navigation.navigate('SignUp Screen')}
         />
       </View>
-
-
-      <View style={{ marginVertical: 10 }}>
+      
+      <View style={{marginVertical: 10}}>
         <Button
-          title={'Feedback'}
-          onPress={() => navigation.navigate('Feedback')}
+          title={'Forget Password'}
+          onPress={() => navigation.navigate('Forget Password')}
         />
       </View>
-
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
-          title={'About Us'}
-          onPress={() => navigation.navigate('About Us')}
+          title={'OTPPassword Screen'}
+          onPress={() => navigation.navigate('OTPPassword Screen')}
         />
       </View>
-
-      <View style={{ marginVertical: 10 }}>
+      <View style={{marginVertical: 10}}>
         <Button
-          title={'Donation History'}
-          onPress={() => navigation.navigate('Donation History')}
+          title={'ResetPassword Screen'}
+          onPress={() => navigation.navigate('ResetPassword Screen')}
         />
       </View>
-
-
-
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'ResetPasswordComplete Screen'}
+          onPress={() => navigation.navigate('ResetPasswordComplete Screen')}
+        />
+      </View>
+      
     </>
   );
 };
@@ -1253,72 +1424,20 @@ const styles = StyleSheet.create({
     borderRadius: 250 / 2,
     backgroundColor: '#CD4254',
   },
-
-  // Tayyab's styles
-  rectangle: {
-    width: 130,
-    marginTop: 30,
-    marginBottom: 7,
-    height: 6,
-    borderRadius: 50,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    backgroundColor: "#C53437",
-  },
-  inputFeedback: {
-    height: 220,
-    marginTop: 12,
-    borderWidth: 2,
-    padding: 10,
-    width: 330,
-  },
-  tAboutUs: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    fontSize: 24,
-    textAlign: 'center',
-    fontFamily: 'Outfit-Regular',
-    color: 'white',
-    backgroundColor: '#C53437',
-    borderRightColor: 'black',
-    borderLeftColor: 'black',
-    borderTopColor: 'black',
-    borderBottomColor: 'black',
-    borderWidth: 3,
-  },
-  HistoryCard: {
-    backgroundColor: "white",
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  HistoryCardStyle: {
-    marginTop: 25,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    minHeight: 50,
-    backgroundColor: "white",
-    maxWidth: 360,
-    width: '100%',
-    borderRadius: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    marginBottom: 20,
-  },
-  HistoryCardRed: {
-    padding: 10,
-    alignItems: 'center',
-    backgroundColor: '#C53437',
-    maxWidth: 120,
-    width: '100%',
-  },
-  HistoryCardWhite: {
-    padding: 10,
-    alignItems: 'center',
-    backgroundColor: 'white',
-    maxWidth: 120,
-    width: '100%',
-  },
-
+  otp: {
+    
+    width: 50,
+    height: 50,
+    marginTop: 50,
+    borderWidth: 1, 
+    marginRight: 20,
+    borderColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF',
+    color: '#000000',
+    fontWeight: 'bold',
+    fontSize: 25,
+    paddingLeft: 16
+  }
 });
 
 export default App;

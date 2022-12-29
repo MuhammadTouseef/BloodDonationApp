@@ -48,6 +48,27 @@ const App = () => {
           component={SignUpScreen}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="Forget Password"
+          component={ForgetPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OTPPassword Screen"
+          component={OTPPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ResetPassword Screen"
+          component={ResetPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ResetPasswordComplete Screen"
+          component={ResetPasswordComplete}
+          options={{headerShown: false}}
+        />
+
         <Stack.Screen name="Get Donations" component={GetDonations} />
         <Stack.Screen name="My Campaigns" component={MyCampaigns} />
         <Stack.Screen name="Donors" component={Donors} />
@@ -247,6 +268,7 @@ const LoginScreen = () => {
     </View>
   );
 };
+
 const SignUpScreen = () => {
   return (
     <View style={styles.main}>
@@ -418,6 +440,319 @@ const SignUpScreen = () => {
     </View>
   );
 };
+
+
+const ForgetPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          {' '} Forgot Your Password? {' '}
+        </Text>
+      </View>
+
+      <View style={{alignSelf: 'center', marginLeft: 50, marginRight: 50}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold', marginTop: -10}}>
+          Enter your email address to           
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center'}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          reset your password           
+        </Text>
+      </View>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '70%',
+            marginTop: 40,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 10,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="Email"
+        >
+      
+      </TextInput>
+
+        <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 150,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Next
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+
+
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 525}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+
+const OTPPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          {' '} Code Has Been Sent To Your Email {' '}
+        </Text>
+      </View>
+
+      <View style={{alignSelf: 'center', top: -60 , flexDirection: 'row', marginLeft: 30}}>
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+
+      </View>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 150,
+              marginTop: 10,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Verify
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 450}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+const ResetPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          {' '} Reset Your Password {' '}
+        </Text>
+      </View>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '80%',
+            marginTop: 20,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 20,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="New Password"
+        >
+      </TextInput>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '80%',
+            marginTop: 40,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 20,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="Confirm Password"
+        >
+      
+      </TextInput>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 200,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Reset
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+      
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 540}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+const ResetPasswordComplete = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          {' '} Woo Hoo! {' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '} Your Password has been reset{' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '}successfully. Login now with your{' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '}new password{' '}
+        </Text>
+      </View>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 200,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Login
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+      
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 540}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
 
 // Components
 const ScreenTitle = props => {
@@ -879,6 +1214,32 @@ const TempHome = ({navigation}) => {
           onPress={() => navigation.navigate('SignUp Screen')}
         />
       </View>
+      
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'Forget Password'}
+          onPress={() => navigation.navigate('Forget Password')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'OTPPassword Screen'}
+          onPress={() => navigation.navigate('OTPPassword Screen')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'ResetPassword Screen'}
+          onPress={() => navigation.navigate('ResetPassword Screen')}
+        />
+      </View>
+      <View style={{marginVertical: 10}}>
+        <Button
+          title={'ResetPasswordComplete Screen'}
+          onPress={() => navigation.navigate('ResetPasswordComplete Screen')}
+        />
+      </View>
+      
     </>
   );
 };
@@ -1063,6 +1424,20 @@ const styles = StyleSheet.create({
     borderRadius: 250 / 2,
     backgroundColor: '#CD4254',
   },
+  otp: {
+    
+    width: 50,
+    height: 50,
+    marginTop: 50,
+    borderWidth: 1, 
+    marginRight: 20,
+    borderColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF',
+    color: '#000000',
+    fontWeight: 'bold',
+    fontSize: 25,
+    paddingLeft: 16
+  }
 });
 
 export default App;

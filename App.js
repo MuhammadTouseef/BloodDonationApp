@@ -58,6 +58,8 @@ const App = () => {
         <Stack.Screen name="Feedback" component={Feedback} />
         <Stack.Screen name="About Us" component={AboutUs} />
         <Stack.Screen name="Donation History" component={DonationHistory} />
+        <Stack.Screen name="Profile" component={Profile} />
+
 
 
       </Stack.Navigator>
@@ -66,6 +68,48 @@ const App = () => {
 };
 
 //Tayyab Screens 
+
+const Profile = () => {
+  return (
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
+      <ScrollView>
+
+        <View style={{ marginTop: 20, marginLeft: 20, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
+          <Image style={{ height: 200, width: 200, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }} source={require('./images/placeholder.png')} />
+          <TouchableOpacity>
+            <Icon name="cog-outline" size={20} color="black" style={{ marginBottom: 100 }} />
+          </TouchableOpacity>
+
+        </View>
+
+        <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>John Doe</Text>
+          <TouchableOpacity>
+            <Icon name="cog-outline" size={20} color="black" style={{ marginLeft: 10 }} />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.container}>
+
+          <ProfileCard
+            gender='Male'
+
+          />
+
+        </View>
+
+
+
+
+
+
+
+      </ScrollView>
+    </View>
+
+
+  );
+};
 
 const DonationHistory = () => {
   return (
@@ -673,6 +717,28 @@ const HistoryCard = props => {
   );
 };
 
+const ProfileCard = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{fontSize: 20, fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center' }}>Gender</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>{props.gender}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRed}>
+        <TouchableOpacity>
+          <Icon name="cog-outline" size={30} color="white" style={{ marginLeft: 10 }} />
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
 const BloodBankCard = props => {
   return (
     <View style={styles.campaignsCard}>
@@ -990,84 +1056,93 @@ const CampaignDetails = () => {
 const TempHome = ({ navigation }) => {
   return (
     <>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Get Blood Donation'}
-          onPress={() => navigation.navigate('Get Donations')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'My Campaigns'}
-          onPress={() => navigation.navigate('My Campaigns')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Donors'}
-          onPress={() => navigation.navigate('Donors')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Active Campaigns'}
-          onPress={() => navigation.navigate('Active Campaigns')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Blood Banks'}
-          onPress={() => navigation.navigate('Blood Banks')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Campaign Details'}
-          onPress={() => navigation.navigate('Campaign Details')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Main Screen'}
-          onPress={() => navigation.navigate('Main Screen')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Login Screen'}
-          onPress={() => navigation.navigate('Login Screen')}
-        />
-      </View>
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'SignUp Screen'}
-          onPress={() => navigation.navigate('SignUp Screen')}
-        />
-      </View>
+
+      <ScrollView>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Get Blood Donation'}
+            onPress={() => navigation.navigate('Get Donations')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'My Campaigns'}
+            onPress={() => navigation.navigate('My Campaigns')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Donors'}
+            onPress={() => navigation.navigate('Donors')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Active Campaigns'}
+            onPress={() => navigation.navigate('Active Campaigns')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Blood Banks'}
+            onPress={() => navigation.navigate('Blood Banks')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Campaign Details'}
+            onPress={() => navigation.navigate('Campaign Details')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Main Screen'}
+            onPress={() => navigation.navigate('Main Screen')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Login Screen'}
+            onPress={() => navigation.navigate('Login Screen')}
+          />
+        </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'SignUp Screen'}
+            onPress={() => navigation.navigate('SignUp Screen')}
+          />
+        </View>
 
 
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Feedback'}
-          onPress={() => navigation.navigate('Feedback')}
-        />
-      </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Feedback'}
+            onPress={() => navigation.navigate('Feedback')}
+          />
+        </View>
 
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'About Us'}
-          onPress={() => navigation.navigate('About Us')}
-        />
-      </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'About Us'}
+            onPress={() => navigation.navigate('About Us')}
+          />
+        </View>
 
-      <View style={{ marginVertical: 10 }}>
-        <Button
-          title={'Donation History'}
-          onPress={() => navigation.navigate('Donation History')}
-        />
-      </View>
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Donation History'}
+            onPress={() => navigation.navigate('Donation History')}
+          />
+        </View>
 
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Profile'}
+            onPress={() => navigation.navigate('Profile')}
+          />
+        </View>
 
+      </ScrollView>
 
     </>
   );
@@ -1291,6 +1366,37 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  ProfileCard: {
+    backgroundColor: "white",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  ProfileCardStyle: {
+    marginTop: 25,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    minHeight: 15,
+    backgroundColor: "white",
+    maxWidth: 360,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  ProfileCardRed: {
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: '#C53437',
+    maxWidth: 120,
+    width: '100%',
+  },
+  ProfileCardWhite: {
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: 'white',
+    maxWidth: 120,
+    width: '100%',
+  },
+
   HistoryCardStyle: {
     marginTop: 25,
     marginLeft: 'auto',

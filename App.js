@@ -1,8 +1,8 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   Button,
   Image,
@@ -46,8 +46,29 @@ const App = () => {
         <Stack.Screen
           name="SignUp Screen"
           component={SignUpScreen}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="Forget Password"
+          component={ForgetPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OTPPassword Screen"
+          component={OTPPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ResetPassword Screen"
+          component={ResetPassword}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ResetPasswordComplete Screen"
+          component={ResetPasswordComplete}
+          options={{headerShown: false}}
+        />
+
         <Stack.Screen name="Get Donations" component={GetDonations} />
         <Stack.Screen name="My Campaigns" component={MyCampaigns} />
         <Stack.Screen name="Donors" component={Donors} />
@@ -303,7 +324,7 @@ const MainScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <View style={{ flexDirection: 'column' }}>
+      <View style={{flexDirection: 'column'}}>
         <TouchableOpacity>
           <Text
             style={{
@@ -331,7 +352,7 @@ const MainScreen = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity>
-        <View style={{ top: -22, marginLeft: 345 }}>
+        <View style={{top: -22, marginLeft: 345}}>
           <MIcon name="arrow-right" size={25} color="#FFFFFF" />
         </View>
       </TouchableOpacity>
@@ -346,7 +367,7 @@ const LoginScreen = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{ alignItems: 'center', marginTop: 10 }}>
+      <View style={{alignItems: 'center', marginTop: 10}}>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -373,11 +394,11 @@ const LoginScreen = () => {
         />
 
         <TouchableOpacity>
-          <View style={{ marginLeft: 320, marginTop: -35 }}>
+          <View style={{marginLeft: 320, marginTop: -35}}>
             <MIcon name="eye" size={33} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{alignItems: 'center'}}>
           <TouchableOpacity>
             <View
               style={{
@@ -404,7 +425,7 @@ const LoginScreen = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={{ marginTop: 20, marginLeft: 25 }}>
+          <View style={{marginTop: 20, marginLeft: 25}}>
             <TouchableOpacity>
               <Text
                 style={{
@@ -417,12 +438,12 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
 
-          <View style={{ marginTop: 40, marginLeft: 25 }}>
+          <View style={{marginTop: 40, marginLeft: 25}}>
             <TouchableOpacity>
-              <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
+              <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
                 Don't Have An Account?{' '}
                 <Text
-                  style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
+                  style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
                   Sign Up
                 </Text>
               </Text>
@@ -433,6 +454,7 @@ const LoginScreen = () => {
     </View>
   );
 };
+
 const SignUpScreen = () => {
   return (
     <View style={styles.main}>
@@ -441,13 +463,13 @@ const SignUpScreen = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{ alignSelf: 'center', top: -150 }}>
+      <View style={{alignSelf: 'center', top: -150}}>
         <Text
-          style={{ color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25 }}>
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
           Create Your Account
         </Text>
       </View>
-      <View style={{ alignItems: 'center', marginTop: -120 }}>
+      <View style={{alignItems: 'center', marginTop: -120}}>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -459,7 +481,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Full Name"
         />
-        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
           <Icon name="person" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -474,7 +496,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Email"
         />
-        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
           <MIcon name="email" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -489,7 +511,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Phone Number"
         />
-        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
           <MIcon name="card-account-phone" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -505,7 +527,7 @@ const SignUpScreen = () => {
           placeholder="Password"
         />
         <TouchableOpacity>
-          <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -522,7 +544,7 @@ const SignUpScreen = () => {
           placeholder="Confirm Password"
         />
         <TouchableOpacity>
-          <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
+          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -580,15 +602,15 @@ const SignUpScreen = () => {
             </Text>
           </View>
         </TouchableOpacity>
-        <View style={{ marginLeft: -155, marginTop: -33, padding: 2 }}>
+        <View style={{marginLeft: -155, marginTop: -33, padding: 2}}>
           <MIcon name="google" size={20} color="#000000" />
         </View>
 
-        <View style={{ marginTop: 30, marginLeft: 25 }}>
+        <View style={{marginTop: 30, marginLeft: 25}}>
           <TouchableOpacity>
-            <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
+            <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
               Have An Account?{' '}
-              <Text style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
+              <Text style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
                 Sign In
               </Text>
             </Text>
@@ -596,7 +618,7 @@ const SignUpScreen = () => {
         </View>
 
         <TouchableOpacity>
-          <View style={{ marginRight: 340, bottom: 690 }}>
+          <View style={{marginRight: 340, bottom: 690}}>
             <MIcon name="arrow-left" size={40} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -604,6 +626,319 @@ const SignUpScreen = () => {
     </View>
   );
 };
+
+
+const ForgetPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          {' '} Forgot Your Password? {' '}
+        </Text>
+      </View>
+
+      <View style={{alignSelf: 'center', marginLeft: 50, marginRight: 50}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold', marginTop: -10}}>
+          Enter your email address to           
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center'}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          reset your password           
+        </Text>
+      </View>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '70%',
+            marginTop: 40,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 10,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="Email"
+        >
+      
+      </TextInput>
+
+        <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 150,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Next
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+
+
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 525}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+
+const OTPPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          {' '} Code Has Been Sent To Your Email {' '}
+        </Text>
+      </View>
+
+      <View style={{alignSelf: 'center', top: -60 , flexDirection: 'row', marginLeft: 30}}>
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+        
+        <TextInput style={styles.otp} keyboardType='numeric' maxLength={1}>
+          2
+        </TextInput>
+
+      </View>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 150,
+              marginTop: 10,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Verify
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 450}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+const ResetPassword = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          {' '} Reset Your Password {' '}
+        </Text>
+      </View>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '80%',
+            marginTop: 20,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 20,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="New Password"
+        >
+      </TextInput>
+
+      <TextInput
+          placeholderTextColor={'#EA8A8B'}
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            width: '80%',
+            marginTop: 40,
+            fontSize: 20,
+            borderWidth: 1,
+            borderRadius: 20,
+            fontFamily: 'Outfit-Regular',
+            backgroundColor: '#F2F2F2',
+            borderColor: '#FFFFFF'
+          }}
+          placeholder="Confirm Password"
+        >
+      
+      </TextInput>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 200,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Reset
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+      
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 540}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
+const ResetPasswordComplete = () => {
+  return (
+    <View style={styles.main}>
+      <StatusBar backgroundColor={redcolor} />
+      <Text style={styles.paragraph} />
+
+      <View style={styles.topLeft} />
+
+      <View style={{alignSelf: 'center', top: -60}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          {' '} Woo Hoo! {' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '} Your Password has been reset{' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '}successfully. Login now with your{' '}
+        </Text>
+      </View>
+      <View style={{alignSelf: 'center', top: 0}}>
+        <Text
+          style={{color: 'white', fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold'}}>
+          {' '}new password{' '}
+        </Text>
+      </View>
+
+      <TouchableOpacity>
+          <View
+            style={{
+              backgroundColor: '#F2F2F2',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 10,
+              width: 200,
+              marginTop: 50,
+              alignSelf: 'center'
+      
+            }}>
+
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+                Login
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+      
+        <TouchableOpacity>
+          <View style={{marginLeft: 5, bottom: 540}}>
+            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+      </View>
+  );
+};
+
 
 // Components
 const ScreenTitle = props => {
@@ -636,7 +971,7 @@ const CampaignCard = props => {
             justifyContent: 'center',
           }}>
           <MIcon name="hospital-building" size={30} color="#FFFFFF" />
-          <View style={{ width: 15 }} />
+          <View style={{width: 15}} />
           <Text style={styles.campaignHospital}>{props.hospital}</Text>
         </View>
       </View>
@@ -666,7 +1001,7 @@ const DonorCard = props => {
           }}>
           <Image
             source={props.img}
-            style={{ borderRadius: 60, height: 80, width: 80 }}
+            style={{borderRadius: 60, height: 80, width: 80}}
           />
         </View>
         <View
@@ -751,7 +1086,7 @@ const BloodBankCard = props => {
             justifyContent: 'flex-start',
           }}>
           <MIcon name="hospital-building" size={30} color="#FFFFFF" />
-          <View style={{ width: 15 }} />
+          <View style={{width: 15}} />
           <Text style={styles.campaignHospital}>{props.hospital}</Text>
         </View>
       </View>
@@ -774,7 +1109,7 @@ const BloodBankCard = props => {
 const CampaignRow = props => {
   return (
     <>
-      <View style={{ flexDirection: props.fd, justifyContent: 'space-between' }}>
+      <View style={{flexDirection: props.fd, justifyContent: 'space-between'}}>
         <Text style={styles.cpmrowdetail}>{props.left}</Text>
         <Text style={styles.cpmrowdetail}>{props.right}</Text>
       </View>
@@ -787,7 +1122,7 @@ const CampaignRow = props => {
         }}>
         <Image
           source={require('./images/dotswhite.png')}
-          style={{ width: '50%' }}
+          style={{width: '50%'}}
         />
       </View>
     </>
@@ -797,7 +1132,7 @@ const CampaignRow = props => {
 // Screens
 const GetDonations = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Get Blood \n Donations'} />
         {/*<View style={styles.titleContainer}>*/}
@@ -866,7 +1201,7 @@ const GetDonations = () => {
 
 const MyCampaigns = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'My Campaigns'} />
 
@@ -900,7 +1235,7 @@ const MyCampaigns = () => {
 
 const Donors = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Donors'} />
 
@@ -918,7 +1253,7 @@ const Donors = () => {
             alignItems: 'center',
             marginBottom: 10,
           }}>
-          <Image source={require('./images/dots.png')} style={{ width: '50%' }} />
+          <Image source={require('./images/dots.png')} style={{width: '50%'}} />
         </View>
 
         <DonorCard
@@ -943,10 +1278,10 @@ const Donors = () => {
 
 const ActiveCampaigns = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Active Campaigns'} />
-        <View style={{ marginBottom: 25 }}>
+        <View style={{marginBottom: 25}}>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder={'Enter Location'} />
             <Icon
@@ -987,10 +1322,10 @@ const ActiveCampaigns = () => {
 
 const BloodBanks = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Blood Banks'} />
-        <View style={{ marginBottom: 25 }}>
+        <View style={{marginBottom: 25}}>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder={'Enter Location'} />
             <Icon
@@ -1028,7 +1363,7 @@ const BloodBanks = () => {
 
 const CampaignDetails = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: 'white' }}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Campaign Details'} />
         <View style={styles.campaigncard}>
@@ -1053,7 +1388,7 @@ const CampaignDetails = () => {
   );
 };
 
-const TempHome = ({ navigation }) => {
+const TempHome = ({navigation}) => {
   return (
     <>
 

@@ -95,29 +95,7 @@ const Profile = () => {
     <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
 
-        <View style={{ marginTop: 20, marginLeft: 20, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
-          <Image style={{ height: 200, width: 200, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }} source={require('./images/placeholder.png')} />
-          <TouchableOpacity>
-            <Icon name="cog-outline" size={20} color="black" style={{ marginBottom: 100 }} />
-          </TouchableOpacity>
 
-        </View>
-
-        <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>John Doe</Text>
-          <TouchableOpacity>
-            <Icon name="cog-outline" size={20} color="black" style={{ marginLeft: 10 }} />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.container}>
-
-          <ProfileCard
-            gender='Male'
-
-          />
-
-        </View>
 
 
 

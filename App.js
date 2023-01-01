@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {NavigationContainer} from '@react-navigation/native';
@@ -14,6 +15,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 const Stack = createNativeStackNavigator();
 const redcolor = '#C53437';
@@ -80,6 +82,8 @@ const App = () => {
         <Stack.Screen name="About Us" component={AboutUs} />
         <Stack.Screen name="Donation History" component={DonationHistory} />
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Top Donors" component={TopDonors} />
+        <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />
 
 
 
@@ -90,15 +94,101 @@ const App = () => {
 
 //Tayyab Screens 
 
-const Profile = () => {
+
+const PrivacyPolicy = () => {
   return (
     <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
 
+        <View style={styles.titleContainer}>
+          <Image style={{ height: 140, width: 140, marginTop: 40 }} source={require('./images/bloodLogo.png')} />
+          <ScreenTitle title={'Privacy Policy for Blood Donation Inc'} />
+        </View>
 
+        <View style={styles.container}>
+          <Text>
+            At Blood Donation Inc, accessible from www.DonateBlood.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Blood Donation Inc and how we use it. {'\n'}
 
+            If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. {'\n'}
 
+            This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Blood Donation Inc. This policy is not applicable to any information collected offline or via channels other than this website. {'\n'}
 
+            Consent
+            By using our website, you hereby consent to our Privacy Policy and agree to its terms. {'\n'}
+
+            Information we collect {'\n'}
+            The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information. {'\n'}
+
+            If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide. {'\n'}
+
+            When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number. {'\n'}
+
+            How we use your information {'\n'}
+            We use the information we collect in various ways, including to:{'\n'}{'\n'}
+
+            Provide, operate, and maintain our website{'\n'}
+            Improve, personalize, and expand our website{'\n'}
+            Understand and analyze how you use our website{'\n'}
+            Develop new products, services, features, and functionality{'\n'}
+            Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes{'\n'}
+            Send you emails{'\n'}
+            Find and prevent fraud{'\n'}
+            Log Files{'\n'}
+            Blood Donation Inc follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.{'\n'}
+
+            Cookies and Web Beacons{'\n'}
+            Like any other website, Blood Donation Inc uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.{'\n'}
+
+            Advertising Partners Privacy Policies{'\n'}
+            You may consult this list to find the Privacy Policy for each of the advertising partners of Blood Donation Inc.{'\n'}
+
+            Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Blood Donation Inc, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.{'\n'}
+
+            Note that Blood Donation Inc has no access to or control over these cookies that are used by third-party advertisers.{'\n'}
+
+            Third Party Privacy Policies{'\n'}
+            Blood Donation Inc's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.{'\n'}
+
+            You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites.{'\n'}
+
+            CCPA Privacy Rights (Do Not Sell My Personal Information){'\n'}
+            Under the CCPA, among other rights, California consumers have the right to:{'\n'}{'\n'}
+
+            Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.{'\n'}
+
+            Request that a business delete any personal data about the consumer that a business has collected.{'\n'}
+
+            Request that a business that sells a consumer's personal data, not sell the consumer's personal data.{'\n'}
+
+            If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.{'\n'}
+
+            GDPR Data Protection Rights{'\n'}
+            We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:{'\n'}
+
+            The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.{'\n'}
+
+            The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.{'\n'}
+
+            The right to erasure – You have the right to request that we erase your personal data, under certain conditions.{'\n'}
+
+            The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.{'\n'}
+
+            The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.{'\n'}
+
+            The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.{'\n'}
+
+            If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.{'\n'}
+
+            Children's Information
+            Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.{'\n'}
+
+            Blood Donation Inc does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.{'\n'}
+          </Text>
+
+          <View style={styles.rectangle}>
+
+          </View>
+        </View>
 
 
 
@@ -106,6 +196,248 @@ const Profile = () => {
       </ScrollView>
     </View>
 
+  );
+};
+
+
+const TopDonors = () => {
+  return (
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
+      <ScrollView>
+
+        <View style={styles.titleContainer}>
+          <Image style={{ height: 140, width: 140, marginTop: 40 }} source={require('./images/bloodLogo.png')} />
+          <ScreenTitle title={'Congratulations!'} />
+          <Text style={{ fontSize: 25, marginTop: -15, textAlign: 'center', color: redcolor }}>Thank you for being the{'\n'}reason someone lives{'\n'}another day</Text>
+
+        </View>
+
+        <TopDonorsCard
+          name="Mujtaba Aziz Khan"
+          year='2020'
+          bags='6'
+
+        />
+
+        <TopDonorsCard
+          name="Syed Arshik Javed"
+          year='2022'
+          bags='2'
+
+        />
+
+        <TopDonorsCard
+          name="M. Tayyab Naveed"
+          year='2021'
+          bags='2'
+
+        />
+        <View style={styles.rectangle} >
+        </View>
+
+      </ScrollView>
+    </View>
+
+  );
+}
+
+
+const Profile = () => {
+
+  const [shouldShowName, setShouldShowName] = useState('None');
+  const [shouldShowGender, setShouldShowGender] = useState(true);
+  const [shouldShowAddress, setShouldShowAddress] = useState(true);
+  const [shouldShowBlood, setShouldShowBlood] = useState(true);
+  const [shouldShowMedication, setShouldShowMedication] = useState(true);
+  const [shouldShowAilments, setShouldShowAilments] = useState(true);
+  const [Name, SetName] = useState('John Doe');
+  const [Gender, SetGender] = useState('Male');
+  const [Address, SetAddress] = useState('House No 92, Street 49, H-Block, Soan Gardens');
+  const [BloodType, SetBloodType] = useState('O+');
+  const [Medications, SetMedications] = useState('Stresam, paraxyl CR. Eszopic-2');
+  const [Illnesses, SetIllnesses] = useState('None');
+
+
+
+  return (
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
+      <ScrollView nestedScrollEnabled={true}>
+
+        <View style={{ marginTop: 20, marginLeft: 20, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
+          <Image style={{ height: 200, width: 200, borderRadius: 100, borderWidth: 4, borderColor: '#C53437', marginLeft: 10 }} source={require('./images/placeholder.png')} />
+          <TouchableOpacity>
+            <Image style={{ height: 25, width: 25, marginLeft: 5, marginBottom: 100 }} source={require('./images/Gear.png')} />
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{Name}</Text>
+          <TouchableOpacity onPress={() => setShouldShowName(!shouldShowName)}>
+            <Image style={{ height: 18, width: 18, marginLeft: 8, marginBottom: 10 }} source={require('./images/Gear.png')} />
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          {shouldShowName ? (
+            null
+
+          ) : <TextInput style={{ borderWidth: 2, borderColor: 'black', marginTop: 5, width: 150, height: 35, justifyContent: 'center', alignItems: 'center', alignContent: 'center', textAlign: 'center' }}
+            onChangeText={SetName}>
+
+          </TextInput>}
+
+
+
+        </View>
+
+        <View style={styles.container2}>
+
+          <View style={styles.rectangle2}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+
+              <Text style={{ borderColor: 'white', fontFamily: 'Outfit-Regular', textAlign: 'center', fontSize: 30, }} value={Gender}>Gender</Text>
+              <TouchableOpacity onPress={() => setShouldShowGender(!shouldShowGender)}>
+                <Image style={{ height: 18, width: 18, marginLeft: 5 }} source={require('./images/GearRed.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+
+          <Text style={{ marginTop: 10, borderColor: 'white', fontFamily: 'Outfit-Regular', justifyContent: 'center', textAlign: 'center', fontSize: 28, textDecorationLine: 'underline', }}>
+            {Gender}
+          </Text>
+
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            {shouldShowGender ? (
+              null
+
+            ) : <TextInput style={{ borderWidth: 2, borderColor: 'black', marginTop: 5, width: 200, justifyContent: 'center', alignItems: 'center', alignContent: 'center', textAlign: 'center' }}
+              onChangeText={SetGender}>
+
+            </TextInput>}
+
+
+
+          </View>
+
+
+          <View style={styles.rectangle2}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+
+              <Text style={{ borderColor: 'white', fontFamily: 'Outfit-Regular', textAlign: 'center', fontSize: 30, }}>Address</Text>
+              <TouchableOpacity onPress={() => setShouldShowAddress(!shouldShowAddress)}>
+                <Image style={{ height: 18, width: 18, marginLeft: 5 }} source={require('./images/GearRed.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+
+          <Text style={{ marginTop: 10, borderColor: 'white', fontFamily: 'Outfit-Regular', justifyContent: 'center', textAlign: 'center', fontSize: 28, textDecorationLine: 'underline', }}>
+            {Address}
+          </Text>
+
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            {shouldShowAddress ? (
+              null
+
+            ) : <TextInput style={{ borderWidth: 2, borderColor: 'black', marginTop: 5, width: 200, justifyContent: 'center', alignItems: 'center', alignContent: 'center', textAlign: 'center' }}
+              onChangeText={SetAddress}>
+
+            </TextInput>}
+          </View>
+
+
+          <View style={styles.rectangle2}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+
+              <Text style={{ borderColor: 'white', fontFamily: 'Outfit-Regular', textAlign: 'center', fontSize: 30, }}>Blood Type</Text>
+              <TouchableOpacity onPress={() => setShouldShowBlood(!shouldShowBlood)}>
+                <Image style={{ height: 18, width: 18, marginLeft: 5 }} source={require('./images/GearRed.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+
+          <Text style={{ marginTop: 10, borderColor: 'white', fontFamily: 'Outfit-Regular', justifyContent: 'center', textAlign: 'center', fontSize: 28, textDecorationLine: 'underline', }}>
+            {BloodType}
+          </Text>
+
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            {shouldShowBlood ? (
+              null
+
+            ) : <TextInput style={{ borderWidth: 2, borderColor: 'black', marginTop: 5, width: 200, justifyContent: 'center', alignItems: 'center', alignContent: 'center', textAlign: 'center' }}
+              onChangeText={SetBloodType}>
+
+            </TextInput>}
+          </View>
+
+
+          <View style={styles.rectangle2}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+
+              <Text style={{ borderColor: 'white', fontFamily: 'Outfit-Regular', textAlign: 'center', fontSize: 30, }}>Current Medications</Text>
+              <TouchableOpacity onPress={() => setShouldShowMedication(!shouldShowMedication)}>
+                <Image style={{ height: 18, width: 18, marginLeft: 5 }} source={require('./images/GearRed.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+
+          <Text style={{ marginTop: 10, borderColor: 'white', fontFamily: 'Outfit-Regular', justifyContent: 'center', textAlign: 'center', fontSize: 28, textDecorationLine: 'underline', }}>
+            {Medications}
+          </Text>
+
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            {shouldShowMedication ? (
+              null
+
+            ) : <TextInput style={{ borderWidth: 2, borderColor: 'black', marginTop: 5, width: 200, justifyContent: 'center', alignItems: 'center', alignContent: 'center', textAlign: 'center' }}
+              onChangeText={SetMedications}>
+
+            </TextInput>}
+          </View>
+
+
+          <View style={styles.rectangle2}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+
+              <Text style={{ borderColor: 'white', fontFamily: 'Outfit-Regular', textAlign: 'center', fontSize: 30, }}>Prevailing Illnesses</Text>
+              <TouchableOpacity onPress={() => setShouldShowAilments(!shouldShowAilments)}>
+                <Image style={{ height: 18, width: 18, marginLeft: 5 }} source={require('./images/GearRed.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+
+          <Text style={{ marginTop: 10, borderColor: 'white', fontFamily: 'Outfit-Regular', justifyContent: 'center', textAlign: 'center', fontSize: 28, textDecorationLine: 'underline', }}>
+            {Illnesses}
+          </Text>
+
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            {shouldShowAilments ? (
+              null
+
+            ) : <TextInput style={{ borderWidth: 2, borderColor: 'black', marginTop: 5, width: 250, justifyContent: 'center', alignItems: 'center', alignContent: 'center', textAlign: 'center', }}
+              onChangeText={SetIllnesses}>
+
+            </TextInput>}
+          </View>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Privacy Policy')}>
+        <Text style = {{color:redcolor, fontSize:17, marginLeft:5, marginTop:30, fontWeight:'bold'}}>Privacy Policy</Text>
+        </TouchableOpacity>
+
+
+        <View style={styles.rectangle}>
+
+        </View>
+
+
+
+
+      </ScrollView>
+    </View>
 
   );
 };
@@ -118,7 +450,7 @@ const DonationHistory = () => {
 
 
         <View style={styles.titleContainer}>
-          <Image style={{ height: 200, width: 120, marginTop: 40 }} source={require('./images/blood.png')} />
+          <Image style={{ height: 140, width: 140, marginTop: 40 }} source={require('./images/bloodLogo.png')} />
           <ScreenTitle title={'We Are So Proud \n Of You!'} />
 
           <Image style={{ height: 125, width: 125, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }} source={require('./images/placeholder.png')} />
@@ -164,7 +496,7 @@ const AboutUs = () => {
       <ScrollView>
 
         <View style={styles.titleContainer}>
-          <Image style={{ height: 200, width: 120, marginTop: 40 }} source={require('./images/blood.png')} />
+          <Image style={{ height: 140, width: 140, marginTop: 40 }} source={require('./images/bloodLogo.png')} />
           <ScreenTitle title={'About Us'} />
         </View>
 
@@ -216,6 +548,7 @@ const Feedback = () => {
       <ScrollView>
 
         <View style={styles.titleContainer}>
+          <Image style={{ height: 140, width: 140, marginTop: 40 }} source={require('./images/bloodLogo.png')} />
           <ScreenTitle title={'We Would Love to \n Hear Your \n Feedback!'} />
         </View>
 
@@ -1018,7 +1351,7 @@ const HistoryCard = props => {
 
       <View style={styles.HistoryCardWhite}>
         <Icon name="location-sharp" size={30} color="#C53437" />
-        <Text style={{ fontSize: 10, fontWeight: 'bold', color: 'black' }}>{props.location}</Text>
+        <Text style={{ fontSize: 10, fontWeight: 'bold', color: 'black', textAlign: 'center' }}>{props.location}</Text>
       </View>
 
       <View style={styles.HistoryCardRed}>
@@ -1030,21 +1363,144 @@ const HistoryCard = props => {
   );
 };
 
-const ProfileCard = props => {
+const TopDonorsCard = props => {
+  return (
+    <>
+      <View style={styles.TopDonorsCardStyle}>
+
+        <View style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+          <Image style={{ height: 60, width: 60, borderRadius: 100, }} source={require('./images/Touseef.jpg')} />
+          <Text style={{ fontSize: 15, fontWeight: 'bold', textAlign: 'center' }}>{props.name}</Text>
+        </View>
+
+        <View style={{ justifyContent: 'center', marginRight: 10 }}>
+          <Text style={{ fontFamily: 'Outfit-Regular', fontSize: 15, fontWeight: 'bold', textAlign: "center" }}>Donating Since</Text>
+          <Text style={{ fontFamily: 'Outfit-Regular', fontSize: 15, fontWeight: 'bold', textAlign: 'center' }}>{props.year}</Text>
+        </View>
+
+        <View style={{ justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+          <View style={styles.BoxGray}>
+            <Text style={{ fontFamily: 'Outfit-Regular', fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>{props.bags} bags donated
+            </Text>
+            <Text style={{ fontFamily: 'Outfit-Regular', fontSize: 10, fontWeight: 'bold', textAlign: 'center', marginTop: 10 }}>
+              (1 bag equals 250 ml)
+            </Text>
+
+          </View>
+        </View>
+
+
+      </View>
+
+    </>
+  );
+};
+
+
+
+const ProfileCardGender = props => {
   return (
     <View style={styles.ProfileCardStyle}>
 
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center' }}>Gender</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center', textAlign: 'center' }}>Gender</Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>{props.gender}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', textAlign: 'center' }}>{props.gender}</Text>
       </View>
 
       <View style={styles.ProfileCardRed}>
         <TouchableOpacity>
-          <Icon name="cog-outline" size={30} color="white" style={{ marginLeft: 10 }} />
+          <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardAddress = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center', textAlign: 'center' }}>Address</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 10, textAlign: 'center', fontWeight: 'bold', color: 'black' }}>{props.address}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRed}>
+        <TouchableOpacity>
+          <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardBloodType = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{ fontSize: 17, fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center', textAlign: 'center' }}>Blood Type</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', textAlign: 'center' }}>{props.blood}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRed}>
+        <TouchableOpacity>
+          <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardMedications = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{ fontSize: 13, fontWeight: 'bold', textAlign: 'center', color: 'white', justifyContent: 'center' }}>Current Medications</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 10, fontWeight: 'bold', color: 'black', textAlign: 'center' }}>{props.medication}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRed}>
+        <TouchableOpacity>
+          <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardIllness = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{ fontSize: 13, textAlign: 'center', fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center' }}>Current Illnesses</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>{props.illness}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRed}>
+        <TouchableOpacity>
+          <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />
         </TouchableOpacity>
       </View>
 
@@ -1455,6 +1911,20 @@ const TempHome = ({navigation}) => {
           />
         </View>
 
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Top Donors'}
+            onPress={() => navigation.navigate('Top Donors')}
+          />
+        </View>
+
+        <View style={{ marginVertical: 10 }}>
+          <Button
+            title={'Privacy Policy'}
+            onPress={() => navigation.navigate('Privacy Policy')}
+          />
+        </View>
+
       </ScrollView>
 
     </>
@@ -1577,8 +2047,15 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 10,
-
     width: '100%',
+  },
+  container2: {
+    maxWidth: 330,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginBottom: 10,
+    width: '100%',
+    borderColor: redcolor,
   },
   titleContainer: {
     minHeight: 144,
@@ -1653,6 +2130,31 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     backgroundColor: "#C53437",
   },
+  rectangle2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    minWidth: 50,
+    marginTop: 50,
+    paddingLeft: 20,
+    paddingRight: 20,
+    height: 50,
+    borderRadius: 60,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: "#C53437",
+  },
+  BoxGray: {
+    padding: 10,
+    marginRight: 0,
+    height: 120,
+    borderRadius: 15,
+    alignItems: 'center',
+    backgroundColor: '#C53437',
+    maxWidth: 120,
+    width: '100%',
+  },
   inputFeedback: {
     height: 220,
     marginTop: 12,
@@ -1674,29 +2176,53 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
     borderWidth: 3,
   },
-  HistoryCard: {
+  ProfileCardGender: {
     backgroundColor: "white",
     marginLeft: 'auto',
     marginRight: 'auto',
+    borderRadius: 40,
   },
-  ProfileCard: {
+  ProfileCardAddress: {
     backgroundColor: "white",
     marginLeft: 'auto',
     marginRight: 'auto',
+    borderRadius: 40,
+  },
+  ProfileCardBloodType: {
+    backgroundColor: "white",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 40,
+  },
+  ProfileCardMedications: {
+    backgroundColor: "white",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 40,
+  },
+  ProfileCardIllness: {
+    backgroundColor: "white",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 40,
   },
   ProfileCardStyle: {
     marginTop: 25,
     marginLeft: 'auto',
     marginRight: 'auto',
-    minHeight: 15,
+    minHeight: 50,
     backgroundColor: "white",
     maxWidth: 360,
     width: '100%',
+    borderRadius: 40,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    marginBottom: 20,
+
   },
   ProfileCardRed: {
     padding: 10,
+    borderRadius: 15,
     alignItems: 'center',
     backgroundColor: '#C53437',
     maxWidth: 120,
@@ -1710,6 +2236,35 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
+  TopDonorsCard: {
+    backgroundColor: "black",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 20,
+
+  },
+  TopDonorsCardStyle: {
+    marginTop: 25,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    minHeight: 100,
+    backgroundColor: "silver",
+    maxWidth: 370,
+    width: '100%',
+    borderRadius: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginBottom: 20,
+  },
+
+  HistoryCard: {
+    backgroundColor: "white",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 40,
+
+  },
+
   HistoryCardStyle: {
     marginTop: 25,
     marginLeft: 'auto',
@@ -1718,13 +2273,14 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     maxWidth: 360,
     width: '100%',
-    borderRadius: 10,
+    borderRadius: 40,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginBottom: 20,
   },
   HistoryCardRed: {
     padding: 10,
+    borderRadius: 15,
     alignItems: 'center',
     backgroundColor: '#C53437',
     maxWidth: 120,

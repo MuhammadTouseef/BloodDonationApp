@@ -1,7 +1,17 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {useState} from 'react';
+import {Checkbox} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
@@ -14,10 +24,12 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ImageBackground,
 } from 'react-native';
 import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 const redcolor = '#C53437';
 const App = () => {
   return (
@@ -84,12 +96,38 @@ const App = () => {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Top Donors" component={TopDonors} />
         <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />
+
+        <Stack.Screen
+          name="Home"
+          component={DashboardScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Blood Type"
+          component={BloodTypeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Socials"
+          component={SocialsScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Drawer"
+          component={DrawerM}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-//Tayyab Screens
+//Tayyab's Screens
 
 const PrivacyPolicy = () => {
   return (
@@ -2279,104 +2317,813 @@ const CampaignDetails = () => {
   );
 };
 
+//MAK Screens and Drawer
+
+function BloodTypeScreen({navigation}) {
+  const [checked, setChecked] = React.useState(false);
+
+  return (
+    <View style={styles.mainBTS}>
+      <View
+        style={{height: '25%', alignItems: 'center', justifyContent: 'center'}}>
+        <Image
+          source={require('./assets/logos/bloodLogo.png')}
+          style={{
+            height: 110,
+            width: 110,
+          }}
+        />
+      </View>
+      <Text style={styles.text}>Please pick your blood type</Text>
+
+      <Text style={styles.text2}>Don't know about your blood type?</Text>
+
+      <View style={styles.containerBTS}>
+        <View>
+          <TouchableOpacity style={styles.bigBox}>
+            <Text style={styles.innerText}>A</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <TouchableOpacity style={styles.bigBox}>
+            <Text style={styles.innerText}>B</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <TouchableOpacity style={styles.bigBox}>
+            <Text style={styles.innerText}>O</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <TouchableOpacity style={styles.bigBox}>
+            <Text style={styles.innerText}>AB</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+          height: '12%',
+        }}>
+        <View>
+          <TouchableOpacity style={styles.smBox}>
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                textAlign: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              +
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <TouchableOpacity style={styles.smBox}>
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 20,
+                textAlign: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              -
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={{flexDirection: 'row', margin: 2}}>
+        <Checkbox
+          status={checked ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setChecked(!checked);
+          }}
+          color={'#C83335'}
+        />
+        <Text
+          style={{
+            marginTop: 5,
+            marginLeft: 2,
+            fontSize: 14,
+            color: 'black',
+            fontFamily: 'Outfit-Regular',
+          }}>
+          I want to receive notifications about blood donation campaigns
+        </Text>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+          <View style={styles.button}>
+            <Text style={styles.innerBtnText}>Finish</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+function DashboardScreen({navigation}) {
+  return (
+    <View style={{height: '100%', backgroundColor: '#F9F9F9'}}>
+      <View
+        style={{alignItems: 'center', justifyContent: 'center', margin: 20}}>
+        <Text style={styles.textD}>Blood bank stock near you!</Text>
+      </View>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '38%',
+        }}>
+        <View
+          style={{
+            backgroundColor: 'white',
+            borderRadius: 5,
+            height: '90%',
+            width: '88%',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            source={require('./assets/images/bloodstock.png')}
+            style={{height: '90%', width: '100%', borderRadius: 5}}
+            resizeMode={'contain'}
+          />
+        </View>
+      </View>
+      <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Blood Banks')}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              marginTop: 25,
+              padding: 24,
+              width: 160,
+              height: 156,
+              borderRadius: 10,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./assets/images/bloodBank.png')}
+              style={{width: 59, height: 74}}
+            />
+            <Text
+              style={{
+                textAlign: 'center',
+                color: 'black',
+                fontSize: 16,
+                fontFamily: 'Outfit-Regular',
+                marginTop: 10,
+              }}>
+              Blood Banks
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Active Campaigns')}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              marginTop: 25,
+              padding: 24,
+              width: 160,
+              height: 156,
+              borderRadius: 10,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              source={require('./assets/images/Campaign.png')}
+              style={{width: 70, height: 70}}
+            />
+            <Text
+              style={{
+                textAlign: 'center',
+                color: 'black',
+                fontSize: 16,
+                fontFamily: 'Outfit-Regular',
+                marginTop: 10,
+              }}>
+              Campaign
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity>
+        <Text
+          style={{
+            textAlign: 'center',
+            color: '#C83335',
+            fontSize: 18,
+            fontFamily: 'Outfit-Light',
+            margin: 18,
+          }}>
+          Can I give blood?
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Socials')}>
+        <Text style={styles.text2}>Share on social media!</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+function SocialsScreen({navigation}) {
+  return (
+    <View style={styles.mainBTS}>
+      <View style={styles.ContainerSms}>
+        <TouchableOpacity onPress={() => navigation.navigate('Blood')}>
+          <View style={styles.SocialMediaBox}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('./assets/logos/fb.png')}
+                style={{
+                  width: 96,
+                  height: 96,
+                }}
+              />
+            </View>
+            <View style={{marginTop: 10}}>
+              <Text style={styles.text2}>Facebook</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+          <View style={styles.SocialMediaBox}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('./assets/logos/twitter.png')}
+                style={{
+                  width: 96,
+                  height: 96,
+                }}
+              />
+              <View style={{marginTop: 10}}>
+                <Text style={styles.text2}>Twitter</Text>
+              </View>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+          <View style={styles.SocialMediaBox}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('./assets/logos/instagram.png')}
+                style={{
+                  width: 96,
+                  height: 96,
+                }}
+              />
+            </View>
+            <View style={{marginTop: 10}}>
+              <Text style={styles.text2}>Instagram</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.SocialMediaBox}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('./assets/logos/linkedin.png')}
+                style={{
+                  width: 96,
+                  height: 96,
+                }}
+              />
+            </View>
+            <View style={{marginTop: 10}}>
+              <Text style={styles.text2}>LinkedIn</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.SocialMediaBox}>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                source={require('./assets/logos/yt.png')}
+                style={{
+                  width: 96,
+                  height: 96,
+                }}
+              />
+            </View>
+            <View style={{marginTop: 10}}>
+              <Text style={styles.text2}>Youtube</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+function SettingsScreen({navigation}) {
+  return (
+    <View
+      style={{
+        backgroundColor: '#EBEBEB',
+        height: '100%',
+      }}>
+      <View>
+        <Text
+          style={{
+            fontFamily: 'Outfit-Bold',
+            fontSize: 20,
+            color: 'black',
+            margin: 15,
+            marginLeft: 42,
+            marginTop: 30,
+          }}>
+          Settings
+        </Text>
+      </View>
+      <View style={{alignItems: 'center', marginBottom: 35}}>
+        <View style={{flexDirection: 'row', margin: 10}}>
+          <Image
+            source={require('./assets/images/mt.jpeg')}
+            style={{width: 38, height: 38, borderRadius: 38 / 2}}
+          />
+          <View style={{marginRight: 130, marginLeft: 15}}>
+            <Text
+              style={{
+                fontFamily: 'Outfit-SemiBold',
+                fontSize: 16,
+                color: 'black',
+              }}>
+              M.Touseef
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'Outfit-Light',
+                fontSize: 12,
+                color: 'black',
+              }}>
+              Edit Personal details
+            </Text>
+          </View>
+          <Image
+            source={require('./assets/icons/arrowW.png')}
+            style={{width: 10, height: 20, marginRight: 20, marginTop: 6}}
+          />
+        </View>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <View
+          style={{
+            width: '80%',
+            height: 45,
+            margin: 10,
+            padding: 10,
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              source={require('./assets/icons/dark.png')}
+              style={{width: 24, height: 24}}
+            />
+            <Text style={styles.textS}>Dark Mode</Text>
+            <Image
+              source={require('./assets/icons/toggleW.png')}
+              style={{width: 28, height: 24, marginLeft: '45%'}}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <Text
+          style={{
+            fontFamily: 'Outfit-Regular',
+            fontSize: 16,
+            color: 'black',
+            marginRight: 260,
+          }}>
+          Profile
+        </Text>
+        <View
+          style={{
+            backgroundColor: '#e5a2a2',
+            width: '80%',
+            height: 83,
+            borderRadius: 10,
+            margin: 10,
+            padding: 10,
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              source={require('./assets/icons/profile.png')}
+              style={{width: 24, height: 24}}
+            />
+            <Text style={styles.textS}>Edit Profile</Text>
+            <Image
+              source={require('./assets/icons/arrowP.png')}
+              style={{width: 12, height: 22, marginLeft: '48%'}}
+            />
+          </View>
+          <View style={{marginTop: 15, flexDirection: 'row'}}>
+            <Image
+              source={require('./assets/icons/password.png')}
+              style={{width: 24, height: 24}}
+            />
+            <Text style={styles.textS}>Change Password</Text>
+            <Image
+              source={require('./assets/icons/arrowP.png')}
+              style={{width: 12, height: 22, marginLeft: '32%'}}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <Text
+          style={{
+            fontFamily: 'Outfit-Regular',
+            fontSize: 16,
+            color: 'black',
+            marginRight: 220,
+          }}>
+          Notifications
+        </Text>
+        <View
+          style={{
+            backgroundColor: '#e5a2a2',
+            width: '80%',
+            height: 45,
+            borderRadius: 10,
+            margin: 10,
+            padding: 10,
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              source={require('./assets/icons/notification.png')}
+              style={{width: 24, height: 24}}
+            />
+            <Text style={styles.textS}>Notifications</Text>
+            <Image
+              source={require('./assets/icons/toggleP.png')}
+              style={{width: 29, height: 24, marginLeft: '42%'}}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <Text
+          style={{
+            fontFamily: 'Outfit-Regular',
+            fontSize: 16,
+            color: 'black',
+            marginRight: 250,
+          }}>
+          Regional
+        </Text>
+        <View
+          style={{
+            backgroundColor: '#e5a2a2',
+            width: '80%',
+            height: 83,
+            borderRadius: 10,
+            margin: 10,
+            padding: 10,
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              source={require('./assets/icons/language.png')}
+              style={{width: 24, height: 24}}
+            />
+            <Text style={styles.textS}>Language</Text>
+            <Image
+              source={require('./assets/icons/language.png')}
+              style={{width: 24, height: 24, marginLeft: '48%'}}
+            />
+          </View>
+          <View style={{marginTop: 15, flexDirection: 'row'}}>
+            <Image
+              source={require('./assets/icons/logout.png')}
+              style={{width: 24, height: 24}}
+            />
+            <Text style={styles.textS}>Logout</Text>
+            <Image
+              source={require('./assets/icons/language.png')}
+              style={{width: 24, height: 24, marginLeft: '55%'}}
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+const CustomDrawer = props => {
+  return (
+    <View style={{flex: 1}}>
+      <DrawerContentScrollView
+        {...props}
+        contentContainerStyle={{backgroundColor: '#690004'}}>
+        <ImageBackground
+          source={require('./assets/images/bg.jpg')}
+          style={{padding: 20}}>
+          <Image
+            source={require('./assets/images/johnWick.jpg')}
+            style={{height: 80, width: 80, borderRadius: 40}}
+          />
+          <Text
+            style={{
+              fontFamily: 'Outfit-Regular',
+              color: 'white',
+              fontSize: 18,
+            }}>
+            John Wick
+          </Text>
+        </ImageBackground>
+        <View style={{backgroundColor: 'white', paddingTop: 10}}>
+          <DrawerItemList {...props} />
+        </View>
+      </DrawerContentScrollView>
+      <View style={{padding: 20, borderTopWidth: 1, borderTopColor: 'grey'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Ionicons name={'log-out-outline'} size={22} color={'black'} />
+          <Text
+            style={{
+              fontFamily: 'Outfit-Regular',
+              fontSize: 15,
+              marginLeft: 5,
+              color: '#333',
+            }}>
+            Sign Out
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const DrawerM = () => {
+  return (
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
+      screenOptions={{
+        drawerLabelStyle: {
+          marginLeft: -25,
+          fontFamily: 'Outfit-Regular',
+          fontSize: 15,
+        },
+        drawerActiveBackgroundColor: '#C83335',
+        drawerActiveTintColor: 'white',
+        drawerInactiveTintColor: '#333',
+      }}>
+      <Drawer.Screen
+        name="Dashboard"
+        component={DashboardScreen}
+        options={{
+          title: 'Home',
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                source={require('./assets/icons/search.png')}
+                style={{width: 25, height: 25, marginLeft: -40}}
+              />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            backgroundColor: '#F9F9F9',
+          },
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'black',
+            fontSize: 21,
+            fontFamily: 'Outfit-Regular',
+          },
+          drawerIcon: ({color}) => (
+            <Ionicons name={'home-outline'} size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          drawerIcon: ({color}) => (
+            <Ionicons name={'person-outline'} size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Campaign"
+        component={ActiveCampaigns}
+        options={{
+          drawerIcon: ({color}) => (
+            <MaterialIcons name={'campaign'} size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Socials"
+        component={SocialsScreen}
+        options={{
+          title: 'Socials',
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                source={require('./assets/icons/search.png')}
+                style={{width: 25, height: 25, marginLeft: -40}}
+              />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            backgroundColor: '#F9F9F9',
+          },
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'black',
+            fontSize: 21,
+            fontFamily: 'Outfit-Regular',
+          },
+          drawerIcon: ({color}) => (
+            <Ionicons name={'share-social-outline'} size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          title: 'Settings',
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                source={require('./assets/icons/search.png')}
+                style={{width: 25, height: 25, marginLeft: -40}}
+              />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            backgroundColor: '#F9F9F9',
+          },
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'black',
+            fontSize: 21,
+            fontFamily: 'Outfit-Regular',
+          },
+          drawerIcon: ({color}) => (
+            <Ionicons name={'settings-outline'} size={22} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Blood"
+        component={BloodTypeScreen}
+        options={{
+          headerShown: false,
+          drawerLabelStyle: {
+            marginLeft: -20,
+            fontFamily: 'Outfit-Regular',
+            fontSize: 15,
+          },
+          drawerIcon: ({color}) => (
+            <Fontisto
+              name={'blood-drop'}
+              size={22}
+              color={color}
+              style={{marginLeft: 5}}
+            />
+          ),
+        }}
+      />
+    </Drawer.Navigator>
+  );
+};
+
 const TempHome = ({navigation}) => {
   return (
     <>
       <ScrollView>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Get Blood Donation'}
             onPress={() => navigation.navigate('Get Donations')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'My Campaigns'}
             onPress={() => navigation.navigate('My Campaigns')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Donors'}
             onPress={() => navigation.navigate('Donors')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Active Campaigns'}
             onPress={() => navigation.navigate('Active Campaigns')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Blood Banks'}
             onPress={() => navigation.navigate('Blood Banks')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Campaign Details'}
             onPress={() => navigation.navigate('Campaign Details')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Main Screen'}
             onPress={() => navigation.navigate('Main Screen')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Login Screen'}
             onPress={() => navigation.navigate('Login Screen')}
           />
         </View>
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'SignUp Screen'}
             onPress={() => navigation.navigate('SignUp Screen')}
           />
         </View>
 
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Feedback'}
             onPress={() => navigation.navigate('Feedback')}
           />
         </View>
 
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'About Us'}
             onPress={() => navigation.navigate('About Us')}
           />
         </View>
 
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Donation History'}
             onPress={() => navigation.navigate('Donation History')}
           />
         </View>
 
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Profile'}
             onPress={() => navigation.navigate('Profile')}
           />
         </View>
 
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Top Donors'}
             onPress={() => navigation.navigate('Top Donors')}
           />
         </View>
 
-        <View style={{marginVertical: 10}}>
+        <View style={{marginVertical: 1}}>
           <Button
             title={'Privacy Policy'}
             onPress={() => navigation.navigate('Privacy Policy')}
+          />
+        </View>
+        <View style={{marginVertical: 1}}>
+          <Button title={'Home'} onPress={() => navigation.navigate('Home')} />
+        </View>
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'Blood Type'}
+            onPress={() => navigation.navigate('Blood Type')}
+          />
+        </View>
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'Settings'}
+            onPress={() => navigation.navigate('Settings')}
+          />
+        </View>
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'Socials'}
+            onPress={() => navigation.navigate('Socials')}
+          />
+        </View>
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'Drawer'}
+            onPress={() => navigation.navigate('Drawer')}
           />
         </View>
       </ScrollView>
@@ -2740,6 +3487,109 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     maxWidth: 120,
     width: '100%',
+  },
+  //MAK Screens
+  textD: {
+    textAlign: 'center',
+    fontFamily: 'Outfit-Light',
+    color: 'black',
+    fontSize: 35,
+    lineHeight: 45,
+    letterSpacing: 0.5,
+  },
+  //Blood Type Screen
+  mainBTS: {
+    backgroundColor: '#EBEBEB',
+    height: '100%',
+  },
+
+  text: {
+    textAlign: 'center',
+    fontFamily: 'Outfit-Light',
+    color: 'black',
+    fontSize: 35,
+    marginLeft: 22,
+    marginRight: 25,
+    marginBottom: 25,
+    lineHeight: 45,
+    letterSpacing: 0.5,
+  },
+  text2: {
+    textAlign: 'center',
+    color: '#C83335',
+    fontSize: 18,
+    fontFamily: 'Outfit-Light',
+  },
+  containerBTS: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: '100%',
+    flexWrap: 'wrap',
+    height: '100%',
+    padding: 5,
+  },
+  bigBox: {
+    backgroundColor: '#C83335',
+    marginTop: 25,
+    padding: 24,
+    width: 150,
+    height: 75,
+    borderRadius: 10,
+  },
+  innerText: {
+    color: 'white',
+    fontSize: 25,
+    fontFamily: 'Outfit-SemiBold',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  smBox: {
+    backgroundColor: '#C83335',
+    padding: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 10,
+  },
+  button: {
+    backgroundColor: '#C83335',
+    padding: 18,
+    width: 300,
+    height: 60,
+    borderRadius: 10,
+    marginBottom: 20,
+    marginTop: 10,
+  },
+  innerBtnText: {
+    fontSize: 16,
+    color: 'white',
+    fontFamily: 'Outfit-Light',
+    textAlign: 'center',
+  },
+  //Social Media Screen
+  ContainerSms: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    marginTop: '6%',
+  },
+  SocialMediaBox: {
+    backgroundColor: 'white',
+    marginTop: 25,
+    padding: 24,
+    width: 150,
+    height: 180,
+    borderRadius: 10,
+  },
+  //Settings Screen
+
+  textS: {
+    color: 'black',
+    fontSize: 15,
+    fontFamily: 'Outfit-Regular',
+    margin: 3,
+    marginLeft: 28,
   },
 });
 

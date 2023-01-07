@@ -3643,6 +3643,6 @@ const styles = StyleSheet.create({
     margin: 3,
     marginLeft: 28,
   },
-})
+});
 
 export default App;

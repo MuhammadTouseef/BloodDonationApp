@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {useState} from 'react';
-import {Checkbox} from 'react-native-paper';
+import { useState } from 'react';
+import { Checkbox } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
@@ -12,8 +12,8 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   Button,
   Image,
@@ -26,11 +26,13 @@ import {
   View,
   ImageBackground,
 } from 'react-native';
-import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const redcolor = '#C53437';
+
+
 const App = () => {
   return (
     <NavigationContainer>
@@ -60,27 +62,27 @@ const App = () => {
         <Stack.Screen
           name="SignUp Screen"
           component={SignUpScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Forget Password"
           component={ForgetPassword}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="OTPPassword Screen"
           component={OTPPassword}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ResetPassword Screen"
           component={ResetPassword}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ResetPasswordComplete Screen"
           component={ResetPasswordComplete}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen name="Get Donations" component={GetDonations} />
@@ -96,31 +98,33 @@ const App = () => {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Top Donors" component={TopDonors} />
         <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />
+        <Stack.Screen name="Edit Profile" component={EditProfile} />
+
 
         <Stack.Screen
           name="Home"
           component={DashboardScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Blood Type"
           component={BloodTypeScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Settings"
           component={SettingsScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Socials"
           component={SocialsScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Drawer"
           component={DrawerM}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -131,32 +135,33 @@ const App = () => {
 
 const PrivacyPolicy = () => {
   return (
-    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
         <View style={styles.titleContainer}>
           <Image
-            style={{height: 140, width: 140, marginTop: 40}}
+            style={{ height: 140, width: 140, marginTop: 40 }}
             source={require('./images/bloodLogo.png')}
           />
           <ScreenTitle title={'Privacy Policy for Blood Donation Inc'} />
         </View>
 
-        <View style={styles.container}>
-          <Text>
+        <View style={{ marginLeft: 10, marginRight: 10 }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
             At Blood Donation Inc, accessible from www.DonateBlood.com, one of
-            our main priorities is the privacy of our visitors. This Privacy
+            our main priorities is the privacy of our visitors.
+            {'\n'}{'\n'}This Privacy
             Policy document contains types of information that is collected and
-            recorded by Blood Donation Inc and how we use it. {'\n'}
+            recorded by Blood Donation Inc and how we use it.{'\n'}
             If you have additional questions or require more information about
-            our Privacy Policy, do not hesitate to contact us. {'\n'}
+            our Privacy Policy, do not hesitate to contact us. {'\n'}{'\n'}
             This Privacy Policy applies only to our online activities and is
             valid for visitors to our website with regards to the information
             that they shared and/or collect in Blood Donation Inc. This policy
             is not applicable to any information collected offline or via
             channels other than this website. {'\n'}
             Consent By using our website, you hereby consent to our Privacy
-            Policy and agree to its terms. {'\n'}
-            Information we collect {'\n'}
+            Policy and agree to its terms. {'\n'}{'\n'}
+            Information we collect {'\n'}{'\n'}
             The personal information that you are asked to provide, and the
             reasons why you are asked to provide it, will be made clear to you
             at the point we ask you to provide your personal information. {'\n'}
@@ -166,10 +171,9 @@ const PrivacyPolicy = () => {
             other information you may choose to provide. {'\n'}
             When you register for an Account, we may ask for your contact
             information, including items such as name, company name, address,
-            email address, and telephone number. {'\n'}
+            email address, and telephone number. {'\n'}{'\n'}
             How we use your information {'\n'}
             We use the information we collect in various ways, including to:
-            {'\n'}
             {'\n'}
             Provide, operate, and maintain our website{'\n'}
             Improve, personalize, and expand our website{'\n'}
@@ -180,8 +184,9 @@ const PrivacyPolicy = () => {
             updates and other information relating to the website, and for
             marketing and promotional purposes{'\n'}
             Send you emails{'\n'}
-            Find and prevent fraud{'\n'}
-            Log Files{'\n'}
+            Find and prevent fraud{'\n'}{'\n'}
+            Log Files
+            {'\n'}
             Blood Donation Inc follows a standard procedure of using log files.
             These files log visitors when they visit websites. All hosting
             companies do this and a part of hosting services' analytics. The
@@ -192,7 +197,7 @@ const PrivacyPolicy = () => {
             identifiable. The purpose of the information is for analyzing
             trends, administering the site, tracking users' movement on the
             website, and gathering demographic information.{'\n'}
-            Cookies and Web Beacons{'\n'}
+            Cookies and Web Beacons{'\n'}{'\n'}
             Like any other website, Blood Donation Inc uses 'cookies'. These
             cookies are used to store information including visitors'
             preferences, and the pages on the website that the visitor accessed
@@ -201,7 +206,7 @@ const PrivacyPolicy = () => {
             browser type and/or other information.{'\n'}
             Advertising Partners Privacy Policies{'\n'}
             You may consult this list to find the Privacy Policy for each of the
-            advertising partners of Blood Donation Inc.{'\n'}
+            advertising partners of Blood Donation Inc.{'\n'}{'\n'}
             Third-party ad servers or ad networks uses technologies like
             cookies, JavaScript, or Web Beacons that are used in their
             respective advertisements and links that appear on Blood Donation
@@ -211,7 +216,8 @@ const PrivacyPolicy = () => {
             and/or to personalize the advertising content that you see on
             websites that you visit.{'\n'}
             Note that Blood Donation Inc has no access to or control over these
-            cookies that are used by third-party advertisers.{'\n'}
+            cookies that are used by third-party advertisers.{'\n'}{'\n'}
+
             Third Party Privacy Policies{'\n'}
             Blood Donation Inc's Privacy Policy does not apply to other
             advertisers or websites. Thus, we are advising you to consult the
@@ -221,46 +227,46 @@ const PrivacyPolicy = () => {
             You can choose to disable cookies through your individual browser
             options. To know more detailed information about cookie management
             with specific web browsers, it can be found at the browsers'
-            respective websites.{'\n'}
+            respective websites.{'\n'}{'\n'}
             CCPA Privacy Rights (Do Not Sell My Personal Information){'\n'}
             Under the CCPA, among other rights, California consumers have the
             right to:{'\n'}
             {'\n'}
             Request that a business that collects a consumer's personal data
             disclose the categories and specific pieces of personal data that a
-            business has collected about consumers.{'\n'}
+            business has collected about consumers.{'\n'}{'\n'}
             Request that a business delete any personal data about the consumer
-            that a business has collected.{'\n'}
+            that a business has collected.{'\n'}{'\n'}
             Request that a business that sells a consumer's personal data, not
-            sell the consumer's personal data.{'\n'}
+            sell the consumer's personal data.{'\n'}{'\n'}
             If you make a request, we have one month to respond to you. If you
-            would like to exercise any of these rights, please contact us.{'\n'}
+            would like to exercise any of these rights, please contact us.{'\n'}{'\n'}
             GDPR Data Protection Rights{'\n'}
             We would like to make sure you are fully aware of all of your data
-            protection rights. Every user is entitled to the following:{'\n'}
+            protection rights. Every user is entitled to the following:{'\n'}{'\n'}
             The right to access – You have the right to request copies of your
-            personal data. We may charge you a small fee for this service.{'\n'}
+            personal data. We may charge you a small fee for this service.{'\n'}{'\n'}
             The right to rectification – You have the right to request that we
             correct any information you believe is inaccurate. You also have the
             right to request that we complete the information you believe is
-            incomplete.{'\n'}
+            incomplete.{'\n'}{'\n'}
             The right to erasure – You have the right to request that we erase
-            your personal data, under certain conditions.{'\n'}
+            your personal data, under certain conditions.{'\n'}{'\n'}
             The right to restrict processing – You have the right to request
             that we restrict the processing of your personal data, under certain
-            conditions.{'\n'}
+            conditions.{'\n'}{'\n'}
             The right to object to processing – You have the right to object to
             our processing of your personal data, under certain conditions.
-            {'\n'}
+            {'\n'}{'\n'}
             The right to data portability – You have the right to request that
             we transfer the data that we have collected to another organization,
-            or directly to you, under certain conditions.{'\n'}
+            or directly to you, under certain conditions.{'\n'}{'\n'}
             If you make a request, we have one month to respond to you. If you
-            would like to exercise any of these rights, please contact us.{'\n'}
+            would like to exercise any of these rights, please contact us.{'\n'}{'\n'}
             Children's Information Another part of our priority is adding
             protection for children while using the internet. We encourage
             parents and guardians to observe, participate in, and/or monitor and
-            guide their online activity.{'\n'}
+            guide their online activity.{'\n'}{'\n'}
             Blood Donation Inc does not knowingly collect any Personal
             Identifiable Information from children under the age of 13. If you
             think that your child provided this kind of information on our
@@ -278,11 +284,11 @@ const PrivacyPolicy = () => {
 
 const TopDonors = () => {
   return (
-    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
         <View style={styles.titleContainer}>
           <Image
-            style={{height: 140, width: 140, marginTop: 40}}
+            style={{ height: 140, width: 140, marginTop: 40 }}
             source={require('./images/bloodLogo.png')}
           />
           <ScreenTitle title={'Congratulations!'} />
@@ -308,404 +314,221 @@ const TopDonors = () => {
   );
 };
 
-const Profile = ({navigation}) => {
-  const [shouldShowName, setShouldShowName] = useState('None');
-  const [shouldShowGender, setShouldShowGender] = useState(true);
-  const [shouldShowAddress, setShouldShowAddress] = useState(true);
-  const [shouldShowBlood, setShouldShowBlood] = useState(true);
-  const [shouldShowMedication, setShouldShowMedication] = useState(true);
-  const [shouldShowAilments, setShouldShowAilments] = useState(true);
+const Profile = ({ navigation }) => {
+
   const [Name, SetName] = useState('John Doe');
   const [Gender, SetGender] = useState('Male');
-  const [Address, SetAddress] = useState(
-    'House No 92, Street 49, H-Block, Soan Gardens',
-  );
+  const [Address, SetAddress] = useState('House No 92, Street 49, H-Block, Soan Gardens');
   const [BloodType, SetBloodType] = useState('O+');
-  const [Medications, SetMedications] = useState(
-    'Stresam, paraxyl CR. Eszopic-2',
-  );
+  const [Medications, SetMedications] = useState('Stresam, paraxyl CR. Eszopic-2');
   const [Illnesses, SetIllnesses] = useState('None');
 
   return (
-    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
-      <ScrollView nestedScrollEnabled={true}>
-        <View
-          style={{
-            marginTop: 20,
-            marginLeft: 20,
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'row',
-          }}>
-          <Image
-            style={{
-              height: 200,
-              width: 200,
-              borderRadius: 100,
-              borderWidth: 4,
-              borderColor: '#C53437',
-              marginLeft: 10,
-            }}
+    <View style={{ backgroundColor: '#EBEBEB', flex: 1 }}>
+      <ScrollView>
+
+        <View style={{ marginTop: 20, alignItems: 'center', justifyContent: 'center' }}>
+          <Image style={{ height: 200, justifyContent: 'center', alignItems: 'center', width: 200, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }}
             source={require('./images/placeholder.png')}
           />
-          <TouchableOpacity>
-            <Image
-              style={{height: 25, width: 25, marginLeft: 5, marginBottom: 100}}
-              source={require('./images/Gear.png')}
-            />
-          </TouchableOpacity>
+          <Text style={{ fontWeight: 'bold', fontSize: 20, fontFamily: 'serif', marginTop: 5 }}>{Name}</Text>
+
         </View>
 
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'row',
-            marginTop: 5,
-            marginLeft: 20,
-          }}>
-          <Text style={{fontWeight: 'bold', fontSize: 20}}>{Name}</Text>
-          <TouchableOpacity onPress={() => setShouldShowName(!shouldShowName)}>
-            <Image
-              style={{height: 18, width: 18, marginLeft: 8, marginBottom: 10}}
-              source={require('./images/Gear.png')}
-            />
-          </TouchableOpacity>
-        </View>
 
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          {shouldShowName ? null : (
-            <TextInput
-              style={{
-                borderWidth: 2,
-                borderColor: 'black',
-                marginTop: 5,
-                width: 150,
-                height: 35,
-                justifyContent: 'center',
-                alignItems: 'center',
-                alignContent: 'center',
-                textAlign: 'center',
-              }}
-              onChangeText={SetName}
-            />
-          )}
-        </View>
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
 
-        <View style={styles.container2}>
-          <View style={styles.rectangle2}>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <Text
-                style={{
-                  borderColor: 'white',
-                  fontFamily: 'Outfit-Regular',
-                  textAlign: 'center',
-                  fontSize: 30,
-                }}
-                value={Gender}>
-                Gender
-              </Text>
-              <TouchableOpacity
-                onPress={() => setShouldShowGender(!shouldShowGender)}>
-                <Image
-                  style={{height: 18, width: 18, marginLeft: 5}}
-                  source={require('./images/GearRed.png')}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <Text
-            style={{
-              marginTop: 10,
-              borderColor: 'white',
-              fontFamily: 'Outfit-Regular',
-              justifyContent: 'center',
-              textAlign: 'center',
-              fontSize: 28,
-              textDecorationLine: 'underline',
-            }}>
-            {Gender}
-          </Text>
-
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            {shouldShowGender ? null : (
-              <TextInput
-                style={{
-                  borderWidth: 2,
-                  borderColor: 'black',
-                  marginTop: 5,
-                  width: 200,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignContent: 'center',
-                  textAlign: 'center',
-                }}
-                onChangeText={SetGender}
-              />
-            )}
-          </View>
-
-          <View style={styles.rectangle2}>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <Text
-                style={{
-                  borderColor: 'white',
-                  fontFamily: 'Outfit-Regular',
-                  textAlign: 'center',
-                  fontSize: 30,
-                }}>
-                Address
-              </Text>
-              <TouchableOpacity
-                onPress={() => setShouldShowAddress(!shouldShowAddress)}>
-                <Image
-                  style={{height: 18, width: 18, marginLeft: 5}}
-                  source={require('./images/GearRed.png')}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <Text
-            style={{
-              marginTop: 10,
-              borderColor: 'white',
-              fontFamily: 'Outfit-Regular',
-              justifyContent: 'center',
-              textAlign: 'center',
-              fontSize: 28,
-              textDecorationLine: 'underline',
-            }}>
-            {Address}
-          </Text>
-
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            {shouldShowAddress ? null : (
-              <TextInput
-                style={{
-                  borderWidth: 2,
-                  borderColor: 'black',
-                  marginTop: 5,
-                  width: 200,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignContent: 'center',
-                  textAlign: 'center',
-                }}
-                onChangeText={SetAddress}
-              />
-            )}
-          </View>
-
-          <View style={styles.rectangle2}>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <Text
-                style={{
-                  borderColor: 'white',
-                  fontFamily: 'Outfit-Regular',
-                  textAlign: 'center',
-                  fontSize: 30,
-                }}>
-                Blood Type
-              </Text>
-              <TouchableOpacity
-                onPress={() => setShouldShowBlood(!shouldShowBlood)}>
-                <Image
-                  style={{height: 18, width: 18, marginLeft: 5}}
-                  source={require('./images/GearRed.png')}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <Text
-            style={{
-              marginTop: 10,
-              borderColor: 'white',
-              fontFamily: 'Outfit-Regular',
-              justifyContent: 'center',
-              textAlign: 'center',
-              fontSize: 28,
-              textDecorationLine: 'underline',
-            }}>
-            {BloodType}
-          </Text>
-
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            {shouldShowBlood ? null : (
-              <TextInput
-                style={{
-                  borderWidth: 2,
-                  borderColor: 'black',
-                  marginTop: 5,
-                  width: 200,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignContent: 'center',
-                  textAlign: 'center',
-                }}
-                onChangeText={SetBloodType}
-              />
-            )}
-          </View>
-
-          <View style={styles.rectangle2}>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <Text
-                style={{
-                  borderColor: 'white',
-                  fontFamily: 'Outfit-Regular',
-                  textAlign: 'center',
-                  fontSize: 30,
-                }}>
-                Current Medications
-              </Text>
-              <TouchableOpacity
-                onPress={() => setShouldShowMedication(!shouldShowMedication)}>
-                <Image
-                  style={{height: 18, width: 18, marginLeft: 5}}
-                  source={require('./images/GearRed.png')}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <Text
-            style={{
-              marginTop: 10,
-              borderColor: 'white',
-              fontFamily: 'Outfit-Regular',
-              justifyContent: 'center',
-              textAlign: 'center',
-              fontSize: 28,
-              textDecorationLine: 'underline',
-            }}>
-            {Medications}
-          </Text>
-
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            {shouldShowMedication ? null : (
-              <TextInput
-                style={{
-                  borderWidth: 2,
-                  borderColor: 'black',
-                  marginTop: 5,
-                  width: 200,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignContent: 'center',
-                  textAlign: 'center',
-                }}
-                onChangeText={SetMedications}
-              />
-            )}
-          </View>
-
-          <View style={styles.rectangle2}>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-              }}>
-              <Text
-                style={{
-                  borderColor: 'white',
-                  fontFamily: 'Outfit-Regular',
-                  textAlign: 'center',
-                  fontSize: 30,
-                }}>
-                Prevailing Illnesses
-              </Text>
-              <TouchableOpacity
-                onPress={() => setShouldShowAilments(!shouldShowAilments)}>
-                <Image
-                  style={{height: 18, width: 18, marginLeft: 5}}
-                  source={require('./images/GearRed.png')}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <Text
-            style={{
-              marginTop: 10,
-              borderColor: 'white',
-              fontFamily: 'Outfit-Regular',
-              justifyContent: 'center',
-              textAlign: 'center',
-              fontSize: 28,
-              textDecorationLine: 'underline',
-            }}>
-            {Illnesses}
-          </Text>
-
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            {shouldShowAilments ? null : (
-              <TextInput
-                style={{
-                  borderWidth: 2,
-                  borderColor: 'black',
-                  marginTop: 5,
-                  width: 250,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  alignContent: 'center',
-                  textAlign: 'center',
-                }}
-                onChangeText={SetIllnesses}
-              />
-            )}
-          </View>
-
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Privacy Policy')}>
-            <Text
-              style={{
-                color: redcolor,
-                fontSize: 17,
-                marginLeft: 5,
-                marginTop: 30,
-                fontWeight: 'bold',
-              }}>
-              Privacy Policy
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Gender
             </Text>
-          </TouchableOpacity>
-          <View style={styles.rectangle} />
+          </View>
+          <View style={styles.profileValue}>
+            <Text style={styles.profileValueTextSmall}>{Gender}</Text>
+          </View>
+
         </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Address
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <Text style={styles.profileValueTextLarge}>{Address}</Text>
+          </View>
+
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Blood Type
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <Text style={styles.profileValueTextSmall}>{BloodType}</Text>
+          </View>
+
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Medications
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <Text style={styles.profileValueTextLarge}>{Medications}</Text>
+          </View>
+
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Prevailing Illnesses
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <Text style={styles.profileValueTextSmall}>{Illnesses}</Text>
+          </View>
+
+        </View>
+
+        <TouchableOpacity onPress={() => { navigation.navigate('Edit Profile', { name: Name, gender: Gender, address: Address, bloodtype: BloodType, medications: Medications, illnesses: Illnesses }) }}>
+          <View style={{ fontFamily: 'serif', justifyContent: 'center', alignItems: 'center', width: 150, marginTop: 30, marginBottom: 10, height: 50, borderRadius: 50, marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#C53437' }}>
+            <Text style={{ color: 'white', fontFamily: 'serif', fontSize: 20, paddingLeft: 10, paddingRight: 10 }}>Edit Profile</Text>
+          </View>
+        </TouchableOpacity>
+
+        <View style={styles.rectangle}>
+        </View>
+
+      </ScrollView>
+    </View>
+
+  );
+};
+
+const EditProfile = ({ route }) => {
+  const { name, gender, address, bloodtype, medications, illnesses } = route.params;
+  return (
+    <View>
+      <ScrollView>
+
+        <View style={styles.titleContainer}>
+          <Image
+            style={{ height: 140, width: 140, marginTop: 40 }}
+            source={require('./images/bloodLogo.png')}
+          />
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Name
+            </Text>
+          </View>
+          <View style={styles.profileValue}>  
+            <TextInput style={styles.profileValueTextSmall} placeholder={name}></TextInput>
+          </View>
+
+        </View>
+
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Gender
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <TextInput style={styles.profileValueTextSmall} placeholder={gender}></TextInput>
+          </View>
+
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Address
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <TextInput style={styles.profileValueTextLarge} placeholder={address}></TextInput>
+          </View>
+
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Blood Type
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <TextInput style={styles.profileValueTextSmall} placeholder={bloodtype}></TextInput>
+          </View>
+
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Medications
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <TextInput style={styles.profileValueTextLarge} placeholder={medications}></TextInput>
+          </View>
+
+        </View>
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Prevailing Illnesses
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <TextInput style={styles.profileValueTextSmall} placeholder={illnesses}></TextInput>
+          </View>
+
+        </View>
+
+        <TouchableOpacity>
+          <View style={{ fontFamily: 'serif', justifyContent: 'center', alignItems: 'center', width: 150, marginTop: 30, height: 50, borderRadius: 50, marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#C53437' }}>
+            <Text style={{ color: 'white', fontFamily: 'serif', fontSize: 20, paddingLeft: 10, paddingRight: 10 }}>Save Changes</Text>
+          </View>
+        </TouchableOpacity>
+
+        <View style={styles.rectangle}>
+        </View>
+
       </ScrollView>
     </View>
   );
 };
 
+
 const DonationHistory = () => {
   return (
-    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
         <View style={styles.titleContainer}>
           <Image
-            style={{height: 140, width: 140, marginTop: 40}}
+            style={{ height: 140, width: 140, marginTop: 40 }}
             source={require('./images/bloodLogo.png')}
           />
           <ScreenTitle title={'We Are So Proud \n Of You!'} />
@@ -720,7 +543,7 @@ const DonationHistory = () => {
             }}
             source={require('./images/placeholder.png')}
           />
-          <Text style={{fontWeight: 'bold', fontSize: 20, marginTop: 7}}>
+          <Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 7 }}>
             John Doe
           </Text>
         </View>
@@ -757,11 +580,11 @@ const DonationHistory = () => {
 
 const AboutUs = () => {
   return (
-    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
         <View style={styles.titleContainer}>
           <Image
-            style={{height: 140, width: 140, marginTop: 40}}
+            style={{ height: 140, width: 140, marginTop: 40 }}
             source={require('./images/bloodLogo.png')}
           />
           <ScreenTitle title={'About Us'} />
@@ -776,7 +599,7 @@ const AboutUs = () => {
             {'\n'}will provide ease and{'\n'}confirmation on the{'\n'}people
             willing to Donate.{'\n'}
             {'\n'}
-            <Text style={{fontStyle: 'italic'}}>
+            <Text style={{ fontStyle: 'italic' }}>
               Not All Heroes Wear Capes, Some Simply Donate Blood.
             </Text>
           </Text>
@@ -787,7 +610,7 @@ const AboutUs = () => {
         </View>
 
         <View style={styles.container}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Image
               style={{
                 height: 125,
@@ -814,10 +637,10 @@ const AboutUs = () => {
               justifyContent: 'space-between',
               marginTop: 5,
             }}>
-            <Text style={{marginRight: 15, fontWeight: 'bold', fontSize: 18}}>
+            <Text style={{ marginRight: 15, fontWeight: 'bold', fontSize: 18 }}>
               Syed Arshik Javed
             </Text>
-            <Text style={{marginLeft: 15, fontWeight: 'bold', fontSize: 18}}>
+            <Text style={{ marginLeft: 15, fontWeight: 'bold', fontSize: 18 }}>
               Muhammad Touseef
             </Text>
           </View>
@@ -854,10 +677,10 @@ const AboutUs = () => {
               justifyContent: 'space-between',
               marginTop: 5,
             }}>
-            <Text style={{marginRight: 15, fontWeight: 'bold', fontSize: 18}}>
+            <Text style={{ marginRight: 15, fontWeight: 'bold', fontSize: 18 }}>
               M. Tayyab Naveed
             </Text>
-            <Text style={{marginLeft: 15, fontWeight: 'bold', fontSize: 18}}>
+            <Text style={{ marginLeft: 15, fontWeight: 'bold', fontSize: 18 }}>
               Mujtaba Aziz Khan
             </Text>
           </View>
@@ -871,11 +694,11 @@ const AboutUs = () => {
 
 const Feedback = () => {
   return (
-    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
+    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
         <View style={styles.titleContainer}>
           <Image
-            style={{height: 140, width: 140, marginTop: 40}}
+            style={{ height: 140, width: 140, marginTop: 40 }}
             source={require('./images/bloodLogo.png')}
           />
           <ScreenTitle title={'We Would Love to \n Hear Your \n Feedback!'} />
@@ -961,7 +784,7 @@ const MainScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <View style={{flexDirection: 'column'}}>
+      <View style={{ flexDirection: 'column' }}>
         <TouchableOpacity>
           <Text
             style={{
@@ -989,7 +812,7 @@ const MainScreen = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity>
-        <View style={{top: -22, marginLeft: 345}}>
+        <View style={{ top: -22, marginLeft: 345 }}>
           <MIcon name="arrow-right" size={25} color="#FFFFFF" />
         </View>
       </TouchableOpacity>
@@ -1004,7 +827,7 @@ const LoginScreen = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{alignItems: 'center', marginTop: 10}}>
+      <View style={{ alignItems: 'center', marginTop: 10 }}>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -1031,11 +854,11 @@ const LoginScreen = () => {
         />
 
         <TouchableOpacity>
-          <View style={{marginLeft: 320, marginTop: -35}}>
+          <View style={{ marginLeft: 320, marginTop: -35 }}>
             <MIcon name="eye" size={33} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: 'center' }}>
           <TouchableOpacity>
             <View
               style={{
@@ -1062,7 +885,7 @@ const LoginScreen = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={{marginTop: 20, marginLeft: 25}}>
+          <View style={{ marginTop: 20, marginLeft: 25 }}>
             <TouchableOpacity>
               <Text
                 style={{
@@ -1075,12 +898,12 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
 
-          <View style={{marginTop: 40, marginLeft: 25}}>
+          <View style={{ marginTop: 40, marginLeft: 25 }}>
             <TouchableOpacity>
-              <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
+              <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
                 Don't Have An Account?{' '}
                 <Text
-                  style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
+                  style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
                   Sign Up
                 </Text>
               </Text>
@@ -1100,13 +923,13 @@ const SignUpScreen = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{alignSelf: 'center', top: -150}}>
+      <View style={{ alignSelf: 'center', top: -150 }}>
         <Text
-          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          style={{ color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25 }}>
           Create Your Account
         </Text>
       </View>
-      <View style={{alignItems: 'center', marginTop: -120}}>
+      <View style={{ alignItems: 'center', marginTop: -120 }}>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
           style={{
@@ -1118,7 +941,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Full Name"
         />
-        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
           <Icon name="person" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -1133,7 +956,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Email"
         />
-        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
           <MIcon name="email" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -1148,7 +971,7 @@ const SignUpScreen = () => {
           }}
           placeholder="Phone Number"
         />
-        <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+        <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
           <MIcon name="card-account-phone" size={25} color="#FFFFFF" />
         </View>
         <TextInput
@@ -1164,7 +987,7 @@ const SignUpScreen = () => {
           placeholder="Password"
         />
         <TouchableOpacity>
-          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+          <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -1181,7 +1004,7 @@ const SignUpScreen = () => {
           placeholder="Confirm Password"
         />
         <TouchableOpacity>
-          <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
+          <View style={{ marginLeft: 310, marginTop: -35, padding: 2 }}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -1238,15 +1061,15 @@ const SignUpScreen = () => {
             </Text>
           </View>
         </TouchableOpacity>
-        <View style={{marginLeft: -155, marginTop: -33, padding: 2}}>
+        <View style={{ marginLeft: -155, marginTop: -33, padding: 2 }}>
           <MIcon name="google" size={20} color="#000000" />
         </View>
 
-        <View style={{marginTop: 30, marginLeft: 25}}>
+        <View style={{ marginTop: 30, marginLeft: 25 }}>
           <TouchableOpacity>
-            <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
+            <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
               Have An Account?{' '}
-              <Text style={{fontFamily: 'Outfit-Regular', fontWeight: 'bold'}}>
+              <Text style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
                 Sign In
               </Text>
             </Text>
@@ -1254,7 +1077,7 @@ const SignUpScreen = () => {
         </View>
 
         <TouchableOpacity>
-          <View style={{marginRight: 340, bottom: 690}}>
+          <View style={{ marginRight: 340, bottom: 690 }}>
             <MIcon name="arrow-left" size={40} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
@@ -1271,15 +1094,15 @@ const ForgetPassword = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{alignSelf: 'center', top: -60}}>
+      <View style={{ alignSelf: 'center', top: -60 }}>
         <Text
-          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          style={{ color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25 }}>
           {' '}
           Forgot Your Password?{' '}
         </Text>
       </View>
 
-      <View style={{alignSelf: 'center', marginLeft: 50, marginRight: 50}}>
+      <View style={{ alignSelf: 'center', marginLeft: 50, marginRight: 50 }}>
         <Text
           style={{
             color: 'white',
@@ -1291,7 +1114,7 @@ const ForgetPassword = () => {
           Enter your email address to
         </Text>
       </View>
-      <View style={{alignSelf: 'center'}}>
+      <View style={{ alignSelf: 'center' }}>
         <Text
           style={{
             color: 'white',
@@ -1345,7 +1168,7 @@ const ForgetPassword = () => {
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <View style={{marginLeft: 5, bottom: 525}}>
+        <View style={{ marginLeft: 5, bottom: 525 }}>
           <MIcon name="arrow-left" size={40} color="#FFFFFF" />
         </View>
       </TouchableOpacity>
@@ -1361,9 +1184,9 @@ const OTPPassword = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{alignSelf: 'center', top: -60}}>
+      <View style={{ alignSelf: 'center', top: -60 }}>
         <Text
-          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          style={{ color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22 }}>
           {' '}
           Code Has Been Sent To Your Email{' '}
         </Text>
@@ -1418,7 +1241,7 @@ const OTPPassword = () => {
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <View style={{marginLeft: 5, bottom: 450}}>
+        <View style={{ marginLeft: 5, bottom: 450 }}>
           <MIcon name="arrow-left" size={40} color="#FFFFFF" />
         </View>
       </TouchableOpacity>
@@ -1434,9 +1257,9 @@ const ResetPassword = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{alignSelf: 'center', top: -60}}>
+      <View style={{ alignSelf: 'center', top: -60 }}>
         <Text
-          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22}}>
+          style={{ color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 22 }}>
           {' '}
           Reset Your Password{' '}
         </Text>
@@ -1501,7 +1324,7 @@ const ResetPassword = () => {
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <View style={{marginLeft: 5, bottom: 540}}>
+        <View style={{ marginLeft: 5, bottom: 540 }}>
           <MIcon name="arrow-left" size={40} color="#FFFFFF" />
         </View>
       </TouchableOpacity>
@@ -1517,14 +1340,14 @@ const ResetPasswordComplete = () => {
 
       <View style={styles.topLeft} />
 
-      <View style={{alignSelf: 'center', top: -60}}>
+      <View style={{ alignSelf: 'center', top: -60 }}>
         <Text
-          style={{color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25}}>
+          style={{ color: 'white', fontFamily: 'Kaushan-Regular', fontSize: 25 }}>
           {' '}
           Woo Hoo!{' '}
         </Text>
       </View>
-      <View style={{alignSelf: 'center', top: 0}}>
+      <View style={{ alignSelf: 'center', top: 0 }}>
         <Text
           style={{
             color: 'white',
@@ -1536,7 +1359,7 @@ const ResetPasswordComplete = () => {
           Your Password has been reset{' '}
         </Text>
       </View>
-      <View style={{alignSelf: 'center', top: 0}}>
+      <View style={{ alignSelf: 'center', top: 0 }}>
         <Text
           style={{
             color: 'white',
@@ -1548,7 +1371,7 @@ const ResetPasswordComplete = () => {
           successfully. Login now with your{' '}
         </Text>
       </View>
-      <View style={{alignSelf: 'center', top: 0}}>
+      <View style={{ alignSelf: 'center', top: 0 }}>
         <Text
           style={{
             color: 'white',
@@ -1586,7 +1409,7 @@ const ResetPasswordComplete = () => {
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <View style={{marginLeft: 5, bottom: 540}}>
+        <View style={{ marginLeft: 5, bottom: 540 }}>
           <MIcon name="arrow-left" size={40} color="#FFFFFF" />
         </View>
       </TouchableOpacity>
@@ -1625,7 +1448,7 @@ const CampaignCard = props => {
             justifyContent: 'center',
           }}>
           <MIcon name="hospital-building" size={30} color="#FFFFFF" />
-          <View style={{width: 15}} />
+          <View style={{ width: 15 }} />
           <Text style={styles.campaignHospital}>{props.hospital}</Text>
         </View>
       </View>
@@ -1655,7 +1478,7 @@ const DonorCard = props => {
           }}>
           <Image
             source={props.img}
-            style={{borderRadius: 60, height: 80, width: 80}}
+            style={{ borderRadius: 60, height: 80, width: 80 }}
           />
         </View>
         <View
@@ -1687,7 +1510,7 @@ const HistoryCard = props => {
   return (
     <View style={styles.HistoryCardStyle}>
       <View style={styles.HistoryCardRed}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>
           Date
         </Text>
         <Text
@@ -1715,7 +1538,7 @@ const HistoryCard = props => {
       </View>
 
       <View style={styles.HistoryCardRed}>
-        <Text style={{textAlign: 'center', fontSize: 19, fontWeight: 'bold'}}>
+        <Text style={{ textAlign: 'center', fontSize: 19, fontWeight: 'bold' }}>
           Campaign?
         </Text>
         <Text
@@ -1743,15 +1566,15 @@ const TopDonorsCard = props => {
             textAlign: 'center',
           }}>
           <Image
-            style={{height: 60, width: 60, borderRadius: 100}}
+            style={{ height: 60, width: 60, borderRadius: 100 }}
             source={require('./images/Touseef.jpg')}
           />
-          <Text style={{fontSize: 15, fontWeight: 'bold', textAlign: 'center'}}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', textAlign: 'center' }}>
             {props.name}
           </Text>
         </View>
 
-        <View style={{justifyContent: 'center', marginRight: 10}}>
+        <View style={{ justifyContent: 'center', marginRight: 10 }}>
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
@@ -1837,7 +1660,7 @@ const ProfileCardGender = props => {
       <View style={styles.ProfileCardRed}>
         <TouchableOpacity>
           <Image
-            style={{height: 30, width: 30}}
+            style={{ height: 30, width: 30 }}
             source={require('./images/GearRed.png')}
           />
         </TouchableOpacity>
@@ -1878,7 +1701,7 @@ const ProfileCardAddress = props => {
       <View style={styles.ProfileCardRed}>
         <TouchableOpacity>
           <Image
-            style={{height: 30, width: 30}}
+            style={{ height: 30, width: 30 }}
             source={require('./images/GearRed.png')}
           />
         </TouchableOpacity>
@@ -1919,7 +1742,7 @@ const ProfileCardBloodType = props => {
       <View style={styles.ProfileCardRed}>
         <TouchableOpacity>
           <Image
-            style={{height: 30, width: 30}}
+            style={{ height: 30, width: 30 }}
             source={require('./images/GearRed.png')}
           />
         </TouchableOpacity>
@@ -1959,7 +1782,7 @@ const ProfileCardMedications = props => {
       <View style={styles.ProfileCardRed}>
         <TouchableOpacity>
           <Image
-            style={{height: 30, width: 30}}
+            style={{ height: 30, width: 30 }}
             source={require('./images/GearRed.png')}
           />
         </TouchableOpacity>
@@ -1986,7 +1809,7 @@ const ProfileCardIllness = props => {
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>
           {props.illness}
         </Text>
       </View>
@@ -1994,7 +1817,7 @@ const ProfileCardIllness = props => {
       <View style={styles.ProfileCardRed}>
         <TouchableOpacity>
           <Image
-            style={{height: 30, width: 30}}
+            style={{ height: 30, width: 30 }}
             source={require('./images/GearRed.png')}
           />
         </TouchableOpacity>
@@ -2015,7 +1838,7 @@ const BloodBankCard = props => {
             justifyContent: 'flex-start',
           }}>
           <MIcon name="hospital-building" size={30} color="#FFFFFF" />
-          <View style={{width: 15}} />
+          <View style={{ width: 15 }} />
           <Text style={styles.campaignHospital}>{props.hospital}</Text>
         </View>
       </View>
@@ -2038,7 +1861,7 @@ const BloodBankCard = props => {
 const CampaignRow = props => {
   return (
     <>
-      <View style={{flexDirection: props.fd, justifyContent: 'space-between'}}>
+      <View style={{ flexDirection: props.fd, justifyContent: 'space-between' }}>
         <Text style={styles.cpmrowdetail}>{props.left}</Text>
         <Text style={styles.cpmrowdetail}>{props.right}</Text>
       </View>
@@ -2051,7 +1874,7 @@ const CampaignRow = props => {
         }}>
         <Image
           source={require('./images/dotswhite.png')}
-          style={{width: '50%'}}
+          style={{ width: '50%' }}
         />
       </View>
     </>
@@ -2061,7 +1884,7 @@ const CampaignRow = props => {
 // Screens
 const GetDonations = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <ScreenTitle title={'Get Blood \n Donations'} />
         {/*<View style={styles.titleContainer}>*/}
@@ -2130,7 +1953,7 @@ const GetDonations = () => {
 
 const MyCampaigns = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <ScreenTitle title={'My Campaigns'} />
 
@@ -2164,7 +1987,7 @@ const MyCampaigns = () => {
 
 const Donors = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <ScreenTitle title={'Donors'} />
 
@@ -2182,7 +2005,7 @@ const Donors = () => {
             alignItems: 'center',
             marginBottom: 10,
           }}>
-          <Image source={require('./images/dots.png')} style={{width: '50%'}} />
+          <Image source={require('./images/dots.png')} style={{ width: '50%' }} />
         </View>
 
         <DonorCard
@@ -2207,10 +2030,10 @@ const Donors = () => {
 
 const ActiveCampaigns = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <ScreenTitle title={'Active Campaigns'} />
-        <View style={{marginBottom: 25}}>
+        <View style={{ marginBottom: 25 }}>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder={'Enter Location'} />
             <Icon
@@ -2251,10 +2074,10 @@ const ActiveCampaigns = () => {
 
 const BloodBanks = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <ScreenTitle title={'Blood Banks'} />
-        <View style={{marginBottom: 25}}>
+        <View style={{ marginBottom: 25 }}>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder={'Enter Location'} />
             <Icon
@@ -2292,7 +2115,7 @@ const BloodBanks = () => {
 
 const CampaignDetails = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
       <ScrollView>
         <ScreenTitle title={'Campaign Details'} />
         <View style={styles.campaigncard}>
@@ -2319,13 +2142,13 @@ const CampaignDetails = () => {
 
 //MAK Screens and Drawer
 
-function BloodTypeScreen({navigation}) {
+function BloodTypeScreen({ navigation }) {
   const [checked, setChecked] = React.useState(false);
 
   return (
     <View style={styles.mainBTS}>
       <View
-        style={{height: '25%', alignItems: 'center', justifyContent: 'center'}}>
+        style={{ height: '25%', alignItems: 'center', justifyContent: 'center' }}>
         <Image
           source={require('./assets/logos/bloodLogo.png')}
           style={{
@@ -2396,7 +2219,7 @@ function BloodTypeScreen({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={{flexDirection: 'row', margin: 2}}>
+      <View style={{ flexDirection: 'row', margin: 2 }}>
         <Checkbox
           status={checked ? 'checked' : 'unchecked'}
           onPress={() => {
@@ -2415,7 +2238,7 @@ function BloodTypeScreen({navigation}) {
           I want to receive notifications about blood donation campaigns
         </Text>
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
           <View style={styles.button}>
             <Text style={styles.innerBtnText}>Finish</Text>
@@ -2426,11 +2249,11 @@ function BloodTypeScreen({navigation}) {
   );
 }
 
-function DashboardScreen({navigation}) {
+function DashboardScreen({ navigation }) {
   return (
-    <View style={{height: '100%', backgroundColor: '#F9F9F9'}}>
+    <View style={{ height: '100%', backgroundColor: '#F9F9F9' }}>
       <View
-        style={{alignItems: 'center', justifyContent: 'center', margin: 20}}>
+        style={{ alignItems: 'center', justifyContent: 'center', margin: 20 }}>
         <Text style={styles.textD}>Blood bank stock near you!</Text>
       </View>
       <View
@@ -2450,12 +2273,12 @@ function DashboardScreen({navigation}) {
           }}>
           <Image
             source={require('./assets/images/bloodstock.png')}
-            style={{height: '90%', width: '100%', borderRadius: 5}}
+            style={{ height: '90%', width: '100%', borderRadius: 5 }}
             resizeMode={'contain'}
           />
         </View>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
         <TouchableOpacity onPress={() => navigation.navigate('Blood Banks')}>
           <View
             style={{
@@ -2470,7 +2293,7 @@ function DashboardScreen({navigation}) {
             }}>
             <Image
               source={require('./assets/images/bloodBank.png')}
-              style={{width: 59, height: 74}}
+              style={{ width: 59, height: 74 }}
             />
             <Text
               style={{
@@ -2499,7 +2322,7 @@ function DashboardScreen({navigation}) {
             }}>
             <Image
               source={require('./assets/images/Campaign.png')}
-              style={{width: 70, height: 70}}
+              style={{ width: 70, height: 70 }}
             />
             <Text
               style={{
@@ -2533,13 +2356,13 @@ function DashboardScreen({navigation}) {
   );
 }
 
-function SocialsScreen({navigation}) {
+function SocialsScreen({ navigation }) {
   return (
     <View style={styles.mainBTS}>
       <View style={styles.ContainerSms}>
         <TouchableOpacity onPress={() => navigation.navigate('Blood')}>
           <View style={styles.SocialMediaBox}>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
                 source={require('./assets/logos/fb.png')}
                 style={{
@@ -2548,14 +2371,14 @@ function SocialsScreen({navigation}) {
                 }}
               />
             </View>
-            <View style={{marginTop: 10}}>
+            <View style={{ marginTop: 10 }}>
               <Text style={styles.text2}>Facebook</Text>
             </View>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
           <View style={styles.SocialMediaBox}>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
                 source={require('./assets/logos/twitter.png')}
                 style={{
@@ -2563,7 +2386,7 @@ function SocialsScreen({navigation}) {
                   height: 96,
                 }}
               />
-              <View style={{marginTop: 10}}>
+              <View style={{ marginTop: 10 }}>
                 <Text style={styles.text2}>Twitter</Text>
               </View>
             </View>
@@ -2571,7 +2394,7 @@ function SocialsScreen({navigation}) {
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <View style={styles.SocialMediaBox}>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
                 source={require('./assets/logos/instagram.png')}
                 style={{
@@ -2580,14 +2403,14 @@ function SocialsScreen({navigation}) {
                 }}
               />
             </View>
-            <View style={{marginTop: 10}}>
+            <View style={{ marginTop: 10 }}>
               <Text style={styles.text2}>Instagram</Text>
             </View>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.SocialMediaBox}>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
                 source={require('./assets/logos/linkedin.png')}
                 style={{
@@ -2596,14 +2419,14 @@ function SocialsScreen({navigation}) {
                 }}
               />
             </View>
-            <View style={{marginTop: 10}}>
+            <View style={{ marginTop: 10 }}>
               <Text style={styles.text2}>LinkedIn</Text>
             </View>
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.SocialMediaBox}>
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
                 source={require('./assets/logos/yt.png')}
                 style={{
@@ -2612,7 +2435,7 @@ function SocialsScreen({navigation}) {
                 }}
               />
             </View>
-            <View style={{marginTop: 10}}>
+            <View style={{ marginTop: 10 }}>
               <Text style={styles.text2}>Youtube</Text>
             </View>
           </View>
@@ -2622,7 +2445,7 @@ function SocialsScreen({navigation}) {
   );
 }
 
-function SettingsScreen({navigation}) {
+function SettingsScreen({ navigation }) {
   return (
     <View
       style={{
@@ -2642,13 +2465,13 @@ function SettingsScreen({navigation}) {
           Settings
         </Text>
       </View>
-      <View style={{alignItems: 'center', marginBottom: 35}}>
-        <View style={{flexDirection: 'row', margin: 10}}>
+      <View style={{ alignItems: 'center', marginBottom: 35 }}>
+        <View style={{ flexDirection: 'row', margin: 10 }}>
           <Image
             source={require('./assets/images/mt.jpeg')}
-            style={{width: 38, height: 38, borderRadius: 38 / 2}}
+            style={{ width: 38, height: 38, borderRadius: 38 / 2 }}
           />
-          <View style={{marginRight: 130, marginLeft: 15}}>
+          <View style={{ marginRight: 130, marginLeft: 15 }}>
             <Text
               style={{
                 fontFamily: 'Outfit-SemiBold',
@@ -2668,11 +2491,11 @@ function SettingsScreen({navigation}) {
           </View>
           <Image
             source={require('./assets/icons/arrowW.png')}
-            style={{width: 10, height: 20, marginRight: 20, marginTop: 6}}
+            style={{ width: 10, height: 20, marginRight: 20, marginTop: 6 }}
           />
         </View>
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <View
           style={{
             width: '80%',
@@ -2680,20 +2503,20 @@ function SettingsScreen({navigation}) {
             margin: 10,
             padding: 10,
           }}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Image
               source={require('./assets/icons/dark.png')}
-              style={{width: 24, height: 24}}
+              style={{ width: 24, height: 24 }}
             />
             <Text style={styles.textS}>Dark Mode</Text>
             <Image
               source={require('./assets/icons/toggleW.png')}
-              style={{width: 28, height: 24, marginLeft: '45%'}}
+              style={{ width: 28, height: 24, marginLeft: '45%' }}
             />
           </View>
         </View>
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <Text
           style={{
             fontFamily: 'Outfit-Regular',
@@ -2712,31 +2535,31 @@ function SettingsScreen({navigation}) {
             margin: 10,
             padding: 10,
           }}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Image
               source={require('./assets/icons/profile.png')}
-              style={{width: 24, height: 24}}
+              style={{ width: 24, height: 24 }}
             />
             <Text style={styles.textS}>Edit Profile</Text>
             <Image
               source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '48%'}}
+              style={{ width: 12, height: 22, marginLeft: '48%' }}
             />
           </View>
-          <View style={{marginTop: 15, flexDirection: 'row'}}>
+          <View style={{ marginTop: 15, flexDirection: 'row' }}>
             <Image
               source={require('./assets/icons/password.png')}
-              style={{width: 24, height: 24}}
+              style={{ width: 24, height: 24 }}
             />
             <Text style={styles.textS}>Change Password</Text>
             <Image
               source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '32%'}}
+              style={{ width: 12, height: 22, marginLeft: '32%' }}
             />
           </View>
         </View>
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <Text
           style={{
             fontFamily: 'Outfit-Regular',
@@ -2755,20 +2578,20 @@ function SettingsScreen({navigation}) {
             margin: 10,
             padding: 10,
           }}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Image
               source={require('./assets/icons/notification.png')}
-              style={{width: 24, height: 24}}
+              style={{ width: 24, height: 24 }}
             />
             <Text style={styles.textS}>Notifications</Text>
             <Image
               source={require('./assets/icons/toggleP.png')}
-              style={{width: 29, height: 24, marginLeft: '42%'}}
+              style={{ width: 29, height: 24, marginLeft: '42%' }}
             />
           </View>
         </View>
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <Text
           style={{
             fontFamily: 'Outfit-Regular',
@@ -2787,26 +2610,26 @@ function SettingsScreen({navigation}) {
             margin: 10,
             padding: 10,
           }}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Image
               source={require('./assets/icons/language.png')}
-              style={{width: 24, height: 24}}
+              style={{ width: 24, height: 24 }}
             />
             <Text style={styles.textS}>Language</Text>
             <Image
               source={require('./assets/icons/language.png')}
-              style={{width: 24, height: 24, marginLeft: '48%'}}
+              style={{ width: 24, height: 24, marginLeft: '48%' }}
             />
           </View>
-          <View style={{marginTop: 15, flexDirection: 'row'}}>
+          <View style={{ marginTop: 15, flexDirection: 'row' }}>
             <Image
               source={require('./assets/icons/logout.png')}
-              style={{width: 24, height: 24}}
+              style={{ width: 24, height: 24 }}
             />
             <Text style={styles.textS}>Logout</Text>
             <Image
               source={require('./assets/icons/language.png')}
-              style={{width: 24, height: 24, marginLeft: '55%'}}
+              style={{ width: 24, height: 24, marginLeft: '55%' }}
             />
           </View>
         </View>
@@ -2817,16 +2640,16 @@ function SettingsScreen({navigation}) {
 
 const CustomDrawer = props => {
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={{backgroundColor: '#690004'}}>
+        contentContainerStyle={{ backgroundColor: '#690004' }}>
         <ImageBackground
           source={require('./assets/images/bg.jpg')}
-          style={{padding: 20}}>
+          style={{ padding: 20 }}>
           <Image
             source={require('./assets/images/johnWick.jpg')}
-            style={{height: 80, width: 80, borderRadius: 40}}
+            style={{ height: 80, width: 80, borderRadius: 40 }}
           />
           <Text
             style={{
@@ -2837,12 +2660,12 @@ const CustomDrawer = props => {
             John Wick
           </Text>
         </ImageBackground>
-        <View style={{backgroundColor: 'white', paddingTop: 10}}>
+        <View style={{ backgroundColor: 'white', paddingTop: 10 }}>
           <DrawerItemList {...props} />
         </View>
       </DrawerContentScrollView>
-      <View style={{padding: 20, borderTopWidth: 1, borderTopColor: 'grey'}}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: 'grey' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Ionicons name={'log-out-outline'} size={22} color={'black'} />
           <Text
             style={{
@@ -2882,7 +2705,7 @@ const DrawerM = () => {
             <TouchableOpacity>
               <Image
                 source={require('./assets/icons/search.png')}
-                style={{width: 25, height: 25, marginLeft: -40}}
+                style={{ width: 25, height: 25, marginLeft: -40 }}
               />
             </TouchableOpacity>
           ),
@@ -2896,7 +2719,7 @@ const DrawerM = () => {
             fontSize: 21,
             fontFamily: 'Outfit-Regular',
           },
-          drawerIcon: ({color}) => (
+          drawerIcon: ({ color }) => (
             <Ionicons name={'home-outline'} size={22} color={color} />
           ),
         }}
@@ -2905,7 +2728,7 @@ const DrawerM = () => {
         name="Profile"
         component={Profile}
         options={{
-          drawerIcon: ({color}) => (
+          drawerIcon: ({ color }) => (
             <Ionicons name={'person-outline'} size={22} color={color} />
           ),
         }}
@@ -2914,7 +2737,7 @@ const DrawerM = () => {
         name="Campaign"
         component={ActiveCampaigns}
         options={{
-          drawerIcon: ({color}) => (
+          drawerIcon: ({ color }) => (
             <MaterialIcons name={'campaign'} size={22} color={color} />
           ),
         }}
@@ -2928,7 +2751,7 @@ const DrawerM = () => {
             <TouchableOpacity>
               <Image
                 source={require('./assets/icons/search.png')}
-                style={{width: 25, height: 25, marginLeft: -40}}
+                style={{ width: 25, height: 25, marginLeft: -40 }}
               />
             </TouchableOpacity>
           ),
@@ -2942,7 +2765,7 @@ const DrawerM = () => {
             fontSize: 21,
             fontFamily: 'Outfit-Regular',
           },
-          drawerIcon: ({color}) => (
+          drawerIcon: ({ color }) => (
             <Ionicons name={'share-social-outline'} size={22} color={color} />
           ),
         }}
@@ -2956,7 +2779,7 @@ const DrawerM = () => {
             <TouchableOpacity>
               <Image
                 source={require('./assets/icons/search.png')}
-                style={{width: 25, height: 25, marginLeft: -40}}
+                style={{ width: 25, height: 25, marginLeft: -40 }}
               />
             </TouchableOpacity>
           ),
@@ -2970,7 +2793,7 @@ const DrawerM = () => {
             fontSize: 21,
             fontFamily: 'Outfit-Regular',
           },
-          drawerIcon: ({color}) => (
+          drawerIcon: ({ color }) => (
             <Ionicons name={'settings-outline'} size={22} color={color} />
           ),
         }}
@@ -2985,12 +2808,12 @@ const DrawerM = () => {
             fontFamily: 'Outfit-Regular',
             fontSize: 15,
           },
-          drawerIcon: ({color}) => (
+          drawerIcon: ({ color }) => (
             <Fontisto
               name={'blood-drop'}
               size={22}
               color={color}
-              style={{marginLeft: 5}}
+              style={{ marginLeft: 5 }}
             />
           ),
         }}
@@ -2999,128 +2822,128 @@ const DrawerM = () => {
   );
 };
 
-const TempHome = ({navigation}) => {
+const TempHome = ({ navigation }) => {
   return (
     <>
       <ScrollView>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Get Blood Donation'}
             onPress={() => navigation.navigate('Get Donations')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'My Campaigns'}
             onPress={() => navigation.navigate('My Campaigns')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Donors'}
             onPress={() => navigation.navigate('Donors')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Active Campaigns'}
             onPress={() => navigation.navigate('Active Campaigns')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Blood Banks'}
             onPress={() => navigation.navigate('Blood Banks')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Campaign Details'}
             onPress={() => navigation.navigate('Campaign Details')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Main Screen'}
             onPress={() => navigation.navigate('Main Screen')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Login Screen'}
             onPress={() => navigation.navigate('Login Screen')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'SignUp Screen'}
             onPress={() => navigation.navigate('SignUp Screen')}
           />
         </View>
 
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Feedback'}
             onPress={() => navigation.navigate('Feedback')}
           />
         </View>
 
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'About Us'}
             onPress={() => navigation.navigate('About Us')}
           />
         </View>
 
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Donation History'}
             onPress={() => navigation.navigate('Donation History')}
           />
         </View>
 
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Profile'}
             onPress={() => navigation.navigate('Profile')}
           />
         </View>
 
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Top Donors'}
             onPress={() => navigation.navigate('Top Donors')}
           />
         </View>
 
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Privacy Policy'}
             onPress={() => navigation.navigate('Privacy Policy')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button title={'Home'} onPress={() => navigation.navigate('Home')} />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Blood Type'}
             onPress={() => navigation.navigate('Blood Type')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Settings'}
             onPress={() => navigation.navigate('Settings')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Socials'}
             onPress={() => navigation.navigate('Socials')}
           />
         </View>
-        <View style={{marginVertical: 1}}>
+        <View style={{ marginVertical: 1 }}>
           <Button
             title={'Drawer'}
             onPress={() => navigation.navigate('Drawer')}
@@ -3330,18 +3153,44 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     backgroundColor: '#C53437',
   },
-  rectangle2: {
+  profileValueTitle: {
     justifyContent: 'center',
-    alignItems: 'center',
-    minWidth: 50,
-    marginTop: 50,
-    height: 50,
-    borderRadius: 60,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    minWidth: 160,
+    maxWidth: 160,
+    height: 70,
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: '#C53437',
+  },
+  profileValueTitleText: {
+    borderColor: 'white',
+    fontFamily: 'Outfit-Regular',
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 25,
+  },
+  profileValue: {
+    justifyContent: 'center',
+    minWidth: 200,
+    maxWidth: 200,
+    height: 70,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: 'white',
+  },
+  profileValueTextSmall: {
+    borderColor: 'white',
+    fontFamily: 'Outfit-Regular',
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 25,
+  },
+  profileValueTextLarge: {
+    borderColor: 'white',
+    fontFamily: 'Outfit-Regular',
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 15,
   },
   BoxGray: {
     padding: 10,

@@ -317,6 +317,7 @@ const TopDonors = () => {
 const Profile = ({ navigation }) => {
 
   const [Name, SetName] = useState('John Doe');
+  const [PhoneNumber, SetPhoneNumber] = useState('03361901131');
   const [Gender, SetGender] = useState('Male');
   const [Address, SetAddress] = useState('House No 92, Street 49, H-Block, Soan Gardens');
   const [BloodType, SetBloodType] = useState('O+');
@@ -348,6 +349,21 @@ const Profile = ({ navigation }) => {
           </View>
 
         </View>
+
+
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Phone Number
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <Text style={styles.profileValueTextSmall}>{PhoneNumber}</Text>
+          </View>
+        </View>
+
+
 
         <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
 
@@ -400,11 +416,20 @@ const Profile = ({ navigation }) => {
 
         </View>
 
-        <TouchableOpacity onPress={() => { navigation.navigate('Edit Profile', { name: Name, gender: Gender, address: Address, bloodtype: BloodType, medications: Medications, illnesses: Illnesses }) }}>
+        <TouchableOpacity onPress={() => { navigation.navigate('Edit Profile', { name: Name, gender: Gender, address: Address, bloodtype: BloodType, medications: Medications, illnesses: Illnesses, phoneNumber: PhoneNumber }) }}>
           <View style={{ fontFamily: 'serif', justifyContent: 'center', alignItems: 'center', width: 150, marginTop: 30, marginBottom: 10, height: 50, borderRadius: 50, marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#C53437' }}>
             <Text style={{ color: 'white', fontFamily: 'serif', fontSize: 20, paddingLeft: 10, paddingRight: 10 }}>Edit Profile</Text>
           </View>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => { navigation.navigate('Privacy Policy')}}>
+        <Text style = {{color: redcolor, marginLeft: 10, fontFamily: 'Outfit-Regular', fontSize: 16}}>
+          Privacy Policy
+        </Text>
+
+        </TouchableOpacity>
+
+
 
         <View style={styles.rectangle}>
         </View>
@@ -416,7 +441,7 @@ const Profile = ({ navigation }) => {
 };
 
 const EditProfile = ({ route }) => {
-  const { name, gender, address, bloodtype, medications, illnesses } = route.params;
+  const { name, gender, address, bloodtype, medications, illnesses, phoneNumber } = route.params;
   return (
     <View>
       <ScrollView>
@@ -429,16 +454,25 @@ const EditProfile = ({ route }) => {
         </View>
 
         <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
-
           <View style={styles.profileValueTitle}>
             <Text style={styles.profileValueTitleText}>
               Name
             </Text>
           </View>
-          <View style={styles.profileValue}>  
+          <View style={styles.profileValue}>
             <TextInput style={styles.profileValueTextSmall} placeholder={name}></TextInput>
           </View>
+        </View>
 
+        <View style={{ flexDirection: 'row', marginTop: 50, marginLeft: 'auto', marginRight: 'auto' }}>
+          <View style={styles.profileValueTitle}>
+            <Text style={styles.profileValueTitleText}>
+              Phone Number
+            </Text>
+          </View>
+          <View style={styles.profileValue}>
+            <TextInput style={styles.profileValueTextSmall} placeholder={phoneNumber}></TextInput>
+          </View>
         </View>
 
 
@@ -729,93 +763,96 @@ const Feedback = () => {
 const MainScreen = () => {
   return (
     <View style={styles.main}>
-      <Text style={styles.paragraph} />
+      <ScrollView>
+        <Text style={styles.paragraph} />
 
-      <View style={styles.topLeft} />
+        <View style={styles.topLeft} />
 
-      <TouchableOpacity>
-        <View
-          style={{
-            backgroundColor: 'white',
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: 'white',
-            padding: 20,
-            width: 350,
-            marginTop: 130,
-            alignContent: 'center',
-            marginLeft: 20,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: '#B0303B',
-              fontSize: 22,
-              fontFamily: 'Outfit-Regular',
-            }}>
-            Sign In
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity>
-        <View
-          style={{
-            backgroundColor: '#5A1616',
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: 'white',
-            padding: 20,
-            width: 350,
-            marginTop: 20,
-            alignContent: 'center',
-            marginLeft: 20,
-            marginBottom: -20,
-          }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: '#DFDBDB',
-              fontSize: 22,
-              fontFamily: 'Outfit-Regular',
-            }}>
-            Create Account
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-      <View style={{ flexDirection: 'column' }}>
         <TouchableOpacity>
-          <Text
+          <View
             style={{
-              color: '#DFDBDB',
-              marginTop: 100,
-              marginLeft: 23,
-              fontFamily: 'Outfit-Regular',
+              backgroundColor: 'white',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 20,
+              width: 350,
+              marginTop: 130,
+              alignContent: 'center',
+              marginLeft: 20,
             }}>
-            {' '}
-            Learn More{' '}
-          </Text>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#B0303B',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+              Sign In
+            </Text>
+          </View>
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Text
+          <View
             style={{
-              marginTop: -18,
-              color: '#DFDBDB',
-              marginLeft: 280,
-              fontFamily: 'Outfit-Regular',
+              backgroundColor: '#5A1616',
+              borderWidth: 1,
+              borderRadius: 10,
+              borderColor: 'white',
+              padding: 20,
+              width: 350,
+              marginTop: 20,
+              alignContent: 'center',
+              marginLeft: 20,
+              marginBottom: -20,
             }}>
-            {' '}
-            Skip Now{' '}
-          </Text>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#DFDBDB',
+                fontSize: 22,
+                fontFamily: 'Outfit-Regular',
+              }}>
+              Create Account
+            </Text>
+          </View>
         </TouchableOpacity>
-      </View>
-      <TouchableOpacity>
-        <View style={{ top: -22, marginLeft: 345 }}>
-          <MIcon name="arrow-right" size={25} color="#FFFFFF" />
+
+        <View style={{ flexDirection: 'column' }}>
+          <TouchableOpacity>
+            <Text
+              style={{
+                color: '#DFDBDB',
+                marginTop: 100,
+                marginLeft: 23,
+                fontFamily: 'Outfit-Regular',
+              }}>
+              {' '}
+              Learn More{' '}
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Text
+              style={{
+                marginTop: -18,
+                color: '#DFDBDB',
+                marginLeft: 280,
+                fontFamily: 'Outfit-Regular',
+              }}>
+              {' '}
+              Skip Now{' '}
+            </Text>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={{ top: -22, marginLeft: 345 }}>
+            <MIcon name="arrow-right" size={25} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+
+      </ScrollView>
     </View>
   );
 };
@@ -823,94 +860,96 @@ const MainScreen = () => {
 const LoginScreen = () => {
   return (
     <View style={styles.main}>
-      <Text style={styles.paragraph} />
+      <ScrollView>
+        <Text style={styles.paragraph} />
 
-      <View style={styles.topLeft} />
+        <View style={styles.topLeft} />
 
-      <View style={{ alignItems: 'center', marginTop: 10 }}>
-        <TextInput
-          placeholderTextColor={'#D0B5B5'}
-          style={{
-            borderBottomWidth: 1,
-            width: '90%',
-            padding: 5,
-            fontSize: 22,
-            fontFamily: 'Outfit-Regular',
-          }}
-          placeholder="Username"
-        />
+        <View style={{ alignItems: 'center', marginTop: 10 }}>
+          <TextInput
+            placeholderTextColor={'#D0B5B5'}
+            style={{
+              borderBottomWidth: 1,
+              width: '90%',
+              padding: 5,
+              fontSize: 22,
+              fontFamily: 'Outfit-Regular',
+            }}
+            placeholder="Username"
+          />
 
-        <TextInput
-          placeholderTextColor={'#D0B5B5'}
-          style={{
-            padding: 5,
-            borderBottomWidth: 1,
-            width: '90%',
-            marginTop: 70,
-            fontSize: 22,
-            fontFamily: 'Outfit-Regular',
-          }}
-          placeholder="Password"
-        />
+          <TextInput
+            placeholderTextColor={'#D0B5B5'}
+            style={{
+              padding: 5,
+              borderBottomWidth: 1,
+              width: '90%',
+              marginTop: 70,
+              fontSize: 22,
+              fontFamily: 'Outfit-Regular',
+            }}
+            placeholder="Password"
+          />
 
-        <TouchableOpacity>
-          <View style={{ marginLeft: 320, marginTop: -35 }}>
-            <MIcon name="eye" size={33} color="#FFFFFF" />
-          </View>
-        </TouchableOpacity>
-        <View style={{ alignItems: 'center' }}>
           <TouchableOpacity>
-            <View
-              style={{
-                backgroundColor: '#F2F2F2',
-                borderWidth: 1,
-                borderRadius: 10,
-                borderColor: 'white',
-                padding: 10,
-                width: 220,
-                marginTop: 70,
-                alignContent: 'center',
-                marginLeft: 20,
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: '#B0303B',
-                  fontSize: 22,
-                  fontFamily: 'Outfit-Regular',
-                }}>
-                Login
-              </Text>
+            <View style={{ marginLeft: 320, marginTop: -35 }}>
+              <MIcon name="eye" size={33} color="#FFFFFF" />
             </View>
           </TouchableOpacity>
-
-          <View style={{ marginTop: 20, marginLeft: 25 }}>
+          <View style={{ alignItems: 'center' }}>
             <TouchableOpacity>
-              <Text
+              <View
                 style={{
-                  fontFamily: 'Outfit-Regular',
-                  color: '#FFFFFF',
-                  fontSize: 18,
+                  backgroundColor: '#F2F2F2',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  borderColor: 'white',
+                  padding: 10,
+                  width: 220,
+                  marginTop: 70,
+                  alignContent: 'center',
+                  marginLeft: 20,
+                  alignItems: 'center',
                 }}>
-                Forget Password?
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={{ marginTop: 40, marginLeft: 25 }}>
-            <TouchableOpacity>
-              <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
-                Don't Have An Account?{' '}
                 <Text
-                  style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
-                  Sign Up
+                  style={{
+                    textAlign: 'center',
+                    color: '#B0303B',
+                    fontSize: 22,
+                    fontFamily: 'Outfit-Regular',
+                  }}>
+                  Login
                 </Text>
-              </Text>
+              </View>
             </TouchableOpacity>
+
+            <View style={{ marginTop: 20, marginLeft: 25 }}>
+              <TouchableOpacity>
+                <Text
+                  style={{
+                    fontFamily: 'Outfit-Regular',
+                    color: '#FFFFFF',
+                    fontSize: 18,
+                  }}>
+                  Forget Password?
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={{ marginTop: 40, marginLeft: 25 }}>
+              <TouchableOpacity>
+                <Text style={{ color: '#FFFFFF', fontFamily: 'Outfit-Regular' }}>
+                  Don't Have An Account?{' '}
+                  <Text
+                    style={{ fontFamily: 'Outfit-Regular', fontWeight: 'bold' }}>
+                    Sign Up
+                  </Text>
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -1569,7 +1608,7 @@ const TopDonorsCard = props => {
             style={{ height: 60, width: 60, borderRadius: 100 }}
             source={require('./images/Touseef.jpg')}
           />
-          <Text style={{ fontSize: 15, fontWeight: 'bold', textAlign: 'center' }}>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', textAlign: 'center', maxWidth: 130 }}>
             {props.name}
           </Text>
         </View>
@@ -1601,7 +1640,7 @@ const TopDonorsCard = props => {
             alignItems: 'center',
             textAlign: 'center',
           }}>
-          <View style={styles.BoxGray}>
+          <View style={styles.BoxRed}>
             <Text
               style={{
                 fontFamily: 'Outfit-Regular',
@@ -3144,10 +3183,12 @@ const styles = StyleSheet.create({
 
   // Tayyab's styles
   rectangle: {
-    width: 130,
-    marginTop: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 135,
+    marginTop: 20,
     marginBottom: 7,
-    height: 6,
+    height: 4,
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -3192,14 +3233,14 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 15,
   },
-  BoxGray: {
+  BoxRed: {
     padding: 10,
     marginRight: 0,
     height: 120,
     borderRadius: 15,
     alignItems: 'center',
     backgroundColor: '#C53437',
-    maxWidth: 120,
+    maxWidth: 130,
     width: '100%',
   },
   inputFeedback: {
@@ -3293,12 +3334,13 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     minHeight: 100,
+    maxHeight: 120,
     backgroundColor: 'silver',
-    maxWidth: 370,
+    maxWidth: 350,
     width: '100%',
     borderRadius: 20,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
 

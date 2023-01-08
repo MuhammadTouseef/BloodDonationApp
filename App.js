@@ -8,6 +8,13 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
+  ALERT_TYPE,
+  Dialog,
+  AlertNotificationRoot,
+  Toast,
+} from 'react-native-alert-notification';
+
+import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
@@ -27,105 +34,142 @@ import {
   ImageBackground,
 } from 'react-native';
 import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import axios from 'axios';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
 const redcolor = '#C53437';
+const URL = 'http://20.102.109.51:8080';
+
+axios.interceptors.request.use(
+  async config => {
+    const token = await EncryptedStorage.getItem('JWT');
+    if (token) {
+      config.headers.Authorization = 'Bearer ' + token;
+    }
+    config.headers['Content-Type'] = 'application/json';
+    return config;
+  },
+  error => {
+    Promise.reject(error);
+  },
+);
+
+axios.interceptors.response.use(
+  response => response,
+  error => {
+    Dialog.show({
+      type: ALERT_TYPE.DANGER,
+      title: 'ERROR',
+      textBody: error.response.data.error,
+      button: 'close',
+    });
+    throw error;
+  },
+);
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <View
-        style={{
-          position: 'absolute',
-          zIndex: 30, // works on ios
-          elevation: 30, // works on android
-        }}>
-        <Image source={require('./images/barcircle.png')} style={{}} />
-      </View>
-      <Stack.Navigator
-        initialRouteName="TempHome"
-        screenOptions={{
-          headerTitleAlign: 'center',
-          headerShadowVisible: false,
-          headerTitleStyle: {
-            fontSize: 22,
-            fontFamily: 'Outfit-Regular',
-            color: 'black',
-          },
-          headerRight: () => <Icon name="search" size={30} color="#292D32" />,
-        }}>
-        <Stack.Screen name="TempHome" component={TempHome} />
-        <Stack.Screen name="Main Screen" component={MainScreen} />
-        <Stack.Screen name="Login Screen" component={LoginScreen} />
-        <Stack.Screen
-          name="SignUp Screen"
-          component={SignUpScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Forget Password"
-          component={ForgetPassword}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="OTPPassword Screen"
-          component={OTPPassword}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="ResetPassword Screen"
-          component={ResetPassword}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="ResetPasswordComplete Screen"
-          component={ResetPasswordComplete}
-          options={{headerShown: false}}
-        />
+    <AlertNotificationRoot>
+      <NavigationContainer>
+        {/*<View*/}
+        {/*  style={{*/}
+        {/*    position: 'absolute',*/}
+        {/*    zIndex: 1, // works on ios*/}
+        {/*    elevation: 1, // works on android*/}
+        {/*  }}>*/}
+        {/*  <Image source={require('./images/barcircle.png')} style={{}} />*/}
+        {/*</View>*/}
+        <Stack.Navigator
+          initialRouteName="TempHome"
+          screenOptions={{
+            headerTitleAlign: 'center',
+            headerShadowVisible: false,
+            headerTitleStyle: {
+              fontSize: 22,
+              fontFamily: 'Outfit-Regular',
+              color: 'black',
+            },
+            headerRight: () => <Icon name="search" size={30} color="#292D32" />,
+          }}>
+          <Stack.Screen name="TempHome" component={TempHome} />
+          <Stack.Screen name="Main Screen" component={MainScreen} />
+          <Stack.Screen
+            name="Login Screen"
+            component={LoginScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SignUp Screen"
+            component={SignUpScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Forget Password"
+            component={ForgetPassword}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="OTPPassword Screen"
+            component={OTPPassword}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ResetPassword Screen"
+            component={ResetPassword}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ResetPasswordComplete Screen"
+            component={ResetPasswordComplete}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen name="Get Donations" component={GetDonations} />
-        <Stack.Screen name="My Campaigns" component={MyCampaigns} />
-        <Stack.Screen name="Donors" component={Donors} />
-        <Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />
-        <Stack.Screen name="Blood Banks" component={BloodBanks} />
-        <Stack.Screen name="Campaign Details" component={CampaignDetails} />
+          <Stack.Screen name="Get Donations" component={GetDonations} />
+          <Stack.Screen name="My Campaigns" component={MyCampaigns} />
+          <Stack.Screen name="Donors" component={Donors} />
+          <Stack.Screen name="Active Campaigns" component={ActiveCampaigns} />
+          <Stack.Screen name="Blood Banks" component={BloodBanks} />
+          <Stack.Screen name="Campaign Details" component={CampaignDetails} />
 
-        <Stack.Screen name="Feedback" component={Feedback} />
-        <Stack.Screen name="About Us" component={AboutUs} />
-        <Stack.Screen name="Donation History" component={DonationHistory} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Top Donors" component={TopDonors} />
-        <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />
-        <Stack.Screen name="Edit Profile" component={EditProfile} />
+          <Stack.Screen name="Feedback" component={Feedback} />
+          <Stack.Screen name="About Us" component={AboutUs} />
+          <Stack.Screen name="Donation History" component={DonationHistory} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Top Donors" component={TopDonors} />
+          <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />
+          <Stack.Screen name="Edit Profile" component={EditProfile} />
 
-        <Stack.Screen
-          name="Home"
-          component={DashboardScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Blood Type"
-          component={BloodTypeScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Settings"
-          component={SettingsScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Socials"
-          component={SocialsScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Drawer"
-          component={DrawerM}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen
+            name="Home"
+            component={DashboardScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Blood Type"
+            component={BloodTypeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Settings"
+            component={SettingsScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Socials"
+            component={SocialsScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerM}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AlertNotificationRoot>
   );
 };
 
@@ -1013,6 +1057,21 @@ const MainScreen = () => {
 };
 
 const LoginScreen = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const login = async () => {
+    try {
+      let res = await axios.post(`${URL}/api/v1/auth/login`, {
+        email: username,
+        password: password,
+      });
+
+      if (res.data.success === true) {
+        await EncryptedStorage.setItem('JWT', res.data.token);
+      }
+    } catch {}
+  };
   return (
     <View style={styles.main}>
       <ScrollView>
@@ -1023,6 +1082,7 @@ const LoginScreen = () => {
         <View style={{alignItems: 'center', marginTop: 10}}>
           <TextInput
             placeholderTextColor={'#D0B5B5'}
+            onChangeText={setUsername}
             style={{
               borderBottomWidth: 1,
               width: '90%',
@@ -1034,6 +1094,7 @@ const LoginScreen = () => {
           />
 
           <TextInput
+            onChangeText={setPassword}
             placeholderTextColor={'#D0B5B5'}
             style={{
               padding: 5,
@@ -1052,7 +1113,7 @@ const LoginScreen = () => {
             </View>
           </TouchableOpacity>
           <View style={{alignItems: 'center'}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={login}>
               <View
                 style={{
                   backgroundColor: '#F2F2F2',
@@ -2273,13 +2334,31 @@ const ActiveCampaigns = () => {
 };
 
 const BloodBanks = () => {
+  const [search, setSearch] = useState('');
+  const [data, setData] = useState([]);
+  const findBloodBank = async () => {
+    try {
+      let res = await axios.get(`${URL}/api/v1/bloodbank/?search=${search}`);
+      res = res.data.data;
+      setData(res);
+      console.log(data);
+    } catch {}
+  };
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Blood Banks'} />
         <View style={{marginBottom: 25}}>
           <View style={styles.inputContainer}>
-            <TextInput style={styles.input} placeholder={'Enter Location'} />
+            <TextInput
+              style={styles.input}
+              placeholder={'Enter Location'}
+              onChangeText={e => {
+                setSearch(e);
+                findBloodBank();
+              }}
+            />
             <Icon
               style={styles.acicon}
               name="location-outline"
@@ -2288,26 +2367,18 @@ const BloodBanks = () => {
             />
           </View>
         </View>
-        <BloodBankCard
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          call={'12345678'}
-          location={'37.00,76.00'}
-        />
+        {data.map(x => {
+          return (
+            <BloodBankCard
+              key={x._id}
+              hospital={x.name}
+              address={x.address}
+              call={x.phonenumber}
+              location={x.address}
+            />
+          );
+        })}
 
-        <BloodBankCard
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          call={'12345678'}
-          location={'37.00,76.00'}
-        />
-
-        <BloodBankCard
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          call={'12345678'}
-          location={'37.00,76.00'}
-        />
       </ScrollView>
     </View>
   );
@@ -3026,7 +3097,7 @@ const TempHome = ({navigation}) => {
   return (
     <>
       <ScrollView>
-        <View style={{marginVertical: 1}}>
+        <View style={{marginVertical: 10}}>
           <Button
             title={'Get Blood Donation'}
             onPress={() => navigation.navigate('Get Donations')}

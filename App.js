@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useState} from 'react';
 import {Checkbox} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -42,6 +42,14 @@ const Drawer = createDrawerNavigator();
 
 const redcolor = '#C53437';
 const URL = 'http://20.102.109.51:8080';
+
+const showSuccessToast = message => {
+  Toast.show({
+    type: ALERT_TYPE.SUCCESS,
+    title: 'Success',
+    textBody: message,
+  });
+};
 
 axios.interceptors.request.use(
   async config => {
@@ -1712,7 +1720,11 @@ const CampaignCard = props => {
         <Text style={styles.hospitaladdress}>{props.address}</Text>
       </View>
       <View style={styles.campaignsCardInnerRight}>
-        <TouchableOpacity style={styles.btncampaign}>
+        <TouchableOpacity
+          style={styles.btncampaign}
+          onPress={() =>
+            props.navigation.navigate('Campaign Details', {id: props.id})
+          }>
           <Text style={styles.btnTextCampaign}>{props.button}</Text>
         </TouchableOpacity>
       </View>
@@ -2143,7 +2155,41 @@ const CampaignRow = props => {
 };
 
 // Screens
-const GetDonations = () => {
+const GetDonations = ({navigation}) => {
+  const [patientName, setPatientName] = useState('');
+  const [bloodGroup, setBloodGroup] = useState('');
+  const [hospital, setHospital] = useState('');
+  const [location, setlocation] = useState('');
+  const [contactNumber, setcontactNumber] = useState('');
+  const [details, setDetails] = useState('');
+
+  const getDonation = async () => {
+    console.log(
+      bloodGroup,
+      hospital,
+      contactNumber,
+      patientName,
+      location,
+      details,
+    );
+    try {
+      let res = await axios.post(`${URL}/api/v1/campaign/`, {
+        bloodGroup: bloodGroup,
+        hospital: hospital,
+        phonenumber: contactNumber,
+        patientName: patientName,
+        location: location,
+        details: details,
+      });
+
+      if (res.data.success === true) {
+        await EncryptedStorage.setItem('JWT', res.data.token);
+        showSuccessToast('Successfully Created Donation Campaign ');
+        navigation.navigate('My Campaigns');
+      }
+    } catch {}
+  };
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
@@ -2158,12 +2204,12 @@ const GetDonations = () => {
         {/*<ScrollView>*/}
         <View style={styles.container}>
           <Text style={styles.tfield}>Patient Name</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} onChangeText={setPatientName} />
         </View>
 
         <View style={styles.inputContainer}>
           <Text style={styles.tfield}>Blood Group</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} onChangeText={setBloodGroup} />
           <Icon
             style={styles.icon}
             name="location-outline"
@@ -2173,7 +2219,7 @@ const GetDonations = () => {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.tfield}>Location</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} onChangeText={setlocation} />
           <Icon
             style={styles.icon}
             name="location-outline"
@@ -2184,26 +2230,25 @@ const GetDonations = () => {
 
         <View style={styles.container}>
           <Text style={styles.tfield}>Contact Number</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input} onChangeText={setcontactNumber} />
         </View>
+
+        <View style={styles.container}>
+          <Text style={styles.tfield}>Hospital</Text>
+          <TextInput style={styles.input} onChangeText={setHospital} />
+        </View>
+
         <View style={styles.container}>
           <Text style={styles.tfield}>Case Details</Text>
           <TextInput
             style={styles.textArea}
             multiline={true}
             numberOfLines={4}
+            onChangeText={setDetails}
           />
         </View>
         <View style={styles.container}>
-          <Text style={styles.tfield}>Case Details</Text>
-          <TextInput
-            style={styles.textArea}
-            multiline={true}
-            numberOfLines={4}
-          />
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity style={styles.btn} onPress={getDonation}>
             <Text style={styles.btnText}>Get Blood Donation</Text>
           </TouchableOpacity>
         </View>
@@ -2212,35 +2257,37 @@ const GetDonations = () => {
   );
 };
 
-const MyCampaigns = () => {
+const MyCampaigns = ({navigation}) => {
+  const [data, setData] = useState([]);
+  const getmyCampaign = async () => {
+    try {
+      let res = await axios.get(`${URL}/api/v1/campaign/`);
+      res = res.data.data;
+      setData(res);
+    } catch {}
+  };
+
+  useEffect(() => {
+    getmyCampaign();
+  }, []);
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'My Campaigns'} />
 
-        <CampaignCard
-          blood={'O+'}
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          button={'View Donors'}
-          id={'1'}
-        />
-
-        <CampaignCard
-          blood={'O+'}
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          button={'View Donors'}
-          id={'1'}
-        />
-
-        <CampaignCard
-          blood={'O+'}
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          button={'View Donors'}
-          id={'1'}
-        />
+        {data.map(x => {
+          return (
+            <CampaignCard
+              key={x._id}
+              blood={x.bloodGroup}
+              hospital={x.hospital}
+              address={x.location}
+              button={'View Donors'}
+              id={x._id}
+              navigation={navigation}
+            />
+          );
+        })}
       </ScrollView>
     </View>
   );
@@ -2341,7 +2388,6 @@ const BloodBanks = () => {
       let res = await axios.get(`${URL}/api/v1/bloodbank/?search=${search}`);
       res = res.data.data;
       setData(res);
-      console.log(data);
     } catch {}
   };
 
@@ -2378,33 +2424,50 @@ const BloodBanks = () => {
             />
           );
         })}
-
       </ScrollView>
     </View>
   );
 };
 
-const CampaignDetails = () => {
+const CampaignDetails = ({route}) => {
+  const {id} = route.params;
+
+  const [data, setData] = useState({});
+  const getCampaignDetails = async () => {
+    try {
+      let res = await axios.get(`${URL}/api/v1/campaign/${id}`);
+      res = res.data.data;
+      console.log(res);
+      setData(res);
+    } catch {}
+  };
+
+  useEffect(() => {
+    getCampaignDetails();
+  }, []);
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Campaign Details'} />
         <View style={styles.campaigncard}>
-          <CampaignRow left={'Patient Name:'} right={'John Doe'} fd={'row'} />
-          <CampaignRow left={'Blood Group:'} right={'O+'} fd={'row'} />
-          <CampaignRow left={'Contact:'} right={'+9200000000'} fd={'row'} />
           <CampaignRow
-            left={'Location:'}
-            right={'Shifa Hospital, Islamabad'}
+            left={'Patient Name:'}
+            right={data.patientName}
             fd={'row'}
           />
           <CampaignRow
-            left={'Details:'}
-            right={
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis dignissim est'
-            }
-            fd={'column'}
+            left={'Blood Group:'}
+            right={data.bloodGroup}
+            fd={'row'}
           />
+          <CampaignRow left={'Contact:'} right={data.phonenumber} fd={'row'} />
+          <CampaignRow
+            left={'Location:'}
+            right={`${data.hospital} ${data.location}`}
+            fd={'row'}
+          />
+          <CampaignRow left={'Details:'} right={data.details} fd={'column'} />
         </View>
       </ScrollView>
     </View>

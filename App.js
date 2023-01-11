@@ -32,6 +32,7 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
+  Linking,
 } from 'react-native';
 import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import EncryptedStorage from 'react-native-encrypted-storage';
@@ -1690,6 +1691,12 @@ const ScreenTitle = props => {
 };
 
 const CampaignCard = props => {
+  let path = '';
+  if (props.button != 'Details') {
+    path = 'Donors';
+  } else {
+    path = 'Campaign Details';
+  }
   return (
     <View style={styles.campaignsCard}>
       <View style={styles.campaignsCardInner}>
@@ -1722,9 +1729,7 @@ const CampaignCard = props => {
       <View style={styles.campaignsCardInnerRight}>
         <TouchableOpacity
           style={styles.btncampaign}
-          onPress={() =>
-            props.navigation.navigate('Campaign Details', {id: props.id})
-          }>
+          onPress={() => props.navigation.navigate(path, {id: props.id})}>
           <Text style={styles.btnTextCampaign}>{props.button}</Text>
         </TouchableOpacity>
       </View>
@@ -1733,6 +1738,20 @@ const CampaignCard = props => {
 };
 
 const DonorCard = props => {
+  const acceptDonor = async () => {
+    try {
+      let res = await axios.put(
+        `${URL}/api/v1/campaign/${props.campaignID}/${props.accept}`,
+      );
+      res = res.data;
+
+      if (res.success == true) {
+        showSuccessToast('Successfully Accepted Donor');
+        props.navigation.navigate('Drawer');
+      }
+    } catch {}
+  };
+
   return (
     <View style={styles.campaignsCard}>
       <View style={styles.campaignsCardInner}>
@@ -1762,10 +1781,12 @@ const DonorCard = props => {
       </View>
 
       <View style={styles.donorCardInnerRight}>
-        <TouchableOpacity style={styles.btncampaign}>
+        <TouchableOpacity
+          style={styles.btncampaign}
+          onPress={() => Linking.openURL(`tel:${props.call}`)}>
           <Text style={styles.btnTextCampaign}>Call Now</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btncampaign}>
+        <TouchableOpacity style={styles.btncampaign} onPress={acceptDonor}>
           <Text style={styles.btnTextCampaign}>Accept</Text>
         </TouchableOpacity>
       </View>
@@ -2183,7 +2204,6 @@ const GetDonations = ({navigation}) => {
       });
 
       if (res.data.success === true) {
-        await EncryptedStorage.setItem('JWT', res.data.token);
         showSuccessToast('Successfully Created Donation Campaign ');
         navigation.navigate('My Campaigns');
       }
@@ -2194,14 +2214,7 @@ const GetDonations = ({navigation}) => {
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Get Blood \n Donations'} />
-        {/*<View style={styles.titleContainer}>*/}
-        {/*  <Text style={styles.title}>*/}
-        {/*    Get Blood {'\n'}*/}
-        {/*    Donations*/}
-        {/*  </Text>*/}
-        {/*</View>*/}
 
-        {/*<ScrollView>*/}
         <View style={styles.container}>
           <Text style={styles.tfield}>Patient Name</Text>
           <TextInput style={styles.input} onChangeText={setPatientName} />
@@ -2293,18 +2306,37 @@ const MyCampaigns = ({navigation}) => {
   );
 };
 
-const Donors = () => {
+const Donors = ({navigation, route}) => {
+  const {id} = route.params;
+
+  const [data, setData] = useState({});
+  const [donor, setDonor] = useState([]);
+
+  const getDonors = async () => {
+    try {
+      let res = await axios.get(`${URL}/api/v1/campaign/${id}`);
+      res = res.data.data;
+      setData(res);
+      setDonor(res.donors);
+    } catch {}
+  };
+
+  useEffect(() => {
+    getDonors();
+  }, []);
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Donors'} />
 
         <CampaignCard
-          blood={'O+'}
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
+          blood={data.bloodGroup}
+          hospital={data.hospital}
+          address={data.location}
           button={'Details'}
-          id={'1'}
+          id={data._id}
+          navigation={navigation}
         />
 
         <View
@@ -2315,22 +2347,28 @@ const Donors = () => {
           }}>
           <Image source={require('./images/dots.png')} style={{width: '50%'}} />
         </View>
+        {donor.map(a => {
+          return (
+            <DonorCard
+              key={a._id}
+              img={require('./images/placeholder.png')}
+              name={a.name}
+              blood={a.bloodGroup}
+              call={a.phonenumber}
+              accept={a._id}
+              campaignID={data._id}
+              navigation={navigation}
+            />
+          );
+        })}
 
-        <DonorCard
-          img={require('./images/placeholder.png')}
-          name={'Muhammad Touseef'}
-          blood={'O+'}
-          call={'123'}
-          accept={'11'}
-        />
-
-        <DonorCard
-          img={require('./images/placeholder.png')}
-          name={'Syed Arshik Javed'}
-          blood={'B+'}
-          call={'123'}
-          accept={'11'}
-        />
+        {/*<DonorCard*/}
+        {/*  img={require('./images/placeholder.png')}*/}
+        {/*  name={'Syed Arshik Javed'}*/}
+        {/*  blood={'B+'}*/}
+        {/*  call={'123'}*/}
+        {/*  accept={'11'}*/}
+        {/*/>*/}
       </ScrollView>
     </View>
   );
@@ -2429,15 +2467,26 @@ const BloodBanks = () => {
   );
 };
 
-const CampaignDetails = ({route}) => {
+const CampaignDetails = ({route, navigation}) => {
   const {id} = route.params;
 
   const [data, setData] = useState({});
+
+  const donateblood = async () => {
+    try {
+      let res = await axios.put(`${URL}/api/v1/campaign/${id}`);
+      res = res.data;
+
+      if (res.success == true) {
+        showSuccessToast('Successfully added you in available donors');
+        navigation.navigate('Drawer');
+      }
+    } catch {}
+  };
   const getCampaignDetails = async () => {
     try {
       let res = await axios.get(`${URL}/api/v1/campaign/${id}`);
       res = res.data.data;
-      console.log(res);
       setData(res);
     } catch {}
   };
@@ -2468,6 +2517,13 @@ const CampaignDetails = ({route}) => {
             fd={'row'}
           />
           <CampaignRow left={'Details:'} right={data.details} fd={'column'} />
+        </View>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <TouchableOpacity onPress={donateblood}>
+            <View style={styles.button}>
+              <Text style={styles.innerBtnText}>Donate</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>

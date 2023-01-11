@@ -156,7 +156,6 @@ const App = () => {
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Top Donors" component={TopDonors} />
           <Stack.Screen name="Privacy Policy" component={PrivacyPolicy} />
-          <Stack.Screen name="Edit Profile" component={EditProfile} />
 
           <Stack.Screen
             name="Home"
@@ -389,7 +388,7 @@ const TopDonors = () => {
 
         <TopDonorsCardMujtaba name="Mujtaba Aziz Khan" year="2022" bags="6" />
 
-        <TopDonorsCardTouseef name="M. Touseef" year="2021" bags="4" />
+        <TopDonorsCardTouseef name="Muhammad Touseef" year="2021" bags="4" />
 
         <TopDonorsCardTayyab name="M. Tayyab Naveed" year="2021" bags="2" />
 
@@ -399,248 +398,60 @@ const TopDonors = () => {
   );
 };
 
-const Profile = () => {
-  return (
+const Profile = ({navigation}) => {  return (
+
     <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
       <ScrollView>
 
         <View style={{ marginTop: 20, marginLeft: 20, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
           <Image style={{ height: 200, width: 200, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }} source={require('./images/placeholder.png')} />
           <TouchableOpacity>
-            <Icon name="cog-outline" size={20} color="black" style={{ marginBottom: 100 }} />
+          <Image style={{ height: 20, width: 20, marginBottom: 100 }} source={require('./images/Gear.png')} />          
           </TouchableOpacity>
 
         </View>
 
         <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>John Doe</Text>
+          <Text style={{ fontSize: 20, color:'black' }}>John Doe</Text>
           <TouchableOpacity>
-            <Icon name="cog-outline" size={20} color="black" style={{ marginLeft: 10 }} />
-          </TouchableOpacity>
+            <Image style={{ height: 20, width: 20, marginLeft: 5, marginRight: 10 }} source={require('./images/Gear.png')} />          
+            </TouchableOpacity>
         </View>
 
         <View style={styles.container}>
+          <ProfileCardGender gender='Male'/>
 
-          <ProfileCardGender
-            gender='Male'
+          <ProfileCardAddress address='House No 92, Street 49, H-Block, Soan Gardens'/>
 
-          />
+          <ProfileCardBlood blood='O+'/>
+
+          <ProfileCardMedications medications='None'/>
+
+          <ProfileCardIllness illnesses='None'/>
 
         </View>
 
-      </ScrollView>
-    </View>
-
-
-  );
-};
-
-const EditProfile = ({route}) => {
-  const {
-    name,
-    gender,
-    address,
-    bloodtype,
-    medications,
-    illnesses,
-    phoneNumber,
-  } = route.params;
-
-  const updateUser = async () => {
-    console.log(//////////////
-    name,
-    phoneNumber,   
-    bloodtype,
-    gender,
-    address,
-    medications,
-    illnesses,
-    );
-    try{
-      let res = await axios.put(`${URL}/api/v1/user`, {
-        name: name,
-        phoneNumber: phoneNumber,
-        bloodtype: bloodtype,
-        gender: gender,
-        address: address,
-        medications: medications,
-        illnesses: illnesses,
-
-      });
-// Check 
-
-    } catch {}
-  };
-
-
-  return (
-    <View>
-      <ScrollView>
-        <View style={styles.titleContainer}>
-          <Image
-            style={{height: 140, width: 140, marginTop: 40}}
-            source={require('./images/bloodLogo.png')}
-          />
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 50,
-            marginLeft: 'auto',
-            marginRight: 'auto',
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Privacy Policy');
           }}>
-          <View style={styles.profileValueTitle}>
-            <Text style={styles.profileValueTitleText}>Name</Text>
-          </View>
-          <View style={styles.profileValue}>
-            <TextInput
-              style={styles.profileValueTextSmall}
-              placeholder={name}
-            />
-          </View>
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 50,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-          <View style={styles.profileValueTitle}>
-            <Text style={styles.profileValueTitleText}>Phone Number</Text>
-          </View>
-          <View style={styles.profileValue}>
-            <TextInput
-              style={styles.profileValueTextSmall}
-              placeholder={phoneNumber}
-            />
-          </View>
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 50,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-          <View style={styles.profileValueTitle}>
-            <Text style={styles.profileValueTitleText}>Gender</Text>
-          </View>
-          <View style={styles.profileValue}>
-            <TextInput
-              style={styles.profileValueTextSmall}
-              placeholder={gender}
-            />
-          </View>
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 50,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-          <View style={styles.profileValueTitle}>
-            <Text style={styles.profileValueTitleText}>Address</Text>
-          </View>
-          <View style={styles.profileValue}>
-            <TextInput
-              style={styles.profileValueTextLarge}
-              placeholder={address}
-            />
-          </View>
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 50,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-          <View style={styles.profileValueTitle}>
-            <Text style={styles.profileValueTitleText}>Blood Type</Text>
-          </View>
-          <View style={styles.profileValue}>
-            <TextInput
-              style={styles.profileValueTextSmall}
-              placeholder={bloodtype}
-            />
-          </View>
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 50,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-          <View style={styles.profileValueTitle}>
-            <Text style={styles.profileValueTitleText}>Medications</Text>
-          </View>
-          <View style={styles.profileValue}>
-            <TextInput
-              style={styles.profileValueTextLarge}
-              placeholder={medications}
-            />
-          </View>
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: 50,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-          <View style={styles.profileValueTitle}>
-            <Text style={styles.profileValueTitleText}>
-              Prevailing Illnesses
-            </Text>
-          </View>
-          <View style={styles.profileValue}>
-            <TextInput
-              style={styles.profileValueTextSmall}
-              placeholder={illnesses}
-            />
-          </View>
-        </View>
-
-        <TouchableOpacity>
-          <View
+          <Text
             style={{
-              fontFamily: 'serif',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: 150,
-              marginTop: 30,
-              height: 50,
-              borderRadius: 50,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              backgroundColor: '#C53437',
+              color: redcolor,
+              marginLeft: 10,
+              fontFamily: 'Outfit-Regular',
+              fontSize: 16,
             }}>
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'serif',
-                fontSize: 20,
-                paddingLeft: 10,
-                paddingRight: 10,
-              }}>
-              Save Changes
-            </Text>
-          </View>
+            Privacy Policy
+          </Text>
         </TouchableOpacity>
 
         <View style={styles.rectangle} />
+
       </ScrollView>
     </View>
+
+
   );
 };
 
@@ -714,12 +525,12 @@ const AboutUs = () => {
 
         <View style={styles.container}>
           <Text style={styles.tAboutUs}>
-            This organization was{'\n'}created to aid Blood{'\n'}Transfusions
-            across{'\n'}Pakistan. We aim to{'\n'}facilitate this process{'\n'}
-            through this Application.{'\n'}With this Application{'\n'}people can
-            pledge to{'\n'}donate to Active Blood{'\n'}Campaigns. This method
-            {'\n'}will provide ease and{'\n'}confirmation on the{'\n'}people
-            willing to Donate.{'\n'}
+            This organization Was{'\n'}Created To Aid Blood{'\n'}Transfusions
+            Across{'\n'}Pakistan. We Aim To{'\n'}Facilitate This Process{'\n'}
+            Through This Application.{'\n'}With This Application{'\n'}People Can
+            Pledge To{'\n'}Donate To Active Blood{'\n'}Campaigns. This Method
+            {'\n'}Will Provide Ease And{'\n'}Confirmation On The{'\n'}People
+            Willing To Donate.{'\n'}
             {'\n'}
             <Text style={{fontStyle: 'italic'}}>
               Not All Heroes Wear Capes, Some Simply Donate Blood.
@@ -1746,16 +1557,104 @@ const ProfileCardGender = props => {
     <View style={styles.ProfileCardStyle}>
 
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center' }}>Gender</Text>
+        <Text style={{fontSize: 20, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Gender</Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>{props.gender}</Text>
+        <Text style={{ fontSize: 20, color: 'black' }}>{props.gender}</Text>
       </View>
 
       <View style={styles.ProfileCardRedRight}>
         <TouchableOpacity>
-          <Icon name="cog-outline" size={30} color="white" style={{ marginLeft: 10 }} />
+        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardAddress = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{fontSize: 20, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Address</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 9, color: 'black', textAlign:'center' }}>{props.address}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRedRight}>
+        <TouchableOpacity>
+        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardBlood = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{fontSize: 20, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Address</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 20, color: 'black' }}>{props.blood}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRedRight}>
+        <TouchableOpacity>
+        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardMedications = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{fontSize: 14, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Current Medications</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 20, color: 'black' }}>{props.medications}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRedRight}>
+        <TouchableOpacity>
+        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  );
+};
+
+const ProfileCardIllness = props => {
+  return (
+    <View style={styles.ProfileCardStyle}>
+
+      <View style={styles.ProfileCardRed}>
+        <Text style={{fontSize: 12, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Current Illnesses/ Ailments</Text>
+      </View>
+
+      <View style={styles.ProfileCardWhite}>
+        <Text style={{ fontSize: 20, color: 'black' }}>{props.illnesses}</Text>
+      </View>
+
+      <View style={styles.ProfileCardRedRight}>
+        <TouchableOpacity>
+        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
         </TouchableOpacity>
       </View>
 
@@ -1898,7 +1797,7 @@ const TopDonorsCardJamal = props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -1907,7 +1806,7 @@ const TopDonorsCardJamal = props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -1977,7 +1876,7 @@ const TopDonorsCardMujtaba = props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -1986,7 +1885,7 @@ const TopDonorsCardMujtaba = props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -2056,7 +1955,7 @@ const TopDonorsCardTouseef = props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -2065,7 +1964,7 @@ const TopDonorsCardTouseef = props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -2135,7 +2034,7 @@ const TopDonorsCardTayyab= props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -2144,7 +2043,7 @@ const TopDonorsCardTayyab= props => {
           <Text
             style={{
               fontFamily: 'Outfit-Regular',
-              fontSize: 16,
+              fontSize: 18,
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
@@ -3635,43 +3534,6 @@ const styles = StyleSheet.create({
   },
 
   // Tayyab's styles
-    ProfileCard: {
-    backgroundColor: "white",
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  ProfileCardStyle: {
-    marginTop: 25,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    minHeight: 15,
-    backgroundColor: "white",
-    maxWidth: 40,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-  },
-  ProfileCardRed: {
-    padding: 10,
-    alignItems: 'center',
-    backgroundColor: 'green',
-    maxWidth: 40,
-    width: '100%',
-  },
-  ProfileCardRedRight: {
-    padding: 10,
-    alignItems: 'center',
-    backgroundColor: '#C53437',
-    maxWidth: 80,
-    width: '100%',
-  },
-  ProfileCardWhite: {
-    padding: 10,
-    alignItems: 'center',
-    backgroundColor: 'white',
-    maxWidth: 120,
-    width: '100%',
-  },
 
   rectangle: {
     justifyContent: 'center',
@@ -3685,45 +3547,7 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     backgroundColor: '#C53437',
   },
-  profileValueTitle: {
-    justifyContent: 'center',
-    minWidth: 160,
-    maxWidth: 160,
-    height: 70,
-    paddingLeft: 10,
-    paddingRight: 10,
-    backgroundColor: '#C53437',
-  },
-  profileValueTitleText: {
-    borderColor: 'white',
-    fontFamily: 'Outfit-Regular',
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 25,
-  },
-  profileValue: {
-    justifyContent: 'center',
-    minWidth: 200,
-    maxWidth: 200,
-    height: 70,
-    paddingLeft: 10,
-    paddingRight: 10,
-    backgroundColor: 'white',
-  },
-  profileValueTextSmall: {
-    borderColor: 'white',
-    fontFamily: 'Outfit-Regular',
-    textAlign: 'center',
-    color: 'black',
-    fontSize: 25,
-  },
-  profileValueTextLarge: {
-    borderColor: 'white',
-    fontFamily: 'Outfit-Regular',
-    textAlign: 'center',
-    color: 'black',
-    fontSize: 15,
-  },
+
   inputFeedback: {
     height: 220,
     marginTop: 12,
@@ -3745,37 +3569,9 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
     borderWidth: 3,
   },
-  ProfileCardGender: {
-    backgroundColor: 'white',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    borderRadius: 40,
-  },
-  ProfileCardAddress: {
-    backgroundColor: 'white',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    borderRadius: 40,
-  },
-  ProfileCardBloodType: {
-    backgroundColor: 'white',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    borderRadius: 40,
-  },
-  ProfileCardMedications: {
-    backgroundColor: 'white',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    borderRadius: 40,
-  },
-  ProfileCardIllness: {
-    backgroundColor: 'white',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    borderRadius: 40,
-  },
   ProfileCardStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 25,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -3783,17 +3579,27 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     maxWidth: 360,
     width: '100%',
-    borderRadius: 40,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginBottom: 20,
   },
   ProfileCardRed: {
+    justifyContent: 'center',
     padding: 10,
-    borderRadius: 15,
     alignItems: 'center',
     backgroundColor: '#C53437',
     maxWidth: 120,
+    mindWidth: 120,
+    minHeight: 50,
+    width: '100%',
+  },
+  ProfileCardRedRight: {
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: '#C53437',
+    maxWidth: 70,
+    mindWidth: 70,
+    minHeight: 50,
     width: '100%',
   },
   ProfileCardWhite: {

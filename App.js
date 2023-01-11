@@ -1803,10 +1803,10 @@ const ScreenTitle = props => {
 
 const CampaignCard = props => {
   let path = '';
-  if (props.button != 'Details') {
-    path = 'Donors';
-  } else {
+  if (props.button == 'Details' || 'More Details') {
     path = 'Campaign Details';
+  } else {
+    path = 'Donors';
   }
   return (
     <View style={styles.campaignsCard}>
@@ -2485,14 +2485,34 @@ const Donors = ({navigation, route}) => {
   );
 };
 
-const ActiveCampaigns = () => {
+const ActiveCampaigns = ({navigation}) => {
+  const [search, setSearch] = useState('');
+  const [data, setData] = useState([]);
+  const findCampaigns = async () => {
+    try {
+      let res = await axios.get(`${URL}/api/v1/campaign/all?search=${search}`);
+      res = res.data.data;
+      setData(res);
+    } catch {}
+  };
+
+  useEffect(() => {
+    findCampaigns();
+  }, []);
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView>
         <ScreenTitle title={'Active Campaigns'} />
         <View style={{marginBottom: 25}}>
           <View style={styles.inputContainer}>
-            <TextInput style={styles.input} placeholder={'Enter Location'} />
+            <TextInput
+              style={styles.input}
+              placeholder={'Enter Location'}
+              onChangeText={e => {
+                setSearch(e);
+                findCampaigns();
+              }}
+            />
             <Icon
               style={styles.acicon}
               name="location-outline"
@@ -2501,29 +2521,19 @@ const ActiveCampaigns = () => {
             />
           </View>
         </View>
-        <CampaignCard
-          blood={'O+'}
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          button={'More Details'}
-          id={'1'}
-        />
-
-        <CampaignCard
-          blood={'O+'}
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          button={'More Details'}
-          id={'1'}
-        />
-
-        <CampaignCard
-          blood={'O+'}
-          hospital={'Shifa Hospital'}
-          address={'4 Pitras Bukhari Rd, H-8/4 H 8/4 H-8, Islamabad'}
-          button={'More Details'}
-          id={'1'}
-        />
+        {data.map(a => {
+          return (
+            <CampaignCard
+              key={a._id}
+              blood={a.bloodGroup}
+              hospital={a.hospital}
+              address={a.location}
+              button={'More Details'}
+              id={a._id}
+              navigation={navigation}
+            />
+          );
+        })}
       </ScrollView>
     </View>
   );
@@ -2582,7 +2592,7 @@ const CampaignDetails = ({route, navigation}) => {
   const {id} = route.params;
 
   const [data, setData] = useState({});
-
+  console.log(`${URL}/api/v1/campaign/${id}`);
   const donateblood = async () => {
     try {
       let res = await axios.put(`${URL}/api/v1/campaign/${id}`);

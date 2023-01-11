@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useTogglePasswordVisibility } from './useTogglePasswordVisibility';
+import {useTogglePasswordVisibility} from './useTogglePasswordVisibility';
 import {
   ALERT_TYPE,
   Dialog,
@@ -34,9 +34,8 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
-   Linking,
-   Alert
-
+  Linking,
+  Alert,
 } from 'react-native';
 import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import EncryptedStorage from 'react-native-encrypted-storage';
@@ -108,7 +107,11 @@ const App = () => {
             headerRight: () => <Icon name="search" size={30} color="#292D32" />,
           }}>
           <Stack.Screen name="TempHome" component={TempHome} />
-          <Stack.Screen name="Main Screen" component={MainScreen} options={{headerShown: false}}/>
+          <Stack.Screen
+            name="Main Screen"
+            component={MainScreen}
+            options={{headerShown: false}}
+          />
           <Stack.Screen
             name="Login Screen"
             component={LoginScreen}
@@ -982,12 +985,12 @@ const MainScreen = ({navigation}) => {
         <View style={styles.topLeft} />
 
         <View>
-        <Image
+          <Image
             style={{height: 90, width: 90, alignSelf: 'center', marginTop: -60}}
             source={require('./images/whiteblood.png')}
           />
         </View>
-        <TouchableOpacity onPress={()=>navigation.navigate('Login Screen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Login Screen')}>
           <View
             style={{
               backgroundColor: 'white',
@@ -1012,7 +1015,7 @@ const MainScreen = ({navigation}) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>navigation.navigate('SignUp Screen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp Screen')}>
           <View
             style={{
               backgroundColor: '#5A1616',
@@ -1075,11 +1078,11 @@ const MainScreen = ({navigation}) => {
   );
 };
 
-
 const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { passwordVisibility, rightIcon, handlePasswordVisibility } = useTogglePasswordVisibility();
+  const {passwordVisibility, rightIcon, handlePasswordVisibility} =
+    useTogglePasswordVisibility();
 
   const login = async () => {
     try {
@@ -1100,18 +1103,27 @@ const LoginScreen = ({navigation}) => {
 
         <View style={styles.topLeft} />
 
-        <TouchableOpacity onPress={()=>Dialog.show({
+        <TouchableOpacity
+          onPress={() =>
+            Dialog.show({
               type: ALERT_TYPE.SUCCESS,
               title: 'Welcome to Blood Bank',
-              
+
               button: 'Close',
-            })}>
-        <View>
-        <Image
-            style={{height: 90, width: 90, alignSelf: 'center', marginTop: -70, marginBottom: 70}}
-            source={require('./images/whiteblood.png')}
-          />
-        </View>
+            })
+          }>
+          <View>
+            <Image
+              style={{
+                height: 90,
+                width: 90,
+                alignSelf: 'center',
+                marginTop: -70,
+                marginBottom: 70,
+              }}
+              source={require('./images/whiteblood.png')}
+            />
+          </View>
         </TouchableOpacity>
 
         <View style={{alignItems: 'center', marginTop: 10}}>
@@ -1162,7 +1174,7 @@ const LoginScreen = ({navigation}) => {
                   alignContent: 'center',
                   marginLeft: 20,
                   alignItems: 'center',
-                  alignSelf: 'center'
+                  alignSelf: 'center',
                 }}>
                 <Text
                   style={{
@@ -1177,7 +1189,8 @@ const LoginScreen = ({navigation}) => {
             </TouchableOpacity>
 
             <View style={{marginTop: 20, marginLeft: 25, alignSelf: 'center'}}>
-              <TouchableOpacity onPress={()=>navigation.navigate('Forget Password')}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Forget Password')}>
                 <Text
                   style={{
                     fontFamily: 'Outfit-Regular',
@@ -1189,8 +1202,9 @@ const LoginScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
 
-            <View style={{marginTop: 40, marginLeft: 25, alignSelf: "center"}}>
-              <TouchableOpacity onPress={()=>navigation.navigate('SignUp Screen')}>
+            <View style={{marginTop: 40, marginLeft: 25, alignSelf: 'center'}}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('SignUp Screen')}>
                 <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
                   Don't Have An Account?{' '}
                   <Text
@@ -1213,35 +1227,31 @@ const SignUpScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [Confirmpassword, setConfirmPassword] = useState('');
   const [phone, setPhone] = useState('');
-  const { passwordVisibility, rightIcon, handlePasswordVisibility } = useTogglePasswordVisibility();
-
-  
+  const {passwordVisibility, rightIcon, handlePasswordVisibility} =
+    useTogglePasswordVisibility();
 
   const SignUpFunc = async () => {
-
     try {
-      
-      if(Confirmpassword==password){
+      if (Confirmpassword == password) {
         let res = await axios.post(`${URL}/api/v1/auth/register`, {
           name: name,
           email: email,
           password: password,
-          phonenumber: phone         
+          phonenumber: phone,
         });
 
-          if (res.data.success === true) {
-            await EncryptedStorage.setItem('JWT', res.data.token);
-            Dialog.show({
-              type: ALERT_TYPE.SUCCESS,
-              title: 'Signed Up Successfully',
-              textBody: "",
-              button: 'Close',
-            });
+        if (res.data.success === true) {
+          await EncryptedStorage.setItem('JWT', res.data.token);
+          Dialog.show({
+            type: ALERT_TYPE.SUCCESS,
+            title: 'Signed Up Successfully',
+            textBody: '',
+            button: 'Close',
+          });
 
-            navigation.navigate();
-          }
-          else{
-          }
+          navigation.navigate();
+        } else {
+        }
       }
     } catch {}
   };
@@ -1268,7 +1278,6 @@ const SignUpScreen = ({navigation}) => {
             padding: 5,
             fontSize: 20,
             fontFamily: 'Outfit-Regular',
-
           }}
           placeholder="Full Name"
         />
@@ -1299,7 +1308,7 @@ const SignUpScreen = ({navigation}) => {
             borderBottomWidth: 0.7,
             width: '90%',
             marginTop: 40,
-            fontSize: 20, 
+            fontSize: 20,
             fontFamily: 'Outfit-Regular',
           }}
           placeholder="Phone Number"
@@ -1413,7 +1422,7 @@ const SignUpScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={()=> navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <View style={{marginRight: 340, bottom: 690}}>
             <MIcon name="arrow-left" size={40} color="#FFFFFF" />
           </View>
@@ -1428,28 +1437,26 @@ const ForgetPassword = ({navigation}) => {
 
   const Forget = async () => {
     try {
-      
-      if(Confirmpassword==password){
+      if (Confirmpassword === password) {
         let res = await axios.post(`${URL}/api/v1/auth/register`, {
           name: name,
           email: email,
           password: password,
-          phonenumber: phone         
+          phonenumber: phone,
         });
 
-          if (res.data.success === true) {
-            await EncryptedStorage.setItem('JWT', res.data.token);
-            Dialog.show({
-              type: ALERT_TYPE.SUCCESS,
-              title: 'Signed Up Successfully',
-              textBody: "",
-              button: 'Close',
-            });
+        if (res.data.success === true) {
+          await EncryptedStorage.setItem('JWT', res.data.token);
+          Dialog.show({
+            type: ALERT_TYPE.SUCCESS,
+            title: 'Signed Up Successfully',
+            textBody: '',
+            button: 'Close',
+          });
 
-            navigation.navigate();
-          }
-          else{
-          }
+          navigation.navigate();
+        } else {
+        }
       }
     } catch {}
   };
@@ -1535,7 +1542,7 @@ const ForgetPassword = ({navigation}) => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=> navigation.goBack()}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <View style={{marginLeft: 5, bottom: 525}}>
           <MIcon name="arrow-left" size={40} color="#FFFFFF" />
         </View>

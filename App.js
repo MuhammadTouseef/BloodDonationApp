@@ -888,6 +888,7 @@ const Feedback = () => {
   );
 };
 
+//Arshik's Screens
 const MainScreen = ({navigation}) => {
   const check = async () => {
     let token = await EncryptedStorage.getItem('JWT');
@@ -1014,6 +1015,7 @@ const LoginScreen = ({navigation}) => {
 
       if (res.data.success === true) {
         await EncryptedStorage.setItem('JWT', res.data.token);
+        navigation.navigate('Blood Type');
       }
     } catch {}
   };
@@ -1170,7 +1172,7 @@ const SignUpScreen = ({navigation}) => {
             button: 'Close',
           });
 
-          navigation.navigate();
+          navigation.navigate('Login Screen');
         } else {
         }
       }
@@ -1356,31 +1358,31 @@ const SignUpScreen = ({navigation}) => {
 const ForgetPassword = ({navigation}) => {
   const [email, setEmail] = React.useState('');
 
-  const Forget = async () => {
-    try {
-      if (Confirmpassword === password) {
-        let res = await axios.post(`${URL}/api/v1/auth/register`, {
-          name: name,
-          email: email,
-          password: password,
-          phonenumber: phone,
-        });
-
-        if (res.data.success === true) {
-          await EncryptedStorage.setItem('JWT', res.data.token);
-          Dialog.show({
-            type: ALERT_TYPE.SUCCESS,
-            title: 'Signed Up Successfully',
-            textBody: '',
-            button: 'Close',
-          });
-
-          navigation.navigate();
-        } else {
-        }
-      }
-    } catch {}
-  };
+  // const Forget = async () => {
+  //   try {
+  //     if (Confirmpassword === password) {
+  //       let res = await axios.post(`${URL}/api/v1/auth/register`, {
+  //         name: name,
+  //         email: email,
+  //         password: password,
+  //         phonenumber: phone,
+  //       });
+  //
+  //       if (res.data.success === true) {
+  //         await EncryptedStorage.setItem('JWT', res.data.token);
+  //         Dialog.show({
+  //           type: ALERT_TYPE.SUCCESS,
+  //           title: 'Signed Up Successfully',
+  //           textBody: '',
+  //           button: 'Close',
+  //         });
+  //
+  //         navigation.navigate();
+  //       } else {
+  //       }
+  //     }
+  //   } catch {}
+  // };
 
   return (
     <View style={styles.main}>
@@ -2973,36 +2975,38 @@ function SettingsScreen({navigation}) {
           Settings
         </Text>
       </View>
-      <View style={{alignItems: 'center', marginBottom: 35}}>
-        <View style={{flexDirection: 'row', margin: 10}}>
-          <Image
-            source={require('./assets/images/mt.jpeg')}
-            style={{width: 38, height: 38, borderRadius: 38 / 2}}
-          />
-          <View style={{marginRight: 130, marginLeft: 15}}>
-            <Text
-              style={{
-                fontFamily: 'Outfit-SemiBold',
-                fontSize: 16,
-                color: 'black',
-              }}>
-              M.Touseef
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'Outfit-Light',
-                fontSize: 12,
-                color: 'black',
-              }}>
-              Edit Personal details
-            </Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+        <View style={{alignItems: 'center', marginBottom: 35}}>
+          <View style={{flexDirection: 'row', margin: 10}}>
+            <Image
+              source={require('./assets/images/mt.jpeg')}
+              style={{width: 38, height: 38, borderRadius: 38 / 2}}
+            />
+            <View style={{marginRight: 130, marginLeft: 15}}>
+              <Text
+                style={{
+                  fontFamily: 'Outfit-SemiBold',
+                  fontSize: 16,
+                  color: 'black',
+                }}>
+                M.Touseef
+              </Text>
+              <Text
+                style={{
+                  fontFamily: 'Outfit-Light',
+                  fontSize: 12,
+                  color: 'black',
+                }}>
+                Edit Personal details
+              </Text>
+            </View>
+            <Image
+              source={require('./assets/icons/arrowW.png')}
+              style={{width: 10, height: 20, marginRight: 20, marginTop: 6}}
+            />
           </View>
-          <Image
-            source={require('./assets/icons/arrowW.png')}
-            style={{width: 10, height: 20, marginRight: 20, marginTop: 6}}
-          />
         </View>
-      </View>
+      </TouchableOpacity>
       <View style={{alignItems: 'center'}}>
         <View
           style={{
@@ -3125,8 +3129,8 @@ function SettingsScreen({navigation}) {
             />
             <Text style={styles.textS}>Language</Text>
             <Image
-              source={require('./assets/icons/language.png')}
-              style={{width: 24, height: 24, marginLeft: '48%'}}
+              source={require('./assets/icons/arrowP.png')}
+              style={{width: 12, height: 22, marginLeft: '51%'}}
             />
           </View>
           <View style={{marginTop: 15, flexDirection: 'row'}}>
@@ -3135,10 +3139,6 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Logout</Text>
-            <Image
-              source={require('./assets/icons/language.png')}
-              style={{width: 24, height: 24, marginLeft: '55%'}}
-            />
           </View>
         </View>
       </View>

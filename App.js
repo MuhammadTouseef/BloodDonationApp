@@ -370,8 +370,8 @@ const TopDonors = () => {
             style={{height: 140, width: 140, marginTop: 40}}
             source={require('./images/bloodLogo.png')}
           />
-          <View style = {{marginTop: -48}}>
-          <ScreenTitle title={'Congratulations!'} />
+          <View style={{marginTop: -48}}>
+            <ScreenTitle title={'Congratulations!'} />
           </View>
           <Text
             style={{
@@ -628,22 +628,22 @@ const AboutUs = () => {
 const Feedback = () => {
   const [message, setMessage] = useState('');
 
-  const getFeedback = async () =>{
-    console.log(//////////////
-    Feedback
+  const getFeedback = async () => {
+    console.log(
+      //////////////
+      Feedback,
     );
-    
-    try{
-      let res = await axios.post(`${URL}/api/v1/user/feedback/`,{
-        message: message,
 
+    try {
+      let res = await axios.post(`${URL}/api/v1/user/feedback/`, {
+        message: message,
       });
 
       if (res.data.success === true) {
-        showSuccessToast("Successfully Sent Feedback");
-    }
-  } catch{}
-};
+        showSuccessToast('Successfully Sent Feedback');
+      }
+    } catch {}
+  };
 
   return (
     <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
@@ -663,7 +663,7 @@ const Feedback = () => {
 
         <View style={styles.container}>
           <Text style={styles.tfield}>Feedback</Text>
-          <TextInput style={styles.inputFeedback} onChangeText = {setMessage} />
+          <TextInput style={styles.inputFeedback} onChangeText={setMessage} />
         </View>
 
         <View style={styles.container}>
@@ -680,6 +680,15 @@ const Feedback = () => {
 
 //Arshik's Screens
 const MainScreen = ({navigation}) => {
+  const check = async () => {
+    let token = await EncryptedStorage.getItem('JWT');
+    if (token) {
+      navigation.navigate('Drawer');
+    }
+  };
+  useEffect(() => {
+    check();
+  }, []);
   return (
     <View style={styles.main}>
       <ScrollView>
@@ -865,7 +874,7 @@ const LoginScreen = ({navigation}) => {
             </View>
           </TouchableOpacity>
           <View style={{alignItems: 'center'}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={login}>
               <View
                 style={{
                   backgroundColor: '#F2F2F2',
@@ -2005,7 +2014,7 @@ const TopDonorsCardTouseef = props => {
   );
 };
 
-const TopDonorsCardTayyab= props => {
+const TopDonorsCardTayyab = props => {
   return (
     <>
       <View style={styles.TopDonorsCardStyle}>
@@ -2084,7 +2093,6 @@ const TopDonorsCardTayyab= props => {
   );
 };
 
-
 const BloodBankCard = props => {
   return (
     <View style={styles.campaignsCard}>
@@ -2150,7 +2158,8 @@ const GetDonations = ({navigation}) => {
   const [details, setDetails] = useState('');
 
   const getDonation = async () => {
-    console.log(//////////////
+    console.log(
+      //////////////
       bloodGroup,
       hospital,
       contactNumber,

@@ -371,8 +371,8 @@ const TopDonors = () => {
             style={{height: 140, width: 140, marginTop: 40}}
             source={require('./images/bloodLogo.png')}
           />
-          <View style = {{marginTop: -48}}>
-          <ScreenTitle title={'Congratulations!'} />
+          <View style={{marginTop: -48}}>
+            <ScreenTitle title={'Congratulations!'} />
           </View>
           <Text
             style={{
@@ -401,37 +401,60 @@ const TopDonors = () => {
 
 const Profile = () => {
   return (
-    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
+    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
       <ScrollView>
-
-        <View style={{ marginTop: 20, marginLeft: 20, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
-          <Image style={{ height: 200, width: 200, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }} source={require('./images/placeholder.png')} />
+        <View
+          style={{
+            marginTop: 20,
+            marginLeft: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'row',
+          }}>
+          <Image
+            style={{
+              height: 200,
+              width: 200,
+              borderRadius: 100,
+              borderWidth: 4,
+              borderColor: '#C53437',
+            }}
+            source={require('./images/placeholder.png')}
+          />
           <TouchableOpacity>
-            <Icon name="cog-outline" size={20} color="black" style={{ marginBottom: 100 }} />
+            <Icon
+              name="cog-outline"
+              size={20}
+              color="black"
+              style={{marginBottom: 100}}
+            />
           </TouchableOpacity>
-
         </View>
 
-        <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>John Doe</Text>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'row',
+            marginTop: 5,
+            marginLeft: 20,
+          }}>
+          <Text style={{fontWeight: 'bold', fontSize: 20}}>John Doe</Text>
           <TouchableOpacity>
-            <Icon name="cog-outline" size={20} color="black" style={{ marginLeft: 10 }} />
+            <Icon
+              name="cog-outline"
+              size={20}
+              color="black"
+              style={{marginLeft: 10}}
+            />
           </TouchableOpacity>
         </View>
 
         <View style={styles.container}>
-
-          <ProfileCardGender
-            gender='Male'
-
-          />
-
+          <ProfileCardGender gender="Male" />
         </View>
-
       </ScrollView>
     </View>
-
-
   );
 };
 
@@ -447,16 +470,17 @@ const EditProfile = ({route}) => {
   } = route.params;
 
   const updateUser = async () => {
-    console.log(//////////////
-    name,
-    phoneNumber,   
-    bloodtype,
-    gender,
-    address,
-    medications,
-    illnesses,
+    console.log(
+      //////////////
+      name,
+      phoneNumber,
+      bloodtype,
+      gender,
+      address,
+      medications,
+      illnesses,
     );
-    try{
+    try {
       let res = await axios.put(`${URL}/api/v1/user`, {
         name: name,
         phoneNumber: phoneNumber,
@@ -465,13 +489,10 @@ const EditProfile = ({route}) => {
         address: address,
         medications: medications,
         illnesses: illnesses,
-
       });
-// Check 
-
+      // Check
     } catch {}
   };
-
 
   return (
     <View>
@@ -817,22 +838,22 @@ const AboutUs = () => {
 const Feedback = () => {
   const [message, setMessage] = useState('');
 
-  const getFeedback = async () =>{
-    console.log(//////////////
-    Feedback
+  const getFeedback = async () => {
+    console.log(
+      //////////////
+      Feedback,
     );
-    
-    try{
-      let res = await axios.post(`${URL}/api/v1/user/feedback/`,{
-        message: message,
 
+    try {
+      let res = await axios.post(`${URL}/api/v1/user/feedback/`, {
+        message: message,
       });
 
       if (res.data.success === true) {
-        showSuccessToast("Successfully Sent Feedback");
-    }
-  } catch{}
-};
+        showSuccessToast('Successfully Sent Feedback');
+      }
+    } catch {}
+  };
 
   return (
     <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
@@ -852,7 +873,7 @@ const Feedback = () => {
 
         <View style={styles.container}>
           <Text style={styles.tfield}>Feedback</Text>
-          <TextInput style={styles.inputFeedback} onChangeText = {setMessage} />
+          <TextInput style={styles.inputFeedback} onChangeText={setMessage} />
         </View>
 
         <View style={styles.container}>
@@ -1744,21 +1765,35 @@ const CampaignCard = props => {
 const ProfileCardGender = props => {
   return (
     <View style={styles.ProfileCardStyle}>
-
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', alignContent: 'center', color: 'white', justifyContent: 'center' }}>Gender</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            alignContent: 'center',
+            color: 'white',
+            justifyContent: 'center',
+          }}>
+          Gender
+        </Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>{props.gender}</Text>
+        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
+          {props.gender}
+        </Text>
       </View>
 
       <View style={styles.ProfileCardRedRight}>
         <TouchableOpacity>
-          <Icon name="cog-outline" size={30} color="white" style={{ marginLeft: 10 }} />
+          <Icon
+            name="cog-outline"
+            size={30}
+            color="white"
+            style={{marginLeft: 10}}
+          />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -2106,7 +2141,7 @@ const TopDonorsCardTouseef = props => {
   );
 };
 
-const TopDonorsCardTayyab= props => {
+const TopDonorsCardTayyab = props => {
   return (
     <>
       <View style={styles.TopDonorsCardStyle}>
@@ -2185,7 +2220,6 @@ const TopDonorsCardTayyab= props => {
   );
 };
 
-
 const BloodBankCard = props => {
   return (
     <View style={styles.campaignsCard}>
@@ -2251,7 +2285,8 @@ const GetDonations = ({navigation}) => {
   const [details, setDetails] = useState('');
 
   const getDonation = async () => {
-    console.log(//////////////
+    console.log(
+      //////////////
       bloodGroup,
       hospital,
       contactNumber,
@@ -3009,10 +3044,14 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Edit Profile</Text>
-            <Image
-              source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '48%'}}
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Profile')}
+              style={{marginLeft: '30%'}}>
+              <Image
+                source={require('./assets/icons/arrowP.png')}
+                style={{width: 12, height: 22, marginLeft: '48%'}}
+              />
+            </TouchableOpacity>
           </View>
           <View style={{marginTop: 15, flexDirection: 'row'}}>
             <Image
@@ -3020,10 +3059,15 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Change Password</Text>
-            <Image
-              source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '32%'}}
-            />
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Profile')}
+              style={{marginLeft: '23%'}}>
+              <Image
+                source={require('./assets/icons/arrowP.png')}
+                style={{width: 12, height: 22, marginLeft: '32%'}}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -3084,10 +3128,12 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Language</Text>
-            <Image
-              source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '51%'}}
-            />
+            <TouchableOpacity style={{marginLeft: '30%'}}>
+              <Image
+                source={require('./assets/icons/arrowP.png')}
+                style={{width: 12, height: 22, marginLeft: '51%'}}
+              />
+            </TouchableOpacity>
           </View>
           <View style={{marginTop: 15, flexDirection: 'row'}}>
             <Image
@@ -3195,12 +3241,48 @@ const DrawerM = () => {
           drawerIcon: ({color}) => (
             <Ionicons name={'person-outline'} size={22} color={color} />
           ),
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                source={require('./assets/icons/search.png')}
+                style={{width: 25, height: 25, marginLeft: -40}}
+              />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            backgroundColor: '#F9F9F9',
+          },
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'black',
+            fontSize: 21,
+            fontFamily: 'Outfit-Regular',
+          },
         }}
       />
       <Drawer.Screen
-        name="Campaign"
+        name="Campaigns"
         component={ActiveCampaigns}
         options={{
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                source={require('./assets/icons/search.png')}
+                style={{width: 25, height: 25, marginLeft: -40}}
+              />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            backgroundColor: '#F9F9F9',
+          },
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'black',
+            fontSize: 21,
+            fontFamily: 'Outfit-Regular',
+          },
           drawerIcon: ({color}) => (
             <MaterialIcons name={'campaign'} size={22} color={color} />
           ),
@@ -3635,8 +3717,8 @@ const styles = StyleSheet.create({
   },
 
   // Tayyab's styles
-    ProfileCard: {
-    backgroundColor: "white",
+  ProfileCard: {
+    backgroundColor: 'white',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
@@ -3645,7 +3727,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     minHeight: 15,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     maxWidth: 40,
     width: '100%',
     flexDirection: 'row',

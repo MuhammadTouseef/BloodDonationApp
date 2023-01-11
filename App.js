@@ -7,11 +7,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useTogglePasswordVisibility } from './useTogglePasswordVisibility';
 import {
   ALERT_TYPE,
   Dialog,
   AlertNotificationRoot,
   Toast,
+  AlertNotificationDialog,
 } from 'react-native-alert-notification';
 
 import {
@@ -32,6 +34,7 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
+  Alert
 } from 'react-native';
 import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import EncryptedStorage from 'react-native-encrypted-storage';
@@ -95,7 +98,7 @@ const App = () => {
             headerRight: () => <Icon name="search" size={30} color="#292D32" />,
           }}>
           <Stack.Screen name="TempHome" component={TempHome} />
-          <Stack.Screen name="Main Screen" component={MainScreen} />
+          <Stack.Screen name="Main Screen" component={MainScreen} options={{headerShown: false}}/>
           <Stack.Screen
             name="Login Screen"
             component={LoginScreen}
@@ -960,7 +963,7 @@ const Feedback = () => {
   );
 };
 
-const MainScreen = () => {
+const MainScreen = ({navigation}) => {
   return (
     <View style={styles.main}>
       <ScrollView>
@@ -968,7 +971,13 @@ const MainScreen = () => {
 
         <View style={styles.topLeft} />
 
-        <TouchableOpacity>
+        <View>
+        <Image
+            style={{height: 90, width: 90, alignSelf: 'center', marginTop: -60}}
+            source={require('./images/whiteblood.png')}
+          />
+        </View>
+        <TouchableOpacity onPress={()=>navigation.navigate('Login Screen')}>
           <View
             style={{
               backgroundColor: 'white',
@@ -977,7 +986,7 @@ const MainScreen = () => {
               borderColor: 'white',
               padding: 20,
               width: 350,
-              marginTop: 130,
+              marginTop: 180,
               alignContent: 'center',
               marginLeft: 20,
             }}>
@@ -993,7 +1002,7 @@ const MainScreen = () => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('SignUp Screen')}>
           <View
             style={{
               backgroundColor: '#5A1616',
@@ -1056,9 +1065,11 @@ const MainScreen = () => {
   );
 };
 
-const LoginScreen = () => {
+
+const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { passwordVisibility, rightIcon, handlePasswordVisibility } = useTogglePasswordVisibility();
 
   const login = async () => {
     try {
@@ -1078,6 +1089,20 @@ const LoginScreen = () => {
         <Text style={styles.paragraph} />
 
         <View style={styles.topLeft} />
+
+        <TouchableOpacity onPress={()=>Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Welcome to Blood Bank',
+              
+              button: 'Close',
+            })}>
+        <View>
+        <Image
+            style={{height: 90, width: 90, alignSelf: 'center', marginTop: -70, marginBottom: 70}}
+            source={require('./images/whiteblood.png')}
+          />
+        </View>
+        </TouchableOpacity>
 
         <View style={{alignItems: 'center', marginTop: 10}}>
           <TextInput
@@ -1105,15 +1130,16 @@ const LoginScreen = () => {
               fontFamily: 'Outfit-Regular',
             }}
             placeholder="Password"
+            secureTextEntry={passwordVisibility}
           />
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handlePasswordVisibility}>
             <View style={{marginLeft: 320, marginTop: -35}}>
               <MIcon name="eye" size={33} color="#FFFFFF" />
             </View>
           </TouchableOpacity>
           <View style={{alignItems: 'center'}}>
-            <TouchableOpacity onPress={login}>
+            <TouchableOpacity>
               <View
                 style={{
                   backgroundColor: '#F2F2F2',
@@ -1126,6 +1152,7 @@ const LoginScreen = () => {
                   alignContent: 'center',
                   marginLeft: 20,
                   alignItems: 'center',
+                  alignSelf: 'center'
                 }}>
                 <Text
                   style={{
@@ -1139,8 +1166,8 @@ const LoginScreen = () => {
               </View>
             </TouchableOpacity>
 
-            <View style={{marginTop: 20, marginLeft: 25}}>
-              <TouchableOpacity>
+            <View style={{marginTop: 20, marginLeft: 25, alignSelf: 'center'}}>
+              <TouchableOpacity onPress={()=>navigation.navigate('Forget Password')}>
                 <Text
                   style={{
                     fontFamily: 'Outfit-Regular',
@@ -1152,8 +1179,8 @@ const LoginScreen = () => {
               </TouchableOpacity>
             </View>
 
-            <View style={{marginTop: 40, marginLeft: 25}}>
-              <TouchableOpacity>
+            <View style={{marginTop: 40, marginLeft: 25, alignSelf: "center"}}>
+              <TouchableOpacity onPress={()=>navigation.navigate('SignUp Screen')}>
                 <Text style={{color: '#FFFFFF', fontFamily: 'Outfit-Regular'}}>
                   Don't Have An Account?{' '}
                   <Text
@@ -1170,7 +1197,44 @@ const LoginScreen = () => {
   );
 };
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [Confirmpassword, setConfirmPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  const { passwordVisibility, rightIcon, handlePasswordVisibility } = useTogglePasswordVisibility();
+
+  
+
+  const SignUpFunc = async () => {
+
+    try {
+      
+      if(Confirmpassword==password){
+        let res = await axios.post(`${URL}/api/v1/auth/register`, {
+          name: name,
+          email: email,
+          password: password,
+          phonenumber: phone         
+        });
+
+          if (res.data.success === true) {
+            await EncryptedStorage.setItem('JWT', res.data.token);
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Signed Up Successfully',
+              textBody: "",
+              button: 'Close',
+            });
+
+            navigation.navigate();
+          }
+          else{
+          }
+      }
+    } catch {}
+  };
   return (
     <View style={styles.main}>
       <StatusBar backgroundColor={redcolor} />
@@ -1186,6 +1250,7 @@ const SignUpScreen = () => {
       </View>
       <View style={{alignItems: 'center', marginTop: -120}}>
         <TextInput
+          onChangeText={setName}
           placeholderTextColor={'#D0B5B5'}
           style={{
             borderBottomWidth: 0.7,
@@ -1193,6 +1258,7 @@ const SignUpScreen = () => {
             padding: 5,
             fontSize: 20,
             fontFamily: 'Outfit-Regular',
+
           }}
           placeholder="Full Name"
         />
@@ -1201,6 +1267,7 @@ const SignUpScreen = () => {
         </View>
         <TextInput
           placeholderTextColor={'#D0B5B5'}
+          onChangeText={setEmail}
           style={{
             padding: 5,
             borderBottomWidth: 0.7,
@@ -1215,13 +1282,14 @@ const SignUpScreen = () => {
           <MIcon name="email" size={25} color="#FFFFFF" />
         </View>
         <TextInput
+          onChangeText={setPhone}
           placeholderTextColor={'#D0B5B5'}
           style={{
             padding: 5,
             borderBottomWidth: 0.7,
             width: '90%',
             marginTop: 40,
-            fontSize: 20,
+            fontSize: 20, 
             fontFamily: 'Outfit-Regular',
           }}
           placeholder="Phone Number"
@@ -1230,6 +1298,7 @@ const SignUpScreen = () => {
           <MIcon name="card-account-phone" size={25} color="#FFFFFF" />
         </View>
         <TextInput
+          onChangeText={setPassword}
           placeholderTextColor={'#D0B5B5'}
           style={{
             padding: 5,
@@ -1240,13 +1309,15 @@ const SignUpScreen = () => {
             fontFamily: 'Outfit-Regular',
           }}
           placeholder="Password"
+          secureTextEntry={passwordVisibility}
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handlePasswordVisibility}>
           <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
         <TextInput
+          onChangeText={setConfirmPassword}
           placeholderTextColor={'#D0B5B5'}
           style={{
             padding: 5,
@@ -1257,14 +1328,15 @@ const SignUpScreen = () => {
             fontFamily: 'Outfit-Regular',
           }}
           placeholder="Confirm Password"
+          secureTextEntry={passwordVisibility}
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handlePasswordVisibility}>
           <View style={{marginLeft: 310, marginTop: -35, padding: 2}}>
             <MIcon name="eye" size={25} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={SignUpFunc}>
           <View
             style={{
               backgroundColor: '#F2F2F2',
@@ -1331,7 +1403,7 @@ const SignUpScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.goBack()}>
           <View style={{marginRight: 340, bottom: 690}}>
             <MIcon name="arrow-left" size={40} color="#FFFFFF" />
           </View>
@@ -1341,7 +1413,37 @@ const SignUpScreen = () => {
   );
 };
 
-const ForgetPassword = () => {
+const ForgetPassword = ({navigation}) => {
+  const [email, setEmail] = React.useState('');
+
+  const Forget = async () => {
+    try {
+      
+      if(Confirmpassword==password){
+        let res = await axios.post(`${URL}/api/v1/auth/register`, {
+          name: name,
+          email: email,
+          password: password,
+          phonenumber: phone         
+        });
+
+          if (res.data.success === true) {
+            await EncryptedStorage.setItem('JWT', res.data.token);
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Signed Up Successfully',
+              textBody: "",
+              button: 'Close',
+            });
+
+            navigation.navigate();
+          }
+          else{
+          }
+      }
+    } catch {}
+  };
+
   return (
     <View style={styles.main}>
       <StatusBar backgroundColor={redcolor} />
@@ -1382,6 +1484,7 @@ const ForgetPassword = () => {
       </View>
 
       <TextInput
+        onChangeText={setEmail}
         placeholderTextColor={'#EA8A8B'}
         style={{
           padding: 10,
@@ -1422,7 +1525,7 @@ const ForgetPassword = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=> navigation.goBack()}>
         <View style={{marginLeft: 5, bottom: 525}}>
           <MIcon name="arrow-left" size={40} color="#FFFFFF" />
         </View>
@@ -3149,6 +3252,34 @@ const TempHome = ({navigation}) => {
           <Button
             title={'SignUp Screen'}
             onPress={() => navigation.navigate('SignUp Screen')}
+          />
+        </View>
+
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'Forget Password'}
+            onPress={() => navigation.navigate('Forget Password')}
+          />
+        </View>
+
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'OTPPassword Screen'}
+            onPress={() => navigation.navigate('OTPPassword Screen')}
+          />
+        </View>
+
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'ResetPassword Screen'}
+            onPress={() => navigation.navigate('ResetPassword Screen')}
+          />
+        </View>
+
+        <View style={{marginVertical: 1}}>
+          <Button
+            title={'ResetPasswordComplete Screen'}
+            onPress={() => navigation.navigate('ResetPasswordComplete Screen')}
           />
         </View>
 

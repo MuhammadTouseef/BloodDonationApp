@@ -95,7 +95,7 @@ const App = () => {
         {/*  <Image source={require('./images/barcircle.png')} style={{}} />*/}
         {/*</View>*/}
         <Stack.Navigator
-          initialRouteName="TempHome"
+          initialRouteName="Main Screen"
           screenOptions={{
             headerTitleAlign: 'center',
             headerShadowVisible: false,
@@ -398,37 +398,63 @@ const TopDonors = () => {
   );
 };
 
-const Profile = ({navigation}) => {  return (
-
-    <View style={{ flex: 1, backgroundColor: '#EBEBEB' }}>
+const Profile = ({navigation}) => {
+  return (
+    <View style={{flex: 1, backgroundColor: '#EBEBEB'}}>
       <ScrollView>
-
-        <View style={{ marginTop: 20, marginLeft: 20, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
-          <Image style={{ height: 200, width: 200, borderRadius: 100, borderWidth: 4, borderColor: '#C53437' }} source={require('./images/placeholder.png')} />
+        <View
+          style={{
+            marginTop: 20,
+            marginLeft: 20,
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'row',
+          }}>
+          <Image
+            style={{
+              height: 200,
+              width: 200,
+              borderRadius: 100,
+              borderWidth: 4,
+              borderColor: '#C53437',
+            }}
+            source={require('./images/placeholder.png')}
+          />
           <TouchableOpacity>
-          <Image style={{ height: 20, width: 20, marginBottom: 100 }} source={require('./images/Gear.png')} />          
+            <Image
+              style={{height: 20, width: 20, marginBottom: 100}}
+              source={require('./images/Gear.png')}
+            />
           </TouchableOpacity>
-
         </View>
 
-        <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row', marginTop: 5, marginLeft: 20 }}>
-          <Text style={{ fontSize: 20, color:'black' }}>John Doe</Text>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'row',
+            marginTop: 5,
+            marginLeft: 20,
+          }}>
+          <Text style={{fontSize: 20, color: 'black'}}>John Doe</Text>
           <TouchableOpacity>
-            <Image style={{ height: 20, width: 20, marginLeft: 5, marginRight: 10 }} source={require('./images/Gear.png')} />          
-            </TouchableOpacity>
+            <Image
+              style={{height: 20, width: 20, marginLeft: 5, marginRight: 10}}
+              source={require('./images/Gear.png')}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.container}>
-          <ProfileCardGender gender='Male'/>
+          <ProfileCardGender gender="Male" />
 
-          <ProfileCardAddress address='House No 92, Street 49, H-Block, Soan Gardens'/>
+          <ProfileCardAddress address="House No 92, Street 49, H-Block, Soan Gardens" />
 
-          <ProfileCardBlood blood='O+'/>
+          <ProfileCardBlood blood="O+" />
 
-          <ProfileCardMedications medications='None'/>
+          <ProfileCardMedications medications="None" />
 
-          <ProfileCardIllness illnesses='None'/>
-
+          <ProfileCardIllness illnesses="None" />
         </View>
 
         <TouchableOpacity
@@ -447,11 +473,8 @@ const Profile = ({navigation}) => {  return (
         </TouchableOpacity>
 
         <View style={styles.rectangle} />
-
       </ScrollView>
     </View>
-
-
   );
 };
 
@@ -1136,9 +1159,10 @@ const SignUpScreen = ({navigation}) => {
         </View>
 
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <View style={{marginRight: 340, bottom: 690}}>
-            <MIcon name="arrow-left" size={40} color="#FFFFFF" />
-          </View>
+          <Image
+            source={require('./assets/icons/backArrowWhite.png')}
+            style={{marginRight: 340, bottom: 690, width: 14, height: 28}}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -1256,9 +1280,10 @@ const ForgetPassword = ({navigation}) => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <View style={{marginLeft: 5, bottom: 525}}>
-          <MIcon name="arrow-left" size={40} color="#FFFFFF" />
-        </View>
+        <Image
+          source={require('./assets/icons/backArrowWhite.png')}
+          style={{marginLeft: 20, bottom: 525, width: 14, height: 28}}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -1564,21 +1589,30 @@ const CampaignCard = props => {
 const ProfileCardGender = props => {
   return (
     <View style={styles.ProfileCardStyle}>
-
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 20, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Gender</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            alignItems: 'center',
+            color: 'white',
+            justifyContent: 'center',
+          }}>
+          Gender
+        </Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 20, color: 'black' }}>{props.gender}</Text>
+        <Text style={{fontSize: 20, color: 'black'}}>{props.gender}</Text>
       </View>
 
       <View style={styles.ProfileCardRedRight}>
         <TouchableOpacity>
-        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('./images/GearRed.png')}
+          />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -1586,21 +1620,32 @@ const ProfileCardGender = props => {
 const ProfileCardAddress = props => {
   return (
     <View style={styles.ProfileCardStyle}>
-
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 20, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Address</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            alignItems: 'center',
+            color: 'white',
+            justifyContent: 'center',
+          }}>
+          Address
+        </Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 9, color: 'black', textAlign:'center' }}>{props.address}</Text>
+        <Text style={{fontSize: 9, color: 'black', textAlign: 'center'}}>
+          {props.address}
+        </Text>
       </View>
 
       <View style={styles.ProfileCardRedRight}>
         <TouchableOpacity>
-        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('./images/GearRed.png')}
+          />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -1608,21 +1653,30 @@ const ProfileCardAddress = props => {
 const ProfileCardBlood = props => {
   return (
     <View style={styles.ProfileCardStyle}>
-
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 20, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Address</Text>
+        <Text
+          style={{
+            fontSize: 20,
+            alignItems: 'center',
+            color: 'white',
+            justifyContent: 'center',
+          }}>
+          Blood Type
+        </Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 20, color: 'black' }}>{props.blood}</Text>
+        <Text style={{fontSize: 20, color: 'black'}}>{props.blood}</Text>
       </View>
 
       <View style={styles.ProfileCardRedRight}>
         <TouchableOpacity>
-        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('./images/GearRed.png')}
+          />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -1630,21 +1684,30 @@ const ProfileCardBlood = props => {
 const ProfileCardMedications = props => {
   return (
     <View style={styles.ProfileCardStyle}>
-
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 14, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Current Medications</Text>
+        <Text
+          style={{
+            fontSize: 14,
+            alignItems: 'center',
+            color: 'white',
+            justifyContent: 'center',
+          }}>
+          Current Medications
+        </Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 20, color: 'black' }}>{props.medications}</Text>
+        <Text style={{fontSize: 20, color: 'black'}}>{props.medications}</Text>
       </View>
 
       <View style={styles.ProfileCardRedRight}>
         <TouchableOpacity>
-        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('./images/GearRed.png')}
+          />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -1652,21 +1715,30 @@ const ProfileCardMedications = props => {
 const ProfileCardIllness = props => {
   return (
     <View style={styles.ProfileCardStyle}>
-
       <View style={styles.ProfileCardRed}>
-        <Text style={{fontSize: 12, alignItems: 'center', color: 'white', justifyContent: 'center' }}>Current Illnesses/ Ailments</Text>
+        <Text
+          style={{
+            fontSize: 12,
+            alignItems: 'center',
+            color: 'white',
+            justifyContent: 'center',
+          }}>
+          Current Illnesses/ Ailments
+        </Text>
       </View>
 
       <View style={styles.ProfileCardWhite}>
-        <Text style={{ fontSize: 20, color: 'black' }}>{props.illnesses}</Text>
+        <Text style={{fontSize: 20, color: 'black'}}>{props.illnesses}</Text>
       </View>
 
       <View style={styles.ProfileCardRedRight}>
         <TouchableOpacity>
-        <Image style={{ height: 30, width: 30 }} source={require('./images/GearRed.png')} />          
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('./images/GearRed.png')}
+          />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -2397,6 +2469,19 @@ const ActiveCampaigns = ({navigation}) => {
             />
           );
         })}
+        <TouchableOpacity onPress={() => navigation.navigate('My Campaigns')}>
+          <View
+            style={{
+              marginLeft: 350,
+              marginTop: 200,
+              borderWidth: 1,
+              borderColor: 'black',
+              height: 20,
+              width: 20,
+            }}>
+            <Text style={{marginLeft: 4}}>+</Text>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -2734,7 +2819,15 @@ function SocialsScreen({navigation}) {
   return (
     <View style={styles.mainBTS}>
       <View style={styles.ContainerSms}>
-        <TouchableOpacity onPress={() => navigation.navigate('Blood')}>
+        <TouchableOpacity
+          onPress={() =>
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Welcome to Facebook',
+
+              button: 'Close',
+            })
+          }>
           <View style={styles.SocialMediaBox}>
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
@@ -2750,7 +2843,15 @@ function SocialsScreen({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+        <TouchableOpacity
+          onPress={() =>
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Welcome to Twitter',
+
+              button: 'Close',
+            })
+          }>
           <View style={styles.SocialMediaBox}>
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
@@ -2766,7 +2867,15 @@ function SocialsScreen({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+        <TouchableOpacity
+          onPress={() =>
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Welcome to Instagram',
+
+              button: 'Close',
+            })
+          }>
           <View style={styles.SocialMediaBox}>
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
@@ -2782,7 +2891,15 @@ function SocialsScreen({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Welcome to LinkedIn',
+
+              button: 'Close',
+            })
+          }>
           <View style={styles.SocialMediaBox}>
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
@@ -2798,7 +2915,15 @@ function SocialsScreen({navigation}) {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Welcome to Youtube',
+
+              button: 'Close',
+            })
+          }>
           <View style={styles.SocialMediaBox}>
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
@@ -2820,6 +2945,16 @@ function SocialsScreen({navigation}) {
 }
 
 function SettingsScreen({navigation}) {
+  const logout = async () => {
+    let token = await EncryptedStorage.setItem('JWT', null);
+    try {
+      if (!token) {
+        navigation.navigate('Login Screen');
+      }
+    } catch {
+      console.log('some Error');
+    }
+  };
   return (
     <View
       style={{
@@ -3001,20 +3136,24 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Language</Text>
-            <TouchableOpacity style={{marginLeft: '30%'}}>
+            <TouchableOpacity
+              style={{marginLeft: '30%'}}
+              onPress={() => navigation.navigate('TempHome')}>
               <Image
                 source={require('./assets/icons/arrowP.png')}
                 style={{width: 12, height: 22, marginLeft: '51%'}}
               />
             </TouchableOpacity>
           </View>
-          <View style={{marginTop: 15, flexDirection: 'row'}}>
-            <Image
-              source={require('./assets/icons/logout.png')}
-              style={{width: 24, height: 24}}
-            />
-            <Text style={styles.textS}>Logout</Text>
-          </View>
+          <TouchableOpacity onPress={logout}>
+            <View style={{marginTop: 15, flexDirection: 'row'}}>
+              <Image
+                source={require('./assets/icons/logout.png')}
+                style={{width: 24, height: 24}}
+              />
+              <Text style={styles.textS}>Logout</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -3048,18 +3187,20 @@ const CustomDrawer = props => {
         </View>
       </DrawerContentScrollView>
       <View style={{padding: 20, borderTopWidth: 1, borderTopColor: 'grey'}}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Ionicons name={'log-out-outline'} size={22} color={'black'} />
-          <Text
-            style={{
-              fontFamily: 'Outfit-Regular',
-              fontSize: 15,
-              marginLeft: 5,
-              color: '#333',
-            }}>
-            Sign Out
-          </Text>
-        </View>
+        <TouchableOpacity onPress={logout1}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Ionicons name={'log-out-outline'} size={22} color={'black'} />
+            <Text
+              style={{
+                fontFamily: 'Outfit-Regular',
+                fontSize: 15,
+                marginLeft: 5,
+                color: '#333',
+              }}>
+              Sign Out
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -3241,6 +3382,16 @@ const DrawerM = () => {
   );
 };
 
+const logout1 = async ({navigation}) => {
+  let token = await EncryptedStorage.setItem('JWT', null);
+  try {
+    if (!token) {
+      navigation.navigate('Settings');
+    }
+  } catch {
+    console.log('Error');
+  }
+};
 const TempHome = ({navigation}) => {
   return (
     <>
@@ -3626,7 +3777,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
   },
   ProfileCardStyle: {
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 25,
     marginLeft: 'auto',
@@ -3636,7 +3787,6 @@ const styles = StyleSheet.create({
     maxWidth: 360,
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
     marginBottom: 20,
   },
   ProfileCardRed: {
@@ -3663,6 +3813,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     maxWidth: 120,
+    minHeight: 50,
     width: '100%',
   },
 

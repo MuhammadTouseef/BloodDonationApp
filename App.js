@@ -2491,7 +2491,7 @@ const ActiveCampaigns = ({navigation}) => {
   const findCampaigns = async () => {
     try {
       let res = await axios.get(`${URL}/api/v1/campaign/all?search=${search}`);
-      res = res.data.data;
+      res = res.data.data
       setData(res);
     } catch {}
   };

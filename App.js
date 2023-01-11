@@ -1091,6 +1091,7 @@ const LoginScreen = ({navigation}) => {
         password: password,
       });
 
+
       if (res.data.success === true) {
         await EncryptedStorage.setItem('JWT', res.data.token);
       }
@@ -1161,7 +1162,7 @@ const LoginScreen = ({navigation}) => {
             </View>
           </TouchableOpacity>
           <View style={{alignItems: 'center'}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={login}>
               <View
                 style={{
                   backgroundColor: '#F2F2F2',

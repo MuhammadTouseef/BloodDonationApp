@@ -2917,10 +2917,14 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Edit Profile</Text>
-            <Image
-              source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '48%'}}
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Profile')}
+              style={{marginLeft: '30%'}}>
+              <Image
+                source={require('./assets/icons/arrowP.png')}
+                style={{width: 12, height: 22, marginLeft: '48%'}}
+              />
+            </TouchableOpacity>
           </View>
           <View style={{marginTop: 15, flexDirection: 'row'}}>
             <Image
@@ -2928,10 +2932,15 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Change Password</Text>
-            <Image
-              source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '32%'}}
-            />
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Profile')}
+              style={{marginLeft: '23%'}}>
+              <Image
+                source={require('./assets/icons/arrowP.png')}
+                style={{width: 12, height: 22, marginLeft: '32%'}}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -2992,10 +3001,12 @@ function SettingsScreen({navigation}) {
               style={{width: 24, height: 24}}
             />
             <Text style={styles.textS}>Language</Text>
-            <Image
-              source={require('./assets/icons/arrowP.png')}
-              style={{width: 12, height: 22, marginLeft: '51%'}}
-            />
+            <TouchableOpacity style={{marginLeft: '30%'}}>
+              <Image
+                source={require('./assets/icons/arrowP.png')}
+                style={{width: 12, height: 22, marginLeft: '51%'}}
+              />
+            </TouchableOpacity>
           </View>
           <View style={{marginTop: 15, flexDirection: 'row'}}>
             <Image
@@ -3103,12 +3114,48 @@ const DrawerM = () => {
           drawerIcon: ({color}) => (
             <Ionicons name={'person-outline'} size={22} color={color} />
           ),
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                source={require('./assets/icons/search.png')}
+                style={{width: 25, height: 25, marginLeft: -40}}
+              />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            backgroundColor: '#F9F9F9',
+          },
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'black',
+            fontSize: 21,
+            fontFamily: 'Outfit-Regular',
+          },
         }}
       />
       <Drawer.Screen
-        name="Campaign"
+        name="Campaigns"
         component={ActiveCampaigns}
         options={{
+          headerRight: () => (
+            <TouchableOpacity>
+              <Image
+                source={require('./assets/icons/search.png')}
+                style={{width: 25, height: 25, marginLeft: -40}}
+              />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            backgroundColor: '#F9F9F9',
+          },
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'black',
+            fontSize: 21,
+            fontFamily: 'Outfit-Regular',
+          },
           drawerIcon: ({color}) => (
             <MaterialIcons name={'campaign'} size={22} color={color} />
           ),

@@ -1091,7 +1091,6 @@ const LoginScreen = ({navigation}) => {
         password: password,
       });
 
-
       if (res.data.success === true) {
         await EncryptedStorage.setItem('JWT', res.data.token);
       }

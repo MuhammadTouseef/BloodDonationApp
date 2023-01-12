@@ -1300,11 +1300,17 @@ const ForgetPassword = ({navigation}) => {
   );
 };
 
-const OTPPassword = () => {
-  const [first,setFirst] = useState('')
-  const [second,setSecond] = useState('')
-  const [third,setThird] = useState('')
-  const [fourth,setFourth] = useState('')
+const OTPPassword = ({navigation}) => {
+  const [first, setFirst] = useState('');
+  const [second, setSecond] = useState('');
+  const [third, setThird] = useState('');
+  const [fourth, setFourth] = useState('');
+  const fwdcode = () => {
+    let code = first + second + third + fourth;
+    navigation.navigate('ResetPassword Screen', {
+      code,
+    });
+  };
   return (
     <View style={styles.main}>
       <StatusBar backgroundColor={redcolor} />
@@ -1323,28 +1329,99 @@ const OTPPassword = () => {
       <View
         style={{
           alignSelf: 'center',
-          top: -60,
+          top: -20,
           flexDirection: 'row',
-          marginLeft: 30,
+          marginBottom: 20,
         }}>
-        <TextInput style={styles.otp}  maxLength={1} onChangeText={setFirst}>
-          2
-        </TextInput>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: 'white',
+            backgroundColor: '#D9D9D9',
+            padding: 1,
+            height: 50,
+            width: 40,
+          }}>
+          <TextInput
+            onChangeText={setFirst}
+            style={{
+              fontWeight: 'bold',
+              fontSize: 20,
+              marginLeft: 5,
+              alignSelf: 'center',
+            }}
+            maxLength={1}
+          />
+        </View>
 
-        <TextInput style={styles.otp} maxLength={1} onChangeText={setSecond}>
-          2
-        </TextInput>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: 'white',
+            backgroundColor: '#D9D9D9',
+            marginLeft: 20,
+            padding: 1,
+            height: 50,
+            width: 40,
+          }}>
+          <TextInput
+            onChangeText={setSecond}
+            style={{
+              fontWeight: 'bold',
+              fontSize: 20,
+              marginLeft: 5,
+              alignSelf: 'center',
+            }}
+            maxLength={1}
+          />
+        </View>
 
-        <TextInput style={styles.otp}  maxLength={1} onChangeText={setThird}>
-          2
-        </TextInput>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: 'white',
+            backgroundColor: '#D9D9D9',
+            marginLeft: 20,
+            padding: 1,
+            height: 50,
+            width: 40,
+          }}>
+          <TextInput
+            onChangeText={setThird}
+            style={{
+              fontWeight: 'bold',
+              fontSize: 20,
+              marginLeft: 5,
+              alignSelf: 'center',
+            }}
+            maxLength={1}
+          />
+        </View>
 
-        <TextInput style={styles.otp}  maxLength={1} onChangeText={setFourth}>
-          2
-        </TextInput>
+        <View
+          style={{
+            borderWidth: 1,
+            borderColor: 'white',
+            backgroundColor: '#D9D9D9',
+            marginLeft: 20,
+            padding: 1,
+            height: 50,
+            width: 40,
+          }}>
+          <TextInput
+            style={{
+              fontWeight: 'bold',
+              fontSize: 20,
+              marginLeft: 5,
+              alignSelf: 'center',
+            }}
+            onChangeText={setFourth}
+            maxLength={1}
+          />
+        </View>
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={fwdcode}>
         <View
           style={{
             backgroundColor: '#F2F2F2',
@@ -1368,16 +1445,40 @@ const OTPPassword = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <View style={{marginLeft: 5, bottom: 450}}>
-          <MIcon name="arrow-left" size={40} color="#FFFFFF" />
-        </View>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image
+          source={require('./assets/icons/backArrowWhite.png')}
+          style={{
+            marginRight: 340,
+            bottom: 410,
+            width: 14,
+            height: 28,
+            marginLeft: 10,
+          }}
+        />
       </TouchableOpacity>
     </View>
   );
 };
 
-const ResetPassword = () => {
+const ResetPassword = ({navigation, route}) => {
+  const [password, setPassword] = useState('');
+  const [cpassword, setcPassword] = useState('');
+  const {code} = route.params;
+
+  const resetpass = async () => {
+    try {
+      let res = await axios.put(`${URL}/api/v1/auth/resetpassword/${code}`, {
+        password: password,
+      });
+
+      if (res.data.success == true) {
+        showSuccessToast('Successfully Updated Password');
+        navigation.navigate('ResetPasswordComplete Screen');
+      }
+    } catch {}
+  };
+
   return (
     <View style={styles.main}>
       <StatusBar backgroundColor={redcolor} />
@@ -1394,6 +1495,7 @@ const ResetPassword = () => {
       </View>
 
       <TextInput
+        onChangeText={setPassword}
         placeholderTextColor={'#EA8A8B'}
         style={{
           padding: 10,
@@ -1411,6 +1513,7 @@ const ResetPassword = () => {
       />
 
       <TextInput
+        onChangeText={setcPassword}
         placeholderTextColor={'#EA8A8B'}
         style={{
           padding: 10,
@@ -1427,7 +1530,7 @@ const ResetPassword = () => {
         placeholder="Confirm Password"
       />
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={resetpass}>
         <View
           style={{
             backgroundColor: '#F2F2F2',
@@ -1460,7 +1563,7 @@ const ResetPassword = () => {
   );
 };
 
-const ResetPasswordComplete = () => {
+const ResetPasswordComplete = ({navigation}) => {
   return (
     <View style={styles.main}>
       <StatusBar backgroundColor={redcolor} />
@@ -1512,7 +1615,7 @@ const ResetPasswordComplete = () => {
         </Text>
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Login Screen')}>
         <View
           style={{
             backgroundColor: '#F2F2F2',
@@ -2245,7 +2348,6 @@ const GetDonations = ({navigation}) => {
   const [details, setDetails] = useState('');
 
   const getDonation = async () => {
-
     try {
       let res = await axios.post(`${URL}/api/v1/campaign/`, {
         bloodGroup: bloodGroup,

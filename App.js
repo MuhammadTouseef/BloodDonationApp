@@ -691,7 +691,7 @@ const Feedback = () => {
         </View>
 
         <View style={styles.container}>
-          <TouchableOpacity style={styles.btn} onPress ={getFeedback}>
+          <TouchableOpacity style={styles.btn} onPress={getFeedback}>
             <Text style={styles.btnText}>Send</Text>
           </TouchableOpacity>
         </View>
@@ -1471,7 +1471,7 @@ const ResetPassword = ({navigation, route}) => {
       let res = await axios.put(`${URL}/api/v1/auth/resetpassword/${code}`, {
         password: password,
       });
-console.log('')
+
       if (res.data.success == true) {
         showSuccessToast('Successfully Updated Password');
         navigation.navigate('ResetPasswordComplete Screen');
@@ -1658,12 +1658,15 @@ const ScreenTitle = props => {
 };
 
 const CampaignCard = props => {
-  let path = '';
-  if (props.button == 'Details' || 'More Details') {
-    path = 'Campaign Details';
-  } else {
-    path = 'Donors';
-  }
+  const [path, setPath] = useState('');
+  useEffect(() => {
+    if (props.button === 'Details' || props.button ===  'More Details') {
+      setPath('Campaign Details');
+    } else {
+      setPath('Donors');
+    }
+  }, []);
+
   return (
     <View style={styles.campaignsCard}>
       <View style={styles.campaignsCardInner}>
@@ -1696,6 +1699,7 @@ const CampaignCard = props => {
       <View style={styles.campaignsCardInnerRight}>
         <TouchableOpacity
           style={styles.btncampaign}
+
           onPress={() => props.navigation.navigate(path, {id: props.id})}>
           <Text style={styles.btnTextCampaign}>{props.button}</Text>
         </TouchableOpacity>
@@ -1900,7 +1904,9 @@ const DonorCard = props => {
           }}>
           <Text style={styles.donordetails}>{props.name}</Text>
 
-          <Text style={styles.donordetails}>Blood Group: {props.blood}</Text>
+          <Text style={styles.donordetails}>
+            Blood Group: {props.blood || 'N/A'}{' '}
+          </Text>
         </View>
       </View>
 
@@ -2450,7 +2456,7 @@ const MyCampaigns = ({navigation}) => {
               blood={x.bloodGroup}
               hospital={x.hospital}
               address={x.location}
-              button={'View Donors'}
+              button={'Donors'}
               id={x._id}
               navigation={navigation}
             />
@@ -3390,8 +3396,8 @@ const DrawerM = () => {
         }}
       />
       <Drawer.Screen
-        name="Campaigns"
-        component={ActiveCampaigns}
+        name="My Campaigns"
+        component={MyCampaigns}
         options={{
           headerRight: () => (
             <TouchableOpacity>

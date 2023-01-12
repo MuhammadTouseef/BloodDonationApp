@@ -1301,6 +1301,10 @@ const ForgetPassword = ({navigation}) => {
 };
 
 const OTPPassword = () => {
+  const [first,setFirst] = useState('')
+  const [second,setSecond] = useState('')
+  const [third,setThird] = useState('')
+  const [fourth,setFourth] = useState('')
   return (
     <View style={styles.main}>
       <StatusBar backgroundColor={redcolor} />
@@ -1323,19 +1327,19 @@ const OTPPassword = () => {
           flexDirection: 'row',
           marginLeft: 30,
         }}>
-        <TextInput style={styles.otp} keyboardType="numeric" maxLength={1}>
+        <TextInput style={styles.otp}  maxLength={1} onChangeText={setFirst}>
           2
         </TextInput>
 
-        <TextInput style={styles.otp} keyboardType="numeric" maxLength={1}>
+        <TextInput style={styles.otp} maxLength={1} onChangeText={setSecond}>
           2
         </TextInput>
 
-        <TextInput style={styles.otp} keyboardType="numeric" maxLength={1}>
+        <TextInput style={styles.otp}  maxLength={1} onChangeText={setThird}>
           2
         </TextInput>
 
-        <TextInput style={styles.otp} keyboardType="numeric" maxLength={1}>
+        <TextInput style={styles.otp}  maxLength={1} onChangeText={setFourth}>
           2
         </TextInput>
       </View>
@@ -2241,15 +2245,7 @@ const GetDonations = ({navigation}) => {
   const [details, setDetails] = useState('');
 
   const getDonation = async () => {
-    console.log(
-      //////////////
-      bloodGroup,
-      hospital,
-      contactNumber,
-      patientName,
-      location,
-      details,
-    );
+
     try {
       let res = await axios.post(`${URL}/api/v1/campaign/`, {
         bloodGroup: bloodGroup,
@@ -2280,9 +2276,9 @@ const GetDonations = ({navigation}) => {
         <View style={styles.inputContainer}>
           <Text style={styles.tfield}>Blood Group</Text>
           <TextInput style={styles.input} onChangeText={setBloodGroup} />
-          <Icon
+          <Fontisto
             style={styles.icon}
-            name="location-outline"
+            name="blood-drop"
             size={30}
             color="#000000"
           />
@@ -2480,7 +2476,7 @@ const ActiveCampaigns = ({navigation}) => {
             />
           );
         })}
-        <TouchableOpacity onPress={() => navigation.navigate('My Campaigns')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Get Donations')}>
           <View
             style={{
               backgroundColor: redcolor,

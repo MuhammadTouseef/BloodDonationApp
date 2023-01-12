@@ -1471,7 +1471,7 @@ const ResetPassword = ({navigation, route}) => {
       let res = await axios.put(`${URL}/api/v1/auth/resetpassword/${code}`, {
         password: password,
       });
-
+console.log('')
       if (res.data.success == true) {
         showSuccessToast('Successfully Updated Password');
         navigation.navigate('ResetPasswordComplete Screen');

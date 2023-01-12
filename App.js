@@ -691,7 +691,7 @@ const Feedback = () => {
         </View>
 
         <View style={styles.container}>
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity style={styles.btn} onPress ={getFeedback}>
             <Text style={styles.btnText}>Send</Text>
           </TouchableOpacity>
         </View>

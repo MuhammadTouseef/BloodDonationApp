@@ -104,6 +104,7 @@ const App = () => {
               fontFamily: 'Outfit-Regular',
               color: 'black',
             },
+
             headerRight: () => <Icon name="search" size={30} color="#292D32" />,
           }}>
           <Stack.Screen name="TempHome" component={TempHome} />
@@ -828,7 +829,7 @@ const LoginScreen = ({navigation}) => {
 
       if (res.data.success === true) {
         await EncryptedStorage.setItem('JWT', res.data.token);
-        navigation.navigate('Blood Type');
+        navigation.navigate('Drawer');
       }
     } catch {}
   };
@@ -1171,7 +1172,17 @@ const SignUpScreen = ({navigation}) => {
 
 const ForgetPassword = ({navigation}) => {
   const [email, setEmail] = React.useState('');
+  const forget = async () => {
+    try {
+      let res = await axios.post(`${URL}/api/v1/auth/forgotpassword`, {
+        email: email,
+      });
 
+      if (res.data.success === true) {
+        navigation.navigate('OTPPassword Screen');
+      }
+    } catch {}
+  };
   // const Forget = async () => {
   //   try {
   //     if (Confirmpassword === password) {
@@ -1255,7 +1266,7 @@ const ForgetPassword = ({navigation}) => {
         placeholder="Email"
       />
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={forget}>
         <View
           style={{
             backgroundColor: '#F2F2F2',
@@ -2472,14 +2483,19 @@ const ActiveCampaigns = ({navigation}) => {
         <TouchableOpacity onPress={() => navigation.navigate('My Campaigns')}>
           <View
             style={{
-              marginLeft: 350,
-              marginTop: 200,
+              backgroundColor: redcolor,
+
+              marginLeft: 300,
+              marginTop: 170,
               borderWidth: 1,
-              borderColor: 'black',
-              height: 20,
-              width: 20,
+              borderColor: 'white',
+              height: 70,
+              width: 70,
+              borderRadius: 40,
+              justifyContent: 'center',
+              alignItems: 'center',
             }}>
-            <Text style={{marginLeft: 4}}>+</Text>
+            <Fontisto name={'plus-a'} color={'white'} size={26} />
           </View>
         </TouchableOpacity>
       </ScrollView>

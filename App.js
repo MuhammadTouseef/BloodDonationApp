@@ -2768,8 +2768,10 @@ function BloodTypeScreen({navigation}) {
           justifyContent: 'space-evenly',
           alignItems: 'center',
           height: '12%',
+
+
         }}>
-        <View>
+        <View style={{marginTop:38}} >
           <TouchableOpacity style={styles.smBox}>
             <Text
               style={{
@@ -2783,7 +2785,7 @@ function BloodTypeScreen({navigation}) {
             </Text>
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{marginTop:38}}>
           <TouchableOpacity style={styles.smBox}>
             <Text
               style={{
